@@ -105,7 +105,6 @@ namespace Assets.Scripts.GamePlay.GameLogic
         /// </summary>
         [SerializeField] public Transform _anchorPos;
 
-
         /// <summary>
         /// 玩家当前注视的方向
         /// </summary>
