@@ -68,8 +68,9 @@ namespace Assets.Scripts.GamePlay.GameLogic
         [Header("最大仰角")]
         [SerializeField] private float _maxMouseY = 60f;
 
-        #endregion 
+        #endregion
 
+        #region 组件
         /// <summary>
         /// 玩家控制器
         /// </summary>
@@ -104,6 +105,8 @@ namespace Assets.Scripts.GamePlay.GameLogic
         /// 拿起物体时的挂点
         /// </summary>
         [SerializeField] public Transform _anchorPos;
+
+        #endregion
 
         /// <summary>
         /// 玩家当前注视的方向
