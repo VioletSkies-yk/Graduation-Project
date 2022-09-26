@@ -150,6 +150,9 @@ namespace Assets.Scripts.GamePlay.GameLogic
             //GameQuit();
         }
 
+        /// <summary>
+        /// 初始化数据
+        /// </summary>
         private void InitData()
         {
             isUnLockPosition = true;
@@ -157,6 +160,9 @@ namespace Assets.Scripts.GamePlay.GameLogic
 
         #region 人物控制
 
+        /// <summary>
+        /// 人物控制器
+        /// </summary>
         private void ActionControl()
         {
             Screen.lockCursor = true;
