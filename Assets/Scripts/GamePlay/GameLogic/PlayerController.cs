@@ -108,6 +108,8 @@ namespace Assets.Scripts.GamePlay.GameLogic
 
         #endregion
 
+        #region 固定参数
+
         /// <summary>
         /// 玩家当前注视的方向
         /// </summary>
@@ -127,6 +129,8 @@ namespace Assets.Scripts.GamePlay.GameLogic
         /// 是否可以移动
         /// </summary>
         private bool isUnLockPosition;
+
+        #endregion
 
         void Start()
         {
