@@ -35,24 +35,28 @@ public class SceneManager:OsSingletonMono<SceneManager>
     {
         StartCoroutine(LoadingSceneAsync(sceneName, Func));
     }
-    public IEnumerator LoadingSceneAsync(string sceneName, Action Func)
+    public IEnumerator LoadingSceneAsync(string sceneName, Action OnSecenLoaded)
     {
+        GameManager.Instance.IsLoadingLevel = true;
+
         EventManager.Instance.TriggerEvent(CONST.StartLoadingSceneProgress);
 
         //暂时先等待一秒，作为过场动画
         yield return new WaitForSeconds(1f);
 
-        AsyncOperation AO = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(sceneName);
+        AsyncOperation async = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(sceneName);
 
         //判定场景是否加载完成，通过协程实现加载进度的更新，可用于其他事件，外部也可以监听
-        while (!AO.isDone)
+        while (!async.isDone)
         {
-            EventManager.Instance.TriggerEvent(CONST.LoadSceneProgress, AO);
-            yield return AO.progress;
+            EventManager.Instance.TriggerEvent(CONST.LoadSceneProgress, async);
+            yield return async.progress;
         }
-        yield return AO;
-        Func();
+        yield return async;
+        OnSecenLoaded?.Invoke();
         EventManager.Instance.TriggerEvent(CONST.FinishLoadingSceneProgress);
+
+        GameManager.Instance.IsLoadingLevel = false;
     }
 
 

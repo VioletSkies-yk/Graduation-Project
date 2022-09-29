@@ -53,7 +53,7 @@ namespace Assets.Scripts.GamePlay.GameLogic
         private void Start()
         {
             _gameObject3D.constraints = RigidbodyConstraints.FreezeAll;
-            _meshRender.enabled = false;
+            //_meshRender.enabled = false;
         }
 
         private void Update()
@@ -72,7 +72,7 @@ namespace Assets.Scripts.GamePlay.GameLogic
         {
             if (isFirst)
             {
-                KaiUtils.SetActive(false, _gameObject2D);
+                //KaiUtils.SetActive(false, _gameObject2D);
                 _meshRender.enabled = true;
                 isOwnToPlayer = true;
                 PlayerController.Instance.SetAnchorPos(_gameObject3D.transform.position);

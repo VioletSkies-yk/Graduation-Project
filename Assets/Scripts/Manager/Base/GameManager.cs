@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.GamePlay.UI;
+using System;
 using UnityEngine;
 
 /// <summary>
@@ -6,13 +7,54 @@ using UnityEngine;
 /// </summary>
 public class GameManager : OsSingletonMono<GameManager>
 {
+    /// <summary>
+    /// 是否正在加载关卡
+    /// </summary>
+    public bool IsLoadingLevel
+    {
+        get { return _isLoadingLevel; }
+
+        set { _isLoadingLevel = value; }
+    }
+    private bool _isLoadingLevel = false;
+
+
+    bool _pauseStatus = false;
+    public Action GameResumeListener;
+    public bool GamePaused
+    {
+        set
+        {
+            _pauseStatus = value;
+            if (value)
+            {
+                TimeScaleManager.Instance.AddTimeScale(TimeScaleEnum.GamePause, 0);
+            }
+            else
+            {
+                TimeScaleManager.Instance.StopTimeScale(TimeScaleEnum.GamePause);
+                if (GameResumeListener != null)
+                {
+                    GameResumeListener();
+                    GameResumeListener = null;
+                }
+            }
+            //			Time.timeScale = value ? 0f : 1f;
+        }
+        get
+        {
+            return _pauseStatus;
+        }
+    }
+
+
     private void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
     }
     private void Start()
     {
-        var node=UIManager.Instance.OpenUI(CONST.UI_BlackPanel);
+        var node = UIManager.Instance.OpenUI(CONST.UI_BlackPanel);
         UIManager.Instance.OpenUI(CONST.UI_MainMenuPanel);
     }
 

@@ -16,6 +16,20 @@ namespace Assets.Scripts.GamePlay.GameLogic
         [Header("原本的牢笼")]
         [SerializeField] private GameObject _smallPrison;
 
+        /// <summary>
+        /// 小熊MeshRender
+        /// </summary>
+        [Space]
+        [Header("小熊MeshRender")]
+        [SerializeField] private MeshRenderer _teddy;
+
+        /// <summary>
+        /// 黑色小熊材质
+        /// </summary>
+        [Space]
+        [Header("黑色小熊材质")]
+        [SerializeField] private Material _blackMat;
+
         // 按下交互键时
         public override void OnInteract()
         {
@@ -25,6 +39,7 @@ namespace Assets.Scripts.GamePlay.GameLogic
         public override void OnFocus()
         {
             KaiUtils.SetActive(false, _smallPrison);
+            _teddy.sharedMaterial = _blackMat;
         }
         // 视线脱离后
         public override void OnLoseFocus()

@@ -100,7 +100,7 @@ namespace Assets.Scripts.GamePlay.GameLogic
 
         IEnumerator BallMove()
         {
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(1f);
             var move = _ball.DOMoveX(_ballEndPos.transform.position.x, _ballDuration);
             _ball.DOMoveZ(_ballEndPos.transform.position.z, _ballDuration);
             move.onComplete = delegate ()
