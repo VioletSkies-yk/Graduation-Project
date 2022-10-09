@@ -60,6 +60,8 @@ public class GameManager : OsSingletonMono<GameManager>
 
     public void GameEntry(SaveData _data = null)
     {
+        //Test tmp = new Test();
+        //Debug.Log(tmp.ID);
         if (_data == null)
         {
             KaiUtils.Log("当前无本地数据，正在开始新游戏");
