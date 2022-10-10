@@ -1,1 +1,1 @@
-[{"ID":5,"RewardType":1,"MinReward":0.5,"MaxReward":1.0,"GroupTest":[10,15,20]},{"ID":6,"RewardType":2,"MinReward":0.8,"MaxReward":1.2,"GroupTest":[12,18]}]
+[{"ID":0,"RewardType":1,"MinReward":0.0,"MaxReward":1.0,"GroupTest":[10,15,20],"GroupStringTest":["a","abc"],"MaxString":""},{"ID":6,"RewardType":2,"MinReward":0.8,"MaxReward":1.2,"GroupTest":[12,18],"GroupStringTest":["1d","2b","3bc"],"MaxString":"1我ab"}]

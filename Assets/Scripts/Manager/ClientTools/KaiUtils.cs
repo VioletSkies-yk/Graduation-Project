@@ -56,11 +56,15 @@ public static class KaiUtils
     {
         if (contents.Length == 0)
         {
-            Debug.LogError(content);
+            Debug.LogError($"Error: {content}");
         }
         else
         {
-            Debug.LogError(string.Format(content, contents));
+            Debug.LogError($"Error: {string.Format(content, contents)}");
         }
+    }
+    public static void Error(object contents)
+    {
+        Debug.LogError($"Error: {contents}");
     }
 }

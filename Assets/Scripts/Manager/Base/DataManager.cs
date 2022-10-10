@@ -27,27 +27,7 @@ public class DataManager : OsSingletonMono<DataManager>
     }
     private void Start()
     {
-        Sheet1DataList = new Sheet1DataList();
-        Sheet1DataList.Init(JsonToEntity<Sheet1>("Sheet1"));
-
-        for (int i = 0; i < Sheet1DataList.StoreItemDic.Count; i++)
-        {
-            Debug.Log(Sheet1DataList.StoreItemDic[i].ID);
-            for (int j = 0; j < Sheet1DataList.StoreItemDic[i].GroupTest.Length; j++)
-            {
-                Debug.Log(Sheet1DataList.StoreItemDic[i].GroupTest[j]);
-
-            }
-        }
-
-
-        Hero1DataList = new Hero1DataList();
-        Hero1DataList.Init(JsonToEntity<Hero1>("Hero1"));
-
-        for (int i = 0; i < Hero1DataList.HeroDataList.Count; i++)
-        {
-            Debug.Log(Hero1DataList.HeroDataList[i].ID);
-        }
+        InitDataList();
     }
 
     private List<T> JsonToEntity<T>(string name)
@@ -63,5 +43,31 @@ public class DataManager : OsSingletonMono<DataManager>
             list.Add(objList[i]);
         }
         return list;
+    }
+
+    public void InitDataList()
+    {
+        Sheet1DataList = new Sheet1DataList();
+        Sheet1DataList.Init(JsonToEntity<Sheet1>("Sheet1"));
+
+        for (int i = 0; i < Sheet1DataList.StoreItemDic.Count; i++)
+        {
+            Debug.Log(Sheet1DataList.StoreItemDic[i].ID);
+            Debug.Log(Sheet1DataList.StoreItemDic[i].MaxString);
+            for (int j = 0; j < Sheet1DataList.StoreItemDic[i].GroupStringTest.Length; j++)
+            {
+                Debug.Log(Sheet1DataList.StoreItemDic[i].GroupStringTest[j]);
+            }
+        }
+
+
+        Hero1DataList = new Hero1DataList();
+        Hero1DataList.Init(JsonToEntity<Hero1>("Hero1"));
+
+        for (int i = 0; i < Hero1DataList.HeroDataList.Count; i++)
+        {
+            Debug.Log(Hero1DataList.HeroDataList[i].ID);
+        }
+
     }
 }

@@ -35,6 +35,13 @@ namespace Assets.Scripts.GamePlay.Data
             /// </summary>
             public int[] GroupTest;
 
+            /// <summary>	
+            /// 测试字符串数组
+            /// </summary>
+            public string[] GroupStringTest;
+
+            public string MaxString;
+
         }
 
         public class Sheet1DataList
@@ -58,6 +65,8 @@ namespace Assets.Scripts.GamePlay.Data
                     data.MinReward = item.MinReward;
                     data.RewardType = item.RewardType;
                     data.GroupTest = item.GroupTest;
+                    data.GroupStringTest = item.GroupStringTest;
+                    data.MaxString = item.MaxString;
 
                     StoreItemDic.Add(data);
                 }

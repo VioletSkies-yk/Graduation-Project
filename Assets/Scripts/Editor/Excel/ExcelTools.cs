@@ -13,9 +13,26 @@ using UnityEngine;
 
 public class ExcelTools : EditorWindow
 {
+    /// <summary>
+    /// Json文件路径
+    /// </summary>
     private static string m_JsonSavePath = "Json";
+
+    /// <summary>
+    /// 实体类文件路径
+    /// </summary>
     private static string m_EntitySavePath = "Entity";
+
+    /// <summary>
+    /// 表格文件路径
+    /// </summary>
     private static string m_DirPath = "Excel";
+
+    /// <summary>
+    /// 表格文件路径
+    /// </summary>
+    private static List<string> _entityClassDic = new List<string>();
+
     private Vector2 scrollPos;
     public static readonly char[] separators = { '|', ',' };
 
@@ -94,20 +111,45 @@ public class ExcelTools : EditorWindow
 
     public void CreateEntities()
     {
-        var list = GetAllExcel(m_DirPath);
-        for (int i = 0; i < list.Count; i++)
+        try
         {
-            AutoCreateClass(list[i].FullName);
+            _entityClassDic.Clear();
+            var list = GetAllExcel(m_DirPath);
+            for (int i = 0; i < list.Count; i++)
+            {
+                if (!AutoCreateClass(list[i].FullName))
+                {
+                    KaiUtils.Error("生成实体类失败");
+                    EditorUtility.ClearProgressBar();
+                    return;
+                }
+            }
+            KaiUtils.Log("生成实体类成功！");
         }
+        catch (Exception e)
+        {
+            KaiUtils.Error(e);
+            KaiUtils.Error("生成实体类失败");
+        }
+        EditorUtility.ClearProgressBar();
     }
     public void ExcelToJson()
     {
-        //DataManager.Instance.dataTypeList.Clear();
-        var list = GetAllExcel(m_DirPath);
-        for (int i = 0; i < list.Count; i++)
+        try
         {
-            ToJson(list[i].FullName);
+            var list = GetAllExcel(m_DirPath);
+            for (int i = 0; i < list.Count; i++)
+            {
+                ToJson(list[i].FullName);
+            }
+            KaiUtils.Log("生成Json文件成功！");
         }
+        catch (Exception e)
+        {
+            KaiUtils.Error(e);
+            KaiUtils.Error("生成Json文件失败");
+        }
+        EditorUtility.ClearProgressBar();
     }
 
     public static List<FileInfo> GetAllExcel(string dirPath)
@@ -115,7 +157,7 @@ public class ExcelTools : EditorWindow
         List<FileInfo> fileList = new List<FileInfo>();
         if (!Directory.Exists(dirPath))
         {
-            Debug.LogError("文件夹地址错误");
+            KaiUtils.Error($"Excel文件夹地址错误,不存在路径{dirPath}");
             return null;
         }
         DirectoryInfo direction = new DirectoryInfo(dirPath);//获取文件夹，exportPath是文件夹的路径
@@ -132,7 +174,7 @@ public class ExcelTools : EditorWindow
         }
         return fileList;
     }
-    public static List<ExcelSheetData> ReadExcel(string filePath, ref string sheetName, ref int columnNum, ref int rowNum)
+    public static List<ExcelSheetData> ReadExcel(string filePath)
     {
         FileStream stream = File.Open(filePath, FileMode.Open, FileAccess.Read, FileShare.Read);
         IExcelDataReader excelReader = ExcelReaderFactory.CreateOpenXmlReader(stream);
@@ -142,24 +184,21 @@ public class ExcelTools : EditorWindow
         for (int i = 0; i < count; i++)
         {
             //Tables[0] 下标0表示excel文件中第一张表的数据
-            sheetName = result.Tables[i].TableName;
-            Debug.Log(sheetName);
-            columnNum = result.Tables[i].Columns.Count;
-            rowNum = result.Tables[i].Rows.Count;
             stream.Close();
             list.Add(new ExcelSheetData(result.Tables[i].TableName, result.Tables[i].Columns.Count, result.Tables[i].Rows.Count, result.Tables[i].Rows));
         }
         return list;
     }
-    public static void AutoCreateClass(string filePath)
+    public static bool AutoCreateClass(string filePath)
     {
         string fileName = Path.GetFileNameWithoutExtension(filePath);
         string storeEntityPath = $"{m_EntitySavePath}/{fileName}.cs";
         //获得表数据
         string sheetName = "";
         int columnNum = 0, rowNum = 0;
-        var collectList = ReadExcel(filePath, ref sheetName, ref columnNum, ref rowNum);
+        var collectList = ReadExcel(filePath);
         StringBuilder sb = new StringBuilder();
+        sb.AppendLine("//根据表格配置由工具自动生成的实体类，请不要擅自更改，不要直接使用\n");
         for (int index = 0; index < collectList.Count; index++)
         {
             sheetName = collectList[index].sheetName;
@@ -167,18 +206,28 @@ public class ExcelTools : EditorWindow
             rowNum = collectList[index].rowNum;
             DataRowCollection collect = collectList[index].collect;
 
-            sb.AppendLine($"\tpublic class {sheetName}");
-            sb.AppendLine("\t{");
+            if (_entityClassDic.Contains(sheetName))
+            {
+                KaiUtils.Error($"{sheetName}类已存在，请检查命名重复的表格并修改！");
+                return false;
+            }
+
+            EditorUtility.DisplayProgressBar("正在生成实体类", sheetName, (float)index / collectList.Count);
+
+
+            sb.AppendLine($"public class {sheetName}");
+            sb.AppendLine("{");
             for (int i = 0; i < columnNum; i++)
             {
-                sb.AppendLine($"\t\t/// <summary>\t");
-                sb.AppendLine($"\t\t/// {collect[0][i].ToString()}");
-                sb.AppendLine($"\t\t/// </summary>");
+                sb.AppendLine($"\t/// <summary>\t");
+                sb.AppendLine($"\t/// {collect[0][i].ToString()}");
+                sb.AppendLine($"\t/// </summary>");
 
-                sb.AppendLine($"\t\tpublic {collect[2][i].ToString()} {collect[1][i].ToString()};");
+                sb.AppendLine($"\tpublic {collect[2][i].ToString()} {collect[1][i].ToString()};");
                 sb.AppendLine("\t");
             }
-            sb.AppendLine("\t}");
+            sb.AppendLine("}");
+            _entityClassDic.Add(sheetName);
         }
         try
         {
@@ -191,10 +240,12 @@ public class ExcelTools : EditorWindow
                 File.Create(storeEntityPath).Dispose(); //避免资源占用
             }
             File.WriteAllText(storeEntityPath, sb.ToString());
+            return true;
         }
         catch (System.Exception e)
         {
             Debug.LogError($"Excel转json时创建对应的实体类出错，实体类为：{fileName},e:{e.Message}");
+            return false;
         }
     }
     public void ToJson(string filePath)
@@ -206,7 +257,7 @@ public class ExcelTools : EditorWindow
             //获得表数据
             string sheetName = "";
             int columnNum = 0, rowNum = 0;
-            var collectList = ReadExcel(filePath, ref sheetName, ref columnNum, ref rowNum);
+            var collectList = ReadExcel(filePath);
             for (int index = 0; index < collectList.Count; index++)
             {
                 sheetName = collectList[index].sheetName;
@@ -224,7 +275,7 @@ public class ExcelTools : EditorWindow
                 Debug.Log(type);
                 if (type == null)
                 {
-                    Debug.LogError("你还没有创建对应的实体类!");
+                    KaiUtils.Error("你还没有创建对应的实体类!请先生成实体类!");
                     return;
                 }
                 if (!Directory.Exists(m_JsonSavePath))
@@ -263,8 +314,9 @@ public class ExcelTools : EditorWindow
                         //不是数组
                         else
                         {
+                            var item = collect[i][z];
                             //将表格中的数据转换为对应的数据类型
-                            object value = Convert.ChangeType(collect[i][z].ToString(), info.FieldType);
+                            object value = Convert.ChangeType(string.IsNullOrWhiteSpace(collect[i][z].ToString()) && info.FieldType != typeof(string) ? "0" : collect[i][z].ToString(), info.FieldType);
                             //给对应的字段赋值
                             type.GetField(collect[1][z].ToString()).SetValue(obj, value);
                         }
