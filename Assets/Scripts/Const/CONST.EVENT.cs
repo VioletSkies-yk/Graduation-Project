@@ -39,4 +39,13 @@ public static partial class CONST
     public const string LoadingImageAllBlack = "LoadingImageAllBlack";
 
     #endregion
+
+    #region 物体互动相关
+
+    /// <summary>
+    /// 安全屋开锁
+    /// </summary>
+    public const string OnPuttingDownTheKey = "OnPuttingDownTheKey";
+
+    #endregion
 }

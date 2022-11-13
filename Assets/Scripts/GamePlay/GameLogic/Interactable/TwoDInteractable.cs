@@ -37,8 +37,8 @@ namespace Assets.Scripts.GamePlay.GameLogic
         /// 消失的2D物体
         /// </summary>
         [Space]
-        [Header("消失的2D物体")]
-        [SerializeField] private GameObject _gameObject2D;
+        [Header("门锁")]
+        [SerializeField] private DoorInteractable _doorLock;
 
         /// <summary>
         /// 是否为首次交互
@@ -60,6 +60,7 @@ namespace Assets.Scripts.GamePlay.GameLogic
         {
             if (isOwnToPlayer && Input.GetMouseButtonUp(0))
             {
+                EventManager.Instance.TriggerEvent<float>(CONST.OnPuttingDownTheKey, _gameObject3D.transform.parent.localPosition.magnitude);
                 isOwnToPlayer = false;
                 _gameObject3D.transform.SetParent(null);
                 _gameObject3D.constraints = RigidbodyConstraints.None;

@@ -17,21 +17,55 @@ namespace Assets.Scripts.GamePlay.GameLogic
         [Header("旋转的门")]
         [SerializeField] private Transform _door;
 
+        /// <summary>
+        /// 是否能够触发
+        /// </summary>
+        //private bool isTrigger = false;
+
+        private void OnEnable()
+        {
+            SetInteractableActive(false);
+            EventManager.Instance.StartListening<float>(CONST.OnPuttingDownTheKey, TriggerTheKey);
+        }
+
+        private void OnDisable()
+        {
+            EventManager.Instance.StopListening<float>(CONST.OnPuttingDownTheKey, TriggerTheKey);
+        }
+
+
         // 按下交互键时
         public override void OnInteract()
         {
-            Quaternion endv = Quaternion.Euler(transform.localEulerAngles + new Vector3(0, 90, 0));
-            _door.DORotate(new Vector3(0, 70, 0), 2);
         }
         // 视线瞄准，选中时
         public override void OnFocus()
         {
-            KaiUtils.Log("{0}已被注视", gameObject.name);
+            //if (isTrigger)
+            //{
+                _door.DORotate(new Vector3(0, 70, 0), 2);
+
+                //isTrigger = false;
+                EventManager.Instance.StopListening<float>(CONST.OnPuttingDownTheKey, TriggerTheKey);
+            //}
         }
         // 视线脱离后
         public override void OnLoseFocus()
         {
             KaiUtils.Log("{0}已脱离注视", gameObject.name);
+        }
+
+
+        private void TriggerTheKey(float distance)
+        {
+            _focusDistance = distance + 5f;
+            SetInteractableActive(true);
+            Invoke(nameof(SetInteractableFalse), 0.2f);
+        }
+
+        private void SetInteractableFalse()
+        {
+            SetInteractableActive(false);
         }
     }
 }

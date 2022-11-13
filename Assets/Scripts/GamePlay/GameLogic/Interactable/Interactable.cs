@@ -40,5 +40,10 @@ namespace Assets.Scripts.GamePlay.GameLogic
         public abstract void OnFocus();
         // 视线脱离后
         public abstract void OnLoseFocus();
+
+        protected void SetInteractableActive(bool active)
+        {
+            gameObject.layer = LayerMask.NameToLayer(active ? "Interactable" : "Default");
+        }
     }
 }
