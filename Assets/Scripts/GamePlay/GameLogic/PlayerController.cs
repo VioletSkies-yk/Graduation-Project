@@ -7,7 +7,7 @@ using DG.Tweening.Core;
 
 namespace Assets.Scripts.GamePlay.GameLogic
 {
-    public class PlayerController :OsSingletonMono<PlayerController> 
+    public class PlayerController : OsSingletonMono<PlayerController>
     {
         #region 可调参数
 
@@ -23,7 +23,7 @@ namespace Assets.Scripts.GamePlay.GameLogic
         /// 玩家加速移动速度
         /// </summary>
         [Space]
-        [Range(0, 20)]
+        [Range(0, 50)]
         [Header("玩家加速移动速度")]
         [SerializeField] private float _runSpeed = 10;
 
@@ -74,7 +74,7 @@ namespace Assets.Scripts.GamePlay.GameLogic
         /// <summary>
         /// 玩家控制器
         /// </summary>
-        [SerializeField] CharacterController _playerController;
+        [SerializeField] private CharacterController _playerController;
 
         /// <summary>
         /// 玩家第一视角摄像机
@@ -185,7 +185,7 @@ namespace Assets.Scripts.GamePlay.GameLogic
                     }
                 }
                 direction.y -= _gravity * Time.deltaTime;
-                _playerController.Move(_playerController.transform.TransformDirection(direction * Time.deltaTime * (Input.GetKey(KeyCode.LeftShift)?_runSpeed:_walkSpeed)));
+                _playerController.Move(_playerController.transform.TransformDirection(direction * Time.deltaTime * (Input.GetKey(KeyCode.LeftShift) ? _runSpeed : _walkSpeed)));
             }
 
             RotationX += _playerCamera.transform.localEulerAngles.y + Input.GetAxis("Mouse X") * _mouseSpeed;
@@ -262,6 +262,19 @@ namespace Assets.Scripts.GamePlay.GameLogic
         #endregion
 
         #region public
+
+        public void SetPlayerPos(Vector3 pos)
+        {
+            isUnLockPosition = false;
+            _playerController.enabled = false;
+            transform.position = pos;
+            RotationX += _playerCamera.transform.localEulerAngles.y - 90f;
+            transform.eulerAngles = new Vector3(0, RotationX, 0);
+            _playerCamera.transform.eulerAngles = new Vector3(0, RotationX, 0);
+            transform.DOMoveZ(transform.position.z + 5f, 0.5f);
+            _playerController.enabled = true;
+            isUnLockPosition = true;
+        }
 
         public void SetAnchorPos(Vector3 pos)
         {

@@ -60,7 +60,7 @@ namespace Assets.Scripts.GamePlay.GameLogic
         {
             if (isOwnToPlayer && Input.GetMouseButtonUp(0))
             {
-                EventManager.Instance.TriggerEvent<float>(CONST.OnPuttingDownTheKey, _gameObject3D.transform.parent.localPosition.magnitude);
+                EventManager.Instance.TriggerEvent(CONST.OnPuttingDownTheKey);
                 isOwnToPlayer = false;
                 _gameObject3D.transform.SetParent(null);
                 _gameObject3D.constraints = RigidbodyConstraints.None;
@@ -74,7 +74,8 @@ namespace Assets.Scripts.GamePlay.GameLogic
             if (isFirst)
             {
                 //KaiUtils.SetActive(false, _gameObject2D);
-                _meshRender.enabled = true;
+                if (_meshRender != null)
+                    _meshRender.enabled = true;
                 isOwnToPlayer = true;
                 PlayerController.Instance.SetAnchorPos(_gameObject3D.transform.position);
                 _gameObject3D.transform.SetParent(PlayerController.Instance._anchorPos);
