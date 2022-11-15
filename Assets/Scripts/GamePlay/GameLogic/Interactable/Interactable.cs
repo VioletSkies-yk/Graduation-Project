@@ -29,6 +29,9 @@ namespace Assets.Scripts.GamePlay.GameLogic
 
         #endregion
 
+        public Action OnInteractCallBack;
+        public Action OnFocusCallBack;
+
         public virtual void Awake()
         {
             // 继承Interactable类的，都划分到“Interactable”层

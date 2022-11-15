@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using DG.Tweening.Core;
-
+using System;
 
 namespace Assets.Scripts.GamePlay.GameLogic
 {
@@ -263,15 +263,16 @@ namespace Assets.Scripts.GamePlay.GameLogic
 
         #region public
 
-        public void SetPlayerPos(Vector3 pos)
+        public void SetPlayerPosAndRotation(Vector3 pos, float anglesY = 0f, Action CallBack = null)
         {
             isUnLockPosition = false;
             _playerController.enabled = false;
             transform.position = pos;
-            RotationX += _playerCamera.transform.localEulerAngles.y - 90f;
+            RotationX += _playerCamera.transform.localEulerAngles.y + anglesY;
             transform.eulerAngles = new Vector3(0, RotationX, 0);
             _playerCamera.transform.eulerAngles = new Vector3(0, RotationX, 0);
-            transform.DOMoveZ(transform.position.z + 5f, 0.5f);
+            //transform.DOMoveZ(transform.position.z + 5f, 0.5f);
+            CallBack?.Invoke();
             _playerController.enabled = true;
             isUnLockPosition = true;
         }

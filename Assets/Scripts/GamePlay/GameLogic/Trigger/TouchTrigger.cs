@@ -36,7 +36,7 @@ public class TouchTrigger : MonoBehaviour
 
     }
 
-    protected void SetTriggerOnOfOff(bool isOn)
+    public void SetTriggerOnOfOff(bool isOn)
     {
         isTriggerON = isOn;
     }

@@ -37,6 +37,13 @@ namespace Assets.Scripts.GamePlay.GameLogic.Episode1
         [Header("透明材质")]
         [SerializeField] private Material _transparentMat;
 
+        /// <summary>
+        /// 碰撞体
+        /// </summary>
+        [Space]
+        [Header("碰撞体")]
+        [SerializeField] private TouchTrigger _trigger;
+
         public void SetTransparent()
         {
             _paintingMesh.sharedMaterial = _transparentMat;
@@ -47,6 +54,11 @@ namespace Assets.Scripts.GamePlay.GameLogic.Episode1
         {
             _paintingMesh.sharedMaterial = _blackMat;
             _paintingCol.enabled = true;
+        }
+
+        public void SetTriggerCallBack(Action callback)
+        {
+            _trigger.TriggerAction = callback;
         }
     }
 }

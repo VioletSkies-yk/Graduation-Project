@@ -54,7 +54,7 @@ public class SceneManager:OsSingletonMono<SceneManager>
         }
         yield return async;
         OnSecenLoaded?.Invoke();
-        EventManager.Instance.TriggerEvent(CONST.FinishLoadingSceneProgress);
+        EventManager.Instance.TriggerEvent<string>(CONST.FinishLoadingSceneProgress,sceneName);
 
         GameManager.Instance.IsLoadingLevel = false;
     }

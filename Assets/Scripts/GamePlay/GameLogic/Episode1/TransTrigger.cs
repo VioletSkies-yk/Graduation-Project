@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DG.Tweening;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,7 +25,11 @@ namespace Assets.Scripts.GamePlay.GameLogic.Episode1
             KaiUtils.SetActive(true, _endPos.gameObject);
             _corridorPainting.SetBlack();
             var offset = PlayerController.Instance.transform.position - _startPos.position;
-            PlayerController.Instance.SetPlayerPos(_endPos.position + offset);
+            PlayerController.Instance.SetPlayerPosAndRotation(_endPos.position + offset, -90f,
+                delegate ()
+                {
+                    PlayerController.Instance.transform.DOMoveZ(PlayerController.Instance.transform.position.z + 5f, 0.5f);
+                });
         }
     }
 }

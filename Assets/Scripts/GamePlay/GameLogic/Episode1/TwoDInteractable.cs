@@ -34,13 +34,6 @@ namespace Assets.Scripts.GamePlay.GameLogic
         [SerializeField] private BoxCollider _boxCollider;
 
         /// <summary>
-        /// 消失的2D物体
-        /// </summary>
-        [Space]
-        [Header("门锁")]
-        [SerializeField] private DoorInteractable _doorLock;
-
-        /// <summary>
         /// 是否为首次交互
         /// </summary>
         private bool isFirst = true;
@@ -58,9 +51,22 @@ namespace Assets.Scripts.GamePlay.GameLogic
 
         private void Update()
         {
+            //if (isOwnToPlayer && Input.GetMouseButtonUp(0))
+            //{
+            //    EventManager.Instance.TriggerEvent(CONST.OnPuttingDownTheKey);
+            //    isOwnToPlayer = false;
+            //    _gameObject3D.transform.SetParent(null);
+            //    _gameObject3D.constraints = RigidbodyConstraints.None;
+            //    _boxCollider.enabled = true;
+            //}
+        }
+
+        public void UpdateFunc(Action OnPuttingDownTheKey)
+        {
             if (isOwnToPlayer && Input.GetMouseButtonUp(0))
             {
-                EventManager.Instance.TriggerEvent(CONST.OnPuttingDownTheKey);
+                //EventManager.Instance.TriggerEvent(CONST.OnPuttingDownTheKey);
+                OnPuttingDownTheKey?.Invoke();
                 isOwnToPlayer = false;
                 _gameObject3D.transform.SetParent(null);
                 _gameObject3D.constraints = RigidbodyConstraints.None;
@@ -71,6 +77,7 @@ namespace Assets.Scripts.GamePlay.GameLogic
         // 按下交互键时
         public override void OnInteract()
         {
+            base.OnInteractCallBack?.Invoke();
             if (isFirst)
             {
                 //KaiUtils.SetActive(false, _gameObject2D);
