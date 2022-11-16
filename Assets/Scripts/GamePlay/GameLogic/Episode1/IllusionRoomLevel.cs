@@ -10,10 +10,26 @@ namespace Assets.Scripts.GamePlay.GameLogic.Episode1
 {
     public class IllusionRoomLevel : LevelStage
     {
+        /// <summary>
+        /// 2D交互物体
+        /// </summary>
+        [Space]
+        [Header("2D交互物体")]
+        [SerializeField] private List<TwoDInteractable> _cubeList;
         public IllusionRoomLevel() : base(LevelStageType.Level_03)
         {
 
         }
+
+        private void Update()
+        {
+            for (int i = 0; i < _cubeList.Count; i++)
+            {
+                _cubeList[i].UpdateFunc();
+                _cubeList[i].LockRotation();
+            }
+        }
+
         public override void Init()
         {
         }
@@ -26,6 +42,10 @@ namespace Assets.Scripts.GamePlay.GameLogic.Episode1
         public override void OnEnter()
         {
             KaiUtils.SetActive(true,gameObject);
+            for (int i = 0; i < _cubeList.Count; i++)
+            {
+                _cubeList[i].LockRotation();
+            }
         }
     }
 }

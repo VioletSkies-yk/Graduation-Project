@@ -48,6 +48,7 @@ namespace Assets.Scripts.GamePlay.GameLogic.Episode1
             if (_curLevel== LevelStageType.Level_01)
             {
                 base.ChangeLevelStage();
+                KaiUtils.SetActive(true, _levelStageDic[LevelStageType.Level_03].gameObject);
                 _levelTrigger01.SetTriggerOnOfOff(false);
             }
         }

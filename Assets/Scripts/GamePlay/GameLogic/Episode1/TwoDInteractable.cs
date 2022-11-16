@@ -31,7 +31,7 @@ namespace Assets.Scripts.GamePlay.GameLogic
         /// </summary>
         [Space]
         [Header("3D物体碰撞体")]
-        [SerializeField] private BoxCollider _boxCollider;
+        [SerializeField] private Collider _boxCollider;
 
         /// <summary>
         /// 是否为首次交互
@@ -49,23 +49,10 @@ namespace Assets.Scripts.GamePlay.GameLogic
             //_meshRender.enabled = false;
         }
 
-        private void Update()
-        {
-            //if (isOwnToPlayer && Input.GetMouseButtonUp(0))
-            //{
-            //    EventManager.Instance.TriggerEvent(CONST.OnPuttingDownTheKey);
-            //    isOwnToPlayer = false;
-            //    _gameObject3D.transform.SetParent(null);
-            //    _gameObject3D.constraints = RigidbodyConstraints.None;
-            //    _boxCollider.enabled = true;
-            //}
-        }
-
-        public void UpdateFunc(Action OnPuttingDownTheKey)
+        public void UpdateFunc(Action OnPuttingDownTheKey = null)
         {
             if (isOwnToPlayer && Input.GetMouseButtonUp(0))
             {
-                //EventManager.Instance.TriggerEvent(CONST.OnPuttingDownTheKey);
                 OnPuttingDownTheKey?.Invoke();
                 isOwnToPlayer = false;
                 _gameObject3D.transform.SetParent(null);
@@ -105,6 +92,11 @@ namespace Assets.Scripts.GamePlay.GameLogic
         public override void OnLoseFocus()
         {
 
+        }
+
+        public void LockRotation()
+        {
+            transform.eulerAngles = Vector3.zero;
         }
 
     }
