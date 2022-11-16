@@ -31,6 +31,8 @@ namespace Assets.Scripts.GamePlay.GameLogic.Episode1
         [Header("Trigger")]
         [SerializeField] private TouchTrigger _passTrigger;
 
+        private bool isCanPass;
+
         public CorridorLevel() : base(LevelStageType.Level_02)
         {
 
@@ -39,9 +41,12 @@ namespace Assets.Scripts.GamePlay.GameLogic.Episode1
         public override void Init()
         {
             _passTrigger.SetTriggerOnOfOff(false);
+            _trueCorridorPainting.SetTriggerOnOfOff(false);
 
             _fakeCorridorPainting.SetTriggerCallBack(Transition);
             _passTrigger.TriggerAction = LoopCallBack;
+            _trueCorridorPainting.SetTriggerCallBack(() => { EventManager.Instance.TriggerEvent(CONST.PassLevelOnTheSameEpisode, EpisodeType.Episode1); });
+
         }
 
         public override void OnEnter()
@@ -53,12 +58,12 @@ namespace Assets.Scripts.GamePlay.GameLogic.Episode1
 
         public override void OnLeave()
         {
-            throw new NotImplementedException();
+            _trueCorridorPainting.SetBlack();
         }
 
         public override void ResetStage()
         {
-            throw new NotImplementedException();
+
         }
 
 
@@ -70,15 +75,17 @@ namespace Assets.Scripts.GamePlay.GameLogic.Episode1
             _trueCorridorPainting.SetBlack();
             var offset = PlayerController.Instance.transform.position - _startPos;
             PlayerController.Instance.SetPlayerPosAndRotation(_endPos + offset, -90f,
-                delegate ()
-                {
-                    PlayerController.Instance.transform.DOMoveZ(PlayerController.Instance.transform.position.z + 5f, 0.5f);
-                });
+                    PlayerController.Instance.transform.DOMoveZ(40f, 0.1f));
+
+
+            _trueCorridorPainting.SetTriggerOnOfOff(false);
         }
 
         public void LoopCallBack()
         {
             _trueCorridorPainting.SetTransparent();
+            _trueCorridorPainting.SetTriggerOnOfOff(true);
+            isCanPass = true;
         }
     }
 }

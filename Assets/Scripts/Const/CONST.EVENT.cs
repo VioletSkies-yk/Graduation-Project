@@ -40,12 +40,12 @@ public static partial class CONST
 
     #endregion
 
-    #region 物体互动相关
+    #region 关卡内切换相关
 
     /// <summary>
-    /// 安全屋开锁
+    /// 同一关卡内过关
     /// </summary>
-    public const string OnPuttingDownTheKey = "OnPuttingDownTheKey";
+    public const string PassLevelOnTheSameEpisode = "PassLevelOnTheSameEpisode";
 
     #endregion
 }

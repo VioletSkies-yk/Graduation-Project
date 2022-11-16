@@ -52,6 +52,30 @@ namespace Assets.Scripts.GamePlay.GameLogic
             Enter();
         }
 
+        private void OnEnable()
+        {
+            EventManager.Instance.StartListening<EpisodeType>(CONST.PassLevelOnTheSameEpisode,
+                delegate (EpisodeType type)
+                {
+                    if (type == Type)
+                    {
+                        ChangeLevelStage();
+                    }
+                });
+        }
+
+        private void OnDisable()
+        {
+            EventManager.Instance.StopListening<EpisodeType>(CONST.PassLevelOnTheSameEpisode,
+                delegate (EpisodeType type)
+                {
+                    if (type == Type)
+                    {
+                        ChangeLevelStage();
+                    }
+                });
+        }
+
         private void Init()
         {
             bornPoint = _bornPoint.position;

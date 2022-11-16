@@ -47,7 +47,7 @@ namespace Assets.Scripts.GamePlay.GameLogic.Episode1
         public void SetTransparent()
         {
             _paintingMesh.sharedMaterial = _transparentMat;
-            _paintingCol.enabled = false;
+            //_paintingCol.enabled = false;
         }
 
         public void SetBlack()

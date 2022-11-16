@@ -263,7 +263,7 @@ namespace Assets.Scripts.GamePlay.GameLogic
 
         #region public
 
-        public void SetPlayerPosAndRotation(Vector3 pos, float anglesY = 0f, Action CallBack = null)
+        public void SetPlayerPosAndRotation(Vector3 pos, float anglesY = 0f, Tween CallBack = null)
         {
             isUnLockPosition = false;
             _playerController.enabled = false;
@@ -271,10 +271,22 @@ namespace Assets.Scripts.GamePlay.GameLogic
             RotationX += _playerCamera.transform.localEulerAngles.y + anglesY;
             transform.eulerAngles = new Vector3(0, RotationX, 0);
             _playerCamera.transform.eulerAngles = new Vector3(0, RotationX, 0);
-            //transform.DOMoveZ(transform.position.z + 5f, 0.5f);
-            CallBack?.Invoke();
-            _playerController.enabled = true;
-            isUnLockPosition = true;
+            if(CallBack!=null)
+            {
+                GetComponent<CapsuleCollider>().enabled = false;
+                CallBack?.Play();
+                CallBack.onComplete = () =>
+                {
+                    _playerController.enabled = true;
+                    isUnLockPosition = true;
+                    GetComponent<CapsuleCollider>().enabled = true;
+                };
+            }
+            else
+            {
+                _playerController.enabled = true;
+                isUnLockPosition = true;
+            }
         }
 
         public void SetAnchorPos(Vector3 pos)
