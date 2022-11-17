@@ -16,6 +16,14 @@ namespace Assets.Scripts.GamePlay.GameLogic.Episode1
         [Space]
         [Header("2D交互物体")]
         [SerializeField] private List<TwoDInteractable> _cubeList;
+
+        /// <summary>
+        /// 2D交互物体
+        /// </summary>
+        [Space]
+        [Header("钥匙")]
+        [SerializeField] private TwoDInteractable _key;
+
         public IllusionRoomLevel() : base(LevelStageType.Level_03)
         {
 
@@ -28,6 +36,7 @@ namespace Assets.Scripts.GamePlay.GameLogic.Episode1
                 _cubeList[i].UpdateFunc();
                 _cubeList[i].LockRotation();
             }
+            _key.UpdateFunc();
         }
 
         public override void Init()

@@ -45,7 +45,11 @@ namespace Assets.Scripts.GamePlay.GameLogic.Episode1
 
             _fakeCorridorPainting.SetTriggerCallBack(Transition);
             _passTrigger.TriggerAction = LoopCallBack;
-            _trueCorridorPainting.SetTriggerCallBack(() => { EventManager.Instance.TriggerEvent(CONST.PassLevelOnTheSameEpisode, EpisodeType.Episode1); });
+            _trueCorridorPainting.SetTriggerCallBack(() =>
+            {
+                PlayerController.Instance.SetPlayerPosAndRotation(PlayerController.Instance.transform.position, 0f, PlayerController.Instance.transform.DOMoveZ(-1f, 0.5f));
+                EventManager.Instance.TriggerEvent(CONST.PassLevelOnTheSameEpisode, EpisodeType.Episode1);
+            });
 
         }
 

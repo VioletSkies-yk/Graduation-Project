@@ -34,6 +34,14 @@ namespace Assets.Scripts.GamePlay.GameLogic
         [SerializeField] private Collider _boxCollider;
 
         /// <summary>
+        /// 房间边界
+        /// </summary>
+        [Space]
+        [Header("房间边界")]
+        [SerializeField] private BoxCollider _roomCollider;
+
+
+        /// <summary>
         /// 是否为首次交互
         /// </summary>
         private bool isFirst = true;
@@ -53,11 +61,19 @@ namespace Assets.Scripts.GamePlay.GameLogic
         {
             if (isOwnToPlayer && Input.GetMouseButtonUp(0))
             {
-                OnPuttingDownTheKey?.Invoke();
-                isOwnToPlayer = false;
-                _gameObject3D.transform.SetParent(null);
-                _gameObject3D.constraints = RigidbodyConstraints.None;
-                _boxCollider.enabled = true;
+                if (isOutOfLevel())
+                {
+                    ResetInteractable();
+                }
+                else
+                {
+                    OnPuttingDownTheKey?.Invoke();
+                    isOwnToPlayer = false;
+                    _gameObject3D.transform.SetParent(null);
+                    _gameObject3D.constraints = RigidbodyConstraints.None;
+                    _boxCollider.enabled = true;
+                }
+
             }
         }
 
@@ -68,8 +84,8 @@ namespace Assets.Scripts.GamePlay.GameLogic
             if (isFirst)
             {
                 //KaiUtils.SetActive(false, _gameObject2D);
-                if (_meshRender != null)
-                    _meshRender.enabled = true;
+                //if (_meshRender != null)
+                //    _meshRender.enabled = true;
                 isOwnToPlayer = true;
                 PlayerController.Instance.SetAnchorPos(_gameObject3D.transform.position);
                 _gameObject3D.transform.SetParent(PlayerController.Instance._anchorPos);
@@ -94,9 +110,30 @@ namespace Assets.Scripts.GamePlay.GameLogic
 
         }
 
+        public override void ResetInteractable()
+        {
+            _gameObject3D.transform.SetParent(null);
+            base.ResetInteractable();
+            isFirst = true;
+            isOwnToPlayer = false;
+            _gameObject3D.constraints = RigidbodyConstraints.FreezeAll;
+            _boxCollider.enabled = true;
+        }
+
         public void LockRotation()
         {
             transform.eulerAngles = Vector3.zero;
+        }
+
+        public void SetRigidbodyConstraints(RigidbodyConstraints state)
+        {
+            _gameObject3D.constraints = state;
+        }
+
+
+        private bool isOutOfLevel()
+        {
+            return !_roomCollider.bounds.Contains(gameObject.transform.position);
         }
 
     }

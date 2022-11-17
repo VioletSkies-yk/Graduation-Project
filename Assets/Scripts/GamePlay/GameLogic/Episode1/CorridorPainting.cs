@@ -48,12 +48,14 @@ namespace Assets.Scripts.GamePlay.GameLogic.Episode1
         {
             _paintingMesh.sharedMaterial = _transparentMat;
             //_paintingCol.enabled = false;
+            _paintingCol.isTrigger = true;
         }
 
         public void SetBlack()
         {
             _paintingMesh.sharedMaterial = _blackMat;
             _paintingCol.enabled = true;
+            _paintingCol.isTrigger = false;
         }
 
         public void SetTriggerCallBack(Action callback)

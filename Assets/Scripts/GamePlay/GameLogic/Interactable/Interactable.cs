@@ -32,10 +32,19 @@ namespace Assets.Scripts.GamePlay.GameLogic
         public Action OnInteractCallBack;
         public Action OnFocusCallBack;
 
+        private Transform initTransform;
+
+        private Vector3 initPos;
+        private Quaternion initRot;
+        private Vector3 initScale;
+
         public virtual void Awake()
         {
             // 继承Interactable类的，都划分到“Interactable”层
             gameObject.layer = LayerMask.NameToLayer("Interactable");
+            initPos = gameObject.transform.position;
+            initRot = gameObject.transform.rotation;
+            initScale = gameObject.transform.localScale;
         }
         // 按下交互键时
         public abstract void OnInteract();
@@ -47,6 +56,12 @@ namespace Assets.Scripts.GamePlay.GameLogic
         protected void SetInteractableActive(bool active)
         {
             gameObject.layer = LayerMask.NameToLayer(active ? "Interactable" : "Default");
+        }
+
+        public virtual void ResetInteractable()
+        {
+            gameObject.transform.SetPositionAndRotation(initPos,initRot);
+            gameObject.transform.localScale = initScale;
         }
     }
 }
