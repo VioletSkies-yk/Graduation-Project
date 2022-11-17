@@ -16,6 +16,13 @@ namespace Assets.Scripts.GamePlay.GameLogic.Episode1
         [Header("进入走廊Trigger")]
         [SerializeField] private TouchTrigger _levelTrigger01;
 
+        /// <summary>
+        /// 进入走廊Trigger
+        /// </summary>
+        [Space]
+        [Header("安全屋灯光")]
+        [SerializeField] private GameObject _saveRoomLight;
+
 
         public Episode_1() : base(EpisodeType.Episode1)
         {
@@ -49,6 +56,7 @@ namespace Assets.Scripts.GamePlay.GameLogic.Episode1
             {
                 base.ChangeLevelStage();
                 KaiUtils.SetActive(true, _levelStageDic[LevelStageType.Level_03].gameObject);
+                KaiUtils.SetActive(false, _saveRoomLight);
                 _levelTrigger01.SetTriggerOnOfOff(false);
             }
         }

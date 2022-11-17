@@ -39,6 +39,13 @@ namespace Assets.Scripts.GamePlay.GameLogic.Episode1
         [SerializeField] private BoxCollider _triggerCollider;
 
         /// <summary>
+        /// 门把触发器
+        /// </summary>
+        [Space]
+        [Header("门上方块")]
+        [SerializeField] private MeshRenderer _triggerMeshRender;
+
+        /// <summary>
         /// 钥匙碰撞体
         /// </summary>
         [Space]
@@ -77,6 +84,7 @@ namespace Assets.Scripts.GamePlay.GameLogic.Episode1
         {
             if (_triggerCollider.bounds.Intersects(_inputCollider.bounds))
             {
+                _triggerMeshRender.enabled = true;
                 KaiUtils.SetActive(false, _inputCollider.gameObject);
                 _door.DORotate(new Vector3(0, 70, 0), 2);
             }
