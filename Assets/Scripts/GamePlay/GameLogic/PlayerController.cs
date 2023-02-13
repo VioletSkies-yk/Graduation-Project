@@ -185,7 +185,8 @@ namespace Assets.Scripts.GamePlay.GameLogic
                     }
                 }
                 direction.y -= _gravity * Time.deltaTime;
-                _playerController.Move(_playerController.transform.TransformDirection(direction * Time.deltaTime * (Input.GetKey(KeyCode.LeftShift) ? _runSpeed : _walkSpeed)));
+                Vector3 transfromDir = new Vector3((direction * Time.deltaTime * (Input.GetKey(KeyCode.LeftShift) ? _runSpeed : _walkSpeed)).x, (direction * Time.deltaTime * _walkSpeed).y, (direction * Time.deltaTime * (Input.GetKey(KeyCode.LeftShift) ? _runSpeed : _walkSpeed)).z);
+                _playerController.Move(_playerController.transform.TransformDirection(transfromDir));
             }
 
             RotationX += _playerCamera.transform.localEulerAngles.y + Input.GetAxis("Mouse X") * _mouseSpeed;
@@ -271,7 +272,7 @@ namespace Assets.Scripts.GamePlay.GameLogic
             RotationX += _playerCamera.transform.localEulerAngles.y + anglesY;
             transform.eulerAngles = new Vector3(0, RotationX, 0);
             _playerCamera.transform.eulerAngles = new Vector3(0, RotationX, 0);
-            if(CallBack!=null)
+            if (CallBack != null)
             {
                 GetComponent<CapsuleCollider>().enabled = false;
                 CallBack?.Play();

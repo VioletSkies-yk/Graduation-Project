@@ -24,6 +24,27 @@ namespace Assets.Scripts.GamePlay.GameLogic.Episode1
         [Header("钥匙")]
         [SerializeField] private TwoDInteractable _key;
 
+        /// <summary>
+        /// 钥匙碰撞体
+        /// </summary>
+        [Space]
+        [Header("钥匙碰撞体")]
+        [SerializeField] private BoxCollider _inputCollider;
+
+        /// <summary>
+        /// 旋转的门
+        /// </summary>
+        [Space]
+        [Header("旋转的门")]
+        [SerializeField] private Transform _door;
+
+        /// <summary>
+        /// 门把触发器
+        /// </summary>
+        [Space]
+        [Header("门把触发器")]
+        [SerializeField] private BoxCollider _triggerCollider;
+
         public IllusionRoomLevel() : base(LevelStageType.Level_03)
         {
 
@@ -36,7 +57,7 @@ namespace Assets.Scripts.GamePlay.GameLogic.Episode1
                 _cubeList[i].UpdateFunc();
                 _cubeList[i].LockRotation();
             }
-            _key.UpdateFunc();
+            _key.UpdateFunc(OnPuttingDownTheKey);
         }
 
         public override void Init()
@@ -54,6 +75,16 @@ namespace Assets.Scripts.GamePlay.GameLogic.Episode1
             for (int i = 0; i < _cubeList.Count; i++)
             {
                 _cubeList[i].LockRotation();
+            }
+        }
+
+
+        public void OnPuttingDownTheKey()
+        {
+            if (_triggerCollider.bounds.Intersects(_inputCollider.bounds))
+            {
+                KaiUtils.SetActive(false, _inputCollider.gameObject);
+                _door.DORotate(new Vector3(0, 70, 0), 2);
             }
         }
     }
