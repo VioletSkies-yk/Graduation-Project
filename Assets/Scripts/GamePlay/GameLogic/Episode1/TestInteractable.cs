@@ -24,5 +24,16 @@ namespace Assets.Scripts.GamePlay.GameLogic
         {
             KaiUtils.Log("{0}已脱离注视", gameObject.name);
         }
+
+        public static void StaticFunc()
+        {
+
+        }
+
+
+        public void Func()
+        {
+
+        }
     }
 }
