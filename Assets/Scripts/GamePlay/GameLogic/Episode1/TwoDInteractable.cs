@@ -40,6 +40,10 @@ namespace Assets.Scripts.GamePlay.GameLogic
         [Header("房间边界")]
         [SerializeField] private BoxCollider _roomCollider;
 
+        /// <summary>
+        /// 初始旋转
+        /// </summary>
+        private Vector3 initAngles;
 
         /// <summary>
         /// 是否为首次交互
@@ -55,6 +59,7 @@ namespace Assets.Scripts.GamePlay.GameLogic
         {
             _gameObject3D.constraints = RigidbodyConstraints.FreezeAll;
             //_meshRender.enabled = false;
+            initAngles = transform.eulerAngles;
         }
 
         public void UpdateFunc(Action OnPuttingDownTheKey = null)
@@ -67,6 +72,7 @@ namespace Assets.Scripts.GamePlay.GameLogic
                 }
                 else
                 {
+                    LockRotation();
                     OnPuttingDownTheKey?.Invoke();
                     isOwnToPlayer = false;
                     _gameObject3D.transform.SetParent(null);
@@ -81,6 +87,7 @@ namespace Assets.Scripts.GamePlay.GameLogic
         public override void OnInteract()
         {
             base.OnInteractCallBack?.Invoke();
+            LockRotation();
             if (isFirst)
             {
                 //KaiUtils.SetActive(false, _gameObject2D);
@@ -122,7 +129,7 @@ namespace Assets.Scripts.GamePlay.GameLogic
 
         public void LockRotation()
         {
-            transform.eulerAngles = Vector3.zero;
+            transform.eulerAngles = initAngles;
         }
 
         public void SetRigidbodyConstraints(RigidbodyConstraints state)
@@ -133,7 +140,10 @@ namespace Assets.Scripts.GamePlay.GameLogic
 
         private bool isOutOfLevel()
         {
-            return !_roomCollider.bounds.Contains(gameObject.transform.position);
+            if (_roomCollider != null)
+                return !_roomCollider.bounds.Contains(gameObject.transform.position);
+            else
+                return false;
         }
 
     }

@@ -132,6 +132,11 @@ namespace Assets.Scripts.GamePlay.GameLogic
 
         #endregion
 
+        private void Awake()
+        {
+            DontDestroyOnLoad(this.gameObject);
+        }
+
         void Start()
         {
             InitData();

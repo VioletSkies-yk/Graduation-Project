@@ -55,7 +55,6 @@ namespace Assets.Scripts.GamePlay.GameLogic.Episode1
             for (int i = 0; i < _cubeList.Count; i++)
             {
                 _cubeList[i].UpdateFunc();
-                _cubeList[i].LockRotation();
             }
             _key.UpdateFunc(OnPuttingDownTheKey);
         }
