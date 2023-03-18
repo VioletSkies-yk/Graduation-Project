@@ -60,7 +60,7 @@ namespace Assets.Scripts.GamePlay.GameLogic.Episode1
 
         public void SetTriggerCallBack(Action callback)
         {
-            _trigger.TriggerAction = callback;
+            //_trigger.TriggerAction = callback;
         }
     }
 }

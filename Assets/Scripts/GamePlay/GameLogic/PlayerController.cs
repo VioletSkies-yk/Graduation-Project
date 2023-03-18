@@ -192,6 +192,15 @@ namespace Assets.Scripts.GamePlay.GameLogic
                 direction.y -= _gravity * Time.deltaTime;
                 Vector3 transfromDir = new Vector3((direction * Time.deltaTime * (Input.GetKey(KeyCode.LeftShift) ? _runSpeed : _walkSpeed)).x, (direction * Time.deltaTime * _walkSpeed).y, (direction * Time.deltaTime * (Input.GetKey(KeyCode.LeftShift) ? _runSpeed : _walkSpeed)).z);
                 _playerController.Move(_playerController.transform.TransformDirection(transfromDir));
+
+                if (_playerController.isGrounded)
+                {
+                    if (Input.GetKeyDown(KeyCode.C))
+                    {
+                        GetComponent<CapsuleCollider>().height = GetComponent<CapsuleCollider>().height == 2 ? 1 : 2f;
+                        _playerController.height = _playerController.height == 2 ? 1 : 2f;
+                    }
+                }
             }
 
             RotationX += _playerCamera.transform.localEulerAngles.y + Input.GetAxis("Mouse X") * _mouseSpeed;
