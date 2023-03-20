@@ -91,12 +91,25 @@ namespace Assets.Scripts.GamePlay.GameLogic
             if (isFirst && CheckTriggerPosition())
             {
                 isFirst = false;
-                PlayerController.Instance.SetUnLockPos(false);
                 KaiUtils.SetActive(true, _trueLadder);
                 KaiUtils.SetActive(false, _fakeLadder);
                 _ladderTrigger.TriggerAction = delegate ()
                 {
-                    StartCoroutine(BallMove());
+                    PlayerController.Instance.SetUnLockPos(false);
+
+                    PlayerController.Instance.transform.DOMoveX(_ballEndPos.transform.position.x, _ballDuration).onComplete = delegate ()
+                      {
+                          PlayerController.Instance.transform.DOMoveY(_ballEndPos.transform.position.y, _ballDuration).onComplete = delegate ()
+                            {
+                                var move = PlayerController.Instance.transform.DOMoveZ(_ballEndPos.transform.position.z, _ballDuration);
+                                move.onComplete = delegate ()
+                                {
+                                    PlayerController.Instance.SetUnLockPos(true);
+                                    StopAllCoroutines();
+                                };
+                            };
+                      };
+                    //StartCoroutine(BallMove());
                 };
             }
         }
@@ -121,10 +134,12 @@ namespace Assets.Scripts.GamePlay.GameLogic
         }
         private bool CheckTriggerPosition()
         {
-            for (int i = 0; i < _viewPoints.Count; i+=2)
+            for (int i = 0; i < _viewPoints.Count; i += 2)
             {
                 var pos1_1 = PlayerController.Instance._playerCamera.WorldToScreenPoint(_viewPoints[i].position);
-                var pos1_2 = PlayerController.Instance._playerCamera.WorldToScreenPoint(_viewPoints[i+1].position);
+                var pos1_2 = PlayerController.Instance._playerCamera.WorldToScreenPoint(_viewPoints[i + 1].position);
+
+                KaiUtils.Log("{0}  {1} {2} ", new Vector2(pos1_1.x, pos1_1.y), new Vector2(pos1_2.x, pos1_2.y), GeneralCalculate.DistanceOfTowPoint(new Vector2(pos1_1.x, pos1_1.y), new Vector2(pos1_2.x, pos1_2.y)));
                 if (GeneralCalculate.DistanceOfTowPoint(new Vector2(pos1_1.x, pos1_1.y), new Vector2(pos1_2.x, pos1_2.y)) <= _offsetValue)
                 {
                     continue;

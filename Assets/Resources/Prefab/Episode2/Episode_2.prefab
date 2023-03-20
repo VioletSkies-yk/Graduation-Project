@@ -112,7 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46d8d89e57918a943bf288560caeb5bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _focusDistance: 20
+  _focusDistance: 100
   _clickDistance: 20
   _fakeLadder: {fileID: 1167191489201300297}
   _trueLadder: {fileID: 7325010803184053785}
@@ -124,7 +124,7 @@ MonoBehaviour:
   - {fileID: 8351485812802668284}
   - {fileID: 5114254767428064705}
   - {fileID: 8244386869421026988}
-  _offsetValue: 10
+  _offsetValue: 20
 --- !u!1 &3033684079863290122
 GameObject:
   m_ObjectHideFlags: 0
