@@ -20,18 +20,25 @@ namespace Assets.Scripts.GamePlay.GameLogic
         [SerializeField] private Rigidbody _ball;
 
         /// <summary>
+        /// 消失的圆
+        /// </summary>
+        [Space]
+        [Header("消失的圆")]
+        [SerializeField] private GameObject[] _circles;
+
+        /// <summary>
         /// 与小球在同一平面的collider
         /// </summary>
         [Space]
         [Header("与小球在同一平面的collider")]
-        [SerializeField] private GameObject _trueCubes;
+        //[SerializeField] private GameObject _trueCubes;
 
         /// <summary>
         /// 与小球在同一平面的collider
         /// </summary>
         [Space]
         [Header("小球运动的终点位置（只关乎X与Z，Y由物理碰撞决定）")]
-        [SerializeField] private Transform _ballEndPos;
+        //[SerializeField] private Transform _ballEndPos;
 
         /// <summary>
         /// 小球运动时间
@@ -39,7 +46,7 @@ namespace Assets.Scripts.GamePlay.GameLogic
         [Space]
         [Range(0, 20)]
         [Header("小球运动时间")]
-        [SerializeField] private float _ballDuration = 10f;
+        //[SerializeField] private float _ballDuration = 10f;
 
         /// <summary>
         /// 需要对齐的位置数组1
@@ -79,11 +86,16 @@ namespace Assets.Scripts.GamePlay.GameLogic
             if (isFirst && CheckTriggerPosition())
             {
                 isFirst = false;
-                PlayerController.Instance.SetUnLockPos(false);
-                KaiUtils.SetActive(true, _trueCubes);
-                gameObject.GetComponent<BoxCollider>().enabled = false;
+                //PlayerController.Instance.SetUnLockPos(false);
+                gameObject.GetComponent<MeshRenderer>().enabled = true;
+                for (int i = 0; i < _circles.Length; i++)
+                {
+                    KaiUtils.SetActive(false, _circles[i]);
+                }
+                //KaiUtils.SetActive(true, _trueCubes);
+                //gameObject.GetComponent<BoxCollider>().enabled = false;
                 _ball.constraints = RigidbodyConstraints.None;
-                StartCoroutine(BallMove());
+                //StartCoroutine(BallMove());
             }
 
         }
@@ -98,18 +110,18 @@ namespace Assets.Scripts.GamePlay.GameLogic
 
         }
 
-        IEnumerator BallMove()
-        {
-            yield return new WaitForSeconds(1f);
-            var move = _ball.DOMoveX(_ballEndPos.transform.position.x, _ballDuration);
-            _ball.DOMoveZ(_ballEndPos.transform.position.z, _ballDuration);
-            move.onComplete = delegate ()
-            {
-                PlayerController.Instance.SetUnLockPos(true);
-                _ball.constraints = RigidbodyConstraints.FreezeAll;
-                StopAllCoroutines();
-            };
-        }
+        //IEnumerator BallMove()
+        //{
+            //yield return new WaitForSeconds(1f);
+            //var move = _ball.DOMoveX(_ballEndPos.transform.position.x, _ballDuration);
+            //_ball.DOMoveZ(_ballEndPos.transform.position.z, _ballDuration);
+            //move.onComplete = delegate ()
+            //{
+            //    PlayerController.Instance.SetUnLockPos(true);
+            //    _ball.constraints = RigidbodyConstraints.FreezeAll;
+            //    StopAllCoroutines();
+            //};
+        //}
         private bool CheckTriggerPosition()
         {
             var pos1_1 = PlayerController.Instance._playerCamera.WorldToScreenPoint(_viewPoints1[0].position);

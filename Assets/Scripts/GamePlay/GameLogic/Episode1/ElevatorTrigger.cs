@@ -36,8 +36,8 @@ namespace Assets.Scripts.GamePlay.GameLogic
             {
                 if (isFirst)
                 {
-                    _elevatorLeftDoor.DOMove(_elevatorLeftDoor.position + temp.normalized*3, 1f);
-                    _elevatorRightDoor.DOMove(_elevatorRightDoor.position - temp.normalized*3, 1f);
+                    _elevatorLeftDoor.DOMove(_elevatorLeftDoor.position + temp.normalized * 3, 1f);
+                    _elevatorRightDoor.DOMove(_elevatorRightDoor.position - temp.normalized * 3, 1f);
                     isFirst = false;
                 }
             }
@@ -45,8 +45,8 @@ namespace Assets.Scripts.GamePlay.GameLogic
             {
                 if (isFirst)
                 {
-                    _elevatorLeftDoor.DOMove(_elevatorLeftDoor.position - temp.normalized*3, 1f);
-                    _elevatorRightDoor.DOMove(_elevatorRightDoor.position + temp.normalized*3, 1f); 
+                    _elevatorLeftDoor.DOMove(_elevatorLeftDoor.position - temp.normalized * 3, 1f);
+                    _elevatorRightDoor.DOMove(_elevatorRightDoor.position + temp.normalized * 3, 1f);
                     isFirst = false;
                 }
             }

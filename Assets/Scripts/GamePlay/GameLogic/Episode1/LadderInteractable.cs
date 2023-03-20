@@ -41,6 +41,14 @@ namespace Assets.Scripts.GamePlay.GameLogic
         [SerializeField] private Transform _ballEndPos;
 
         /// <summary>
+        /// 玩家运动时间Y
+        /// </summary>
+        [Space]
+        [Range(0, 20)]
+        [Header("玩家运动时间Y")]
+        [SerializeField] private float _ballDurationY = 5f;
+
+        /// <summary>
         /// 小球运动时间
         /// </summary>
         [Space]
@@ -99,7 +107,7 @@ namespace Assets.Scripts.GamePlay.GameLogic
 
                     PlayerController.Instance.transform.DOMoveX(_ballEndPos.transform.position.x, _ballDuration).onComplete = delegate ()
                       {
-                          PlayerController.Instance.transform.DOMoveY(_ballEndPos.transform.position.y, _ballDuration).onComplete = delegate ()
+                          PlayerController.Instance.transform.DOMoveY(_ballEndPos.transform.position.y, _ballDurationY).onComplete = delegate ()
                             {
                                 var move = PlayerController.Instance.transform.DOMoveZ(_ballEndPos.transform.position.z, _ballDuration);
                                 move.onComplete = delegate ()
