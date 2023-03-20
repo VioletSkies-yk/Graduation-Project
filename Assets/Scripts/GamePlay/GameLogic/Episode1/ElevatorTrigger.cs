@@ -29,8 +29,9 @@ namespace Assets.Scripts.GamePlay.GameLogic
 
         public override void OnTriggerEnterCallBack()
         {
-            //_elevatorLeftDoor.DOMove();
-            //_elevatorRightDoor.DOMove();
+            Vector3 temp = _elevatorLeftDoor.position - _elevatorRightDoor.position;
+            _elevatorLeftDoor.DOMove(_elevatorLeftDoor.position + temp.normalized, 1f);
+            _elevatorRightDoor.DOMove(_elevatorRightDoor.position - temp.normalized, 1f);
         }
     }
 }
