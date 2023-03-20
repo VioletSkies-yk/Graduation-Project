@@ -25,13 +25,21 @@ namespace Assets.Scripts.GamePlay.GameLogic
         [Header("电梯右门")]
         [SerializeField] private Transform _elevatorRightDoor;
 
-        private bool isFirst = true;
+        public bool OpenOrClose;
 
         public override void OnTriggerEnterCallBack()
         {
             Vector3 temp = _elevatorLeftDoor.position - _elevatorRightDoor.position;
-            _elevatorLeftDoor.DOMove(_elevatorLeftDoor.position + temp.normalized, 1f);
-            _elevatorRightDoor.DOMove(_elevatorRightDoor.position - temp.normalized, 1f);
+            if(OpenOrClose)
+            {
+                _elevatorLeftDoor.DOMove(_elevatorLeftDoor.position + temp.normalized, 1f);
+                _elevatorRightDoor.DOMove(_elevatorRightDoor.position - temp.normalized, 1f);
+            }
+            else
+            {
+                _elevatorLeftDoor.DOMove(_elevatorLeftDoor.position - temp.normalized, 1f);
+                _elevatorRightDoor.DOMove(_elevatorRightDoor.position + temp.normalized, 1f);
+            }
         }
     }
 }

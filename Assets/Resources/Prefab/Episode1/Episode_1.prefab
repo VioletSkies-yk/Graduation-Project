@@ -8272,6 +8272,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _elevatorLeftDoor: {fileID: 8109328275094258421}
   _elevatorRightDoor: {fileID: 5426335637475338774}
+  OpenOrClose: 1
 --- !u!1 &2873443691595084543
 GameObject:
   m_ObjectHideFlags: 0
@@ -17937,6 +17938,7 @@ Transform:
   - {fileID: 8320075991452830799}
   - {fileID: 3534185083158018186}
   - {fileID: 6170300146183567604}
+  - {fileID: 4247103091138653024}
   m_Father: {fileID: 5465972526715637900}
   m_RootOrder: 28
   m_LocalEulerAnglesHint: {x: 0, y: -33.511, z: 0}
@@ -21971,6 +21973,67 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -6470101945499655957, guid: ebebb2236bad18b48a085ec0faac1e5f, type: 3}
+--- !u!1 &7844202936468920746
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4247103091138653024}
+  - component: {fileID: 5922569677189849435}
+  - component: {fileID: 4127288440503463387}
+  m_Layer: 0
+  m_Name: DieTrigger (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4247103091138653024
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7844202936468920746}
+  m_LocalRotation: {x: 0.000000018222151, y: -0.0000602901, z: -0.000000012067499, w: 1}
+  m_LocalPosition: {x: 504.6, y: -4.6, z: -0.6}
+  m_LocalScale: {x: 1, y: 0.89181125, z: 0.8958852}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6780889830039084557}
+  m_RootOrder: 18
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &5922569677189849435
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7844202936468920746}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 0, z: 0.00017322267}
+--- !u!114 &4127288440503463387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7844202936468920746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 569a3d2744f4a5d4ea66a13a4f759991, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _elevatorLeftDoor: {fileID: 8109328275094258421}
+  _elevatorRightDoor: {fileID: 5426335637475338774}
+  OpenOrClose: 0
 --- !u!1 &8077379072232651298
 GameObject:
   m_ObjectHideFlags: 0
@@ -25105,7 +25168,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.069329, y: 2.136481, z: 1.0830414}
+  m_Size: {x: 2.99, y: 4.64, z: 2.55}
   m_Center: {x: -0.6583131, y: 6.8850336, z: 2.4610116}
 --- !u!1 &9137804008185247972
 GameObject:
