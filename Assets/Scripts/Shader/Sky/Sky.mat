@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Sky
   m_Shader: {fileID: -6465566751694194690, guid: b93ce5429fccc484d91e0fff72dd1242, type: 3}
-  m_ShaderKeywords: _DISABLE_SSR_TRANSPARENT _NORMALMAP_TANGENT_SPACE
+  m_ShaderKeywords: _DISABLE_SSR_TRANSPARENT
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -118,9 +118,9 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_16c230990b0c4b608276b27d65d4945e: 0.003
-    - Vector1_a8715244e762412286cb170c515ca755: 6
-    - Vector1_d2b776b4339a46e3a15d791de9a1c8cb: 150
+    - Vector1_16c230990b0c4b608276b27d65d4945e: 0.3
+    - Vector1_a8715244e762412286cb170c515ca755: 20
+    - Vector1_d2b776b4339a46e3a15d791de9a1c8cb: 30
     - _AORemapMax: 1
     - _AORemapMin: 0
     - _ATDistance: 1
@@ -234,8 +234,8 @@ Material:
     - _ZTestTransparent: 4
     - _ZWrite: 1
     m_Colors:
-    - Color_07101c49419a43a09adadbd54e296860: {r: 0.4433962, g: 0.1777768, b: 0.1777768, a: 0}
-    - Color_86505ec3e682490b9d50c0aaceb754c9: {r: 0.135858, g: 0.3507985, b: 0.4056604, a: 1}
+    - Color_07101c49419a43a09adadbd54e296860: {r: 0.11320752, g: 0.049661785, b: 0.049661785, a: 0}
+    - Color_86505ec3e682490b9d50c0aaceb754c9: {r: 0.19684164, g: 0.13725494, b: 0.40392157, a: 1}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
