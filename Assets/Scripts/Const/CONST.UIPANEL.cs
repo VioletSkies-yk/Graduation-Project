@@ -22,4 +22,9 @@ public static partial class CONST
     /// </summary>
     public const string UI_BlackPanel = "BlackPanel";
 
+    /// <summary>
+    /// 详情界面
+    /// </summary>
+    public const string UI_DetailTipsPanel = "DetailTipsPanel";
+
 }

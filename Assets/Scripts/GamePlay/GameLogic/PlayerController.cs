@@ -130,6 +130,12 @@ namespace Assets.Scripts.GamePlay.GameLogic
         /// </summary>
         private bool isUnLockPosition;
 
+
+        /// <summary>
+        /// 是否可以旋转
+        /// </summary>
+        private bool isUnLockRotationn;
+
         #endregion
 
         private void Awake()
@@ -145,10 +151,10 @@ namespace Assets.Scripts.GamePlay.GameLogic
         // Update is called once per frame
         void Update()
         {
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                isUnLockPosition = !isUnLockPosition;
-            }
+            //if (Input.GetKeyDown(KeyCode.E))
+            //{
+            //    isUnLockPosition = !isUnLockPosition;
+            //}
 
             ActionControl();
 
@@ -165,6 +171,7 @@ namespace Assets.Scripts.GamePlay.GameLogic
         private void InitData()
         {
             isUnLockPosition = true;
+            isUnLockRotationn = true;
         }
 
         #region 人物控制
@@ -203,11 +210,15 @@ namespace Assets.Scripts.GamePlay.GameLogic
                 }
             }
 
-            RotationX += _playerCamera.transform.localEulerAngles.y + Input.GetAxis("Mouse X") * _mouseSpeed;
-            RotationY -= Input.GetAxis("Mouse Y") * _mouseSpeed;
-            RotationY = Mathf.Clamp(RotationY, _minMouseY, _maxMouseY);
-            this.transform.eulerAngles = new Vector3(0, RotationX, 0);
-            _playerCamera.transform.eulerAngles = new Vector3(RotationY, RotationX, 0);
+            if (isUnLockRotationn)
+            {
+                RotationX += _playerCamera.transform.localEulerAngles.y + Input.GetAxis("Mouse X") * _mouseSpeed;
+                RotationY -= Input.GetAxis("Mouse Y") * _mouseSpeed;
+                RotationY = Mathf.Clamp(RotationY, _minMouseY, _maxMouseY);
+                this.transform.eulerAngles = new Vector3(0, RotationX, 0);
+                _playerCamera.transform.eulerAngles = new Vector3(RotationY, RotationX, 0);
+            }
+
         }
 
         #endregion
@@ -312,6 +323,26 @@ namespace Assets.Scripts.GamePlay.GameLogic
         public void SetUnLockPos(bool isUnLockPos)
         {
             isUnLockPosition = isUnLockPos;
+        }
+
+        public void SetUnLockRot(bool isUnLockRot)
+        {
+            isUnLockRotationn = isUnLockRot;
+        }
+
+
+        public void LockAll()
+        {
+            isUnLockPosition = false;
+            isUnLockRotationn = false;
+            Screen.lockCursor = false;
+        }
+
+        public void UnpackLockAll()
+        {
+            isUnLockPosition = true;
+            isUnLockRotationn = true;
+            Screen.lockCursor = true;
         }
 
         #endregion
