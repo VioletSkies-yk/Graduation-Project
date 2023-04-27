@@ -64,13 +64,6 @@ namespace Assets.Scripts.GamePlay.GameLogic
         [SerializeField] public List<Transform> _viewPoints = new List<Transform>();
 
         /// <summary>
-        /// 需要对齐的位置数组2
-        /// </summary>
-        //[Space]
-        //[Header("需要对齐的位置数组2")]
-        //[SerializeField] private Transform[] _viewPoints2 = new Transform[2];
-
-        /// <summary>
         /// 对齐可以接受的误差（1920X1080下我测试认为10最友好，建议默认为10）
         /// </summary>
         [Space]
@@ -127,19 +120,19 @@ namespace Assets.Scripts.GamePlay.GameLogic
 
         }
 
-        IEnumerator BallMove()
-        {
-            PlayerController.Instance.transform.DOMoveX(_ballEndPos.transform.position.x, _ballDuration);
-            yield return new WaitForSeconds(_ballDuration);
-            PlayerController.Instance.transform.DOMoveY(_ballEndPos.transform.position.y, _ballDuration);
-            yield return new WaitForSeconds(_ballDuration);
-            var move = PlayerController.Instance.transform.DOMoveZ(_ballEndPos.transform.position.z, _ballDuration);
-            move.onComplete = delegate ()
-            {
-                PlayerController.Instance.SetUnLockPos(true);
-                StopAllCoroutines();
-            };
-        }
+        //IEnumerator BallMove()
+        //{
+        //    PlayerController.Instance.transform.DOMoveX(_ballEndPos.transform.position.x, _ballDuration);
+        //    yield return new WaitForSeconds(_ballDuration);
+        //    PlayerController.Instance.transform.DOMoveY(_ballEndPos.transform.position.y, _ballDuration);
+        //    yield return new WaitForSeconds(_ballDuration);
+        //    var move = PlayerController.Instance.transform.DOMoveZ(_ballEndPos.transform.position.z, _ballDuration);
+        //    move.onComplete = delegate ()
+        //    {
+        //        PlayerController.Instance.SetUnLockPos(true);
+        //        StopAllCoroutines();
+        //    };
+        //}
         private bool CheckTriggerPosition()
         {
             for (int i = 0; i < _viewPoints.Count; i += 2)
