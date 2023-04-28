@@ -161,7 +161,7 @@ MonoBehaviour:
   _boxCollider: {fileID: 8635539219246071336}
   _trigger: {fileID: 8094480638634560949}
   _roomCollider: {fileID: 0}
-  target: {x: 51.6, y: 9.89, z: 46.8}
+  target: {x: 557.2, y: -126, z: 154.2}
 --- !u!1 &2264816326428116628
 GameObject:
   m_ObjectHideFlags: 0
