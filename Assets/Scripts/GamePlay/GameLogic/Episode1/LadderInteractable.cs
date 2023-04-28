@@ -76,15 +76,16 @@ namespace Assets.Scripts.GamePlay.GameLogic
         /// </summary>
         private bool isFirst = true;
 
-        private void Start()
+        private void OnEnable()
         {
-            //_ball.constraints = RigidbodyConstraints.FreezeAll;
+            _ladderTrigger.SetTriggerOnOfOff(false);
+            EventManager.Instance.StartListening(CONST.LadderComplete, () => { _ladderTrigger.SetTriggerOnOfOff(true); });
         }
 
         // 按下交互键时
         public override void OnInteract()
         {
-
+            EventManager.Instance.StopListening(CONST.LadderComplete, () => { _ladderTrigger.SetTriggerOnOfOff(true); });
         }
         // 视线瞄准，选中时
         public override void OnFocus()

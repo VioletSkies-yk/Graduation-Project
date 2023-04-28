@@ -48,4 +48,14 @@ public static partial class CONST
     public const string PassLevelOnTheSameEpisode = "PassLevelOnTheSameEpisode";
 
     #endregion
+
+
+    #region 模块之间调用相关
+
+    /// <summary>
+    /// 梯子
+    /// </summary>
+    public const string LadderComplete = "LadderComplete";
+
+    #endregion
 }

@@ -27,11 +27,21 @@ namespace Assets.Scripts.GamePlay.GameLogic
         [SerializeField] private Collider _boxCollider;
 
         /// <summary>
+        /// 3D物体碰撞体
+        /// </summary>
+        [Space]
+        [Header("正确位置的Trigger")]
+        [SerializeField] private Collider _trigger;
+
+        /// <summary>
         /// 房间边界
         /// </summary>
         [Space]
         [Header("房间边界")]
         [SerializeField] private BoxCollider _roomCollider;
+
+
+        public Vector3 target;
 
         /// <summary>
         /// 初始旋转
@@ -48,6 +58,11 @@ namespace Assets.Scripts.GamePlay.GameLogic
         /// </summary>
         private bool isOwnToPlayer = false;
 
+        /// <summary>
+        /// 是否已经完成交互
+        /// </summary>
+        private bool isCompelete = false;
+
         private void Start()
         {
             _gameObject3D.constraints = RigidbodyConstraints.FreezeAll;
@@ -57,7 +72,16 @@ namespace Assets.Scripts.GamePlay.GameLogic
 
         private void Update()
         {
-            UpdateFunc();
+            UpdateFunc(delegate()
+            {
+                //if(_boxCollider.bounds.Intersects(_trigger.bounds))
+                if(_trigger.bounds.Contains(_boxCollider.transform.position))
+                {
+                    _gameObject3D.transform.position = target;
+                    isCompelete = true;
+                    EventManager.Instance.TriggerEvent(CONST.LadderComplete);
+                }
+            });
         }
 
         public void UpdateFunc(Action OnPuttingDownTheKey = null)
@@ -84,8 +108,10 @@ namespace Assets.Scripts.GamePlay.GameLogic
         // 按下交互键时
         public override void OnInteract()
         {
+            if (isCompelete)
+                return;
             base.OnInteractCallBack?.Invoke();
-            LockRotation();
+            LockRotation(new Vector3(0, 0, 0));
             if (isFirst)
             {
                 //KaiUtils.SetActive(false, _gameObject2D);
