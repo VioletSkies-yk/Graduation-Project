@@ -250,7 +250,6 @@ GameObject:
   - component: {fileID: 5459234418724989553}
   - component: {fileID: 4601218034301414199}
   - component: {fileID: 7323477657475312475}
-  - component: {fileID: 7916444416565837075}
   m_Layer: 0
   m_Name: R1-wall-decoration-2
   m_TagString: Untagged
@@ -321,19 +320,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7916444416565837075
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1646550577119515621}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 205.96292, y: 66.51753, z: 144.3772}
-  m_Center: {x: -9.780802, y: 0.0000667572, z: -34.839035}
 --- !u!1 &1914654993315368502
 GameObject:
   m_ObjectHideFlags: 0
@@ -426,7 +412,6 @@ GameObject:
   - component: {fileID: 4282023306133376833}
   - component: {fileID: 1921751994296402503}
   - component: {fileID: 1525338598953453021}
-  - component: {fileID: 4308337299870443025}
   m_Layer: 0
   m_Name: R1stair-1
   m_TagString: Untagged
@@ -497,19 +482,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &4308337299870443025
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3256900797484148539}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 121.23616, y: 57.299202, z: 65.25048}
-  m_Center: {x: -52.61808, y: -23.149595, z: -32.12524}
 --- !u!1 &3574211068014860150
 GameObject:
   m_ObjectHideFlags: 0
@@ -521,7 +493,6 @@ GameObject:
   - component: {fileID: 3386748919331002035}
   - component: {fileID: 3126174283303379034}
   - component: {fileID: 5658101151617901465}
-  - component: {fileID: 3898493894742205630}
   m_Layer: 0
   m_Name: R1step-2
   m_TagString: Untagged
@@ -592,19 +563,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &3898493894742205630
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3574211068014860150}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 193.24567, y: 140.17094, z: 338.2848}
-  m_Center: {x: -88.23391, y: -16.42122, z: -135.06137}
 --- !u!1 &3716595257519946261
 GameObject:
   m_ObjectHideFlags: 0
@@ -806,7 +764,6 @@ GameObject:
   - component: {fileID: 6453986305535613635}
   - component: {fileID: 1389131570819560722}
   - component: {fileID: 7219959333820524579}
-  - component: {fileID: 4266226532047160723}
   m_Layer: 0
   m_Name: R1stair-column
   m_TagString: Untagged
@@ -877,19 +834,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &4266226532047160723
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4678762782437863219}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 144.34184, y: 57.20041, z: 120.2123}
-  m_Center: {x: -71.75231, y: -18.062836, z: 60.30009}
 --- !u!1 &4803842309351802517
 GameObject:
   m_ObjectHideFlags: 0
@@ -1334,7 +1278,6 @@ GameObject:
   - component: {fileID: 891927062378068801}
   - component: {fileID: 2359636308185487159}
   - component: {fileID: 1597993296844085604}
-  - component: {fileID: 569938965321997818}
   m_Layer: 0
   m_Name: R1stair-decoration
   m_TagString: Untagged
@@ -1405,19 +1348,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &569938965321997818
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5502173238247461823}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 120.7904, y: 68.65611, z: 57.804066}
-  m_Center: {x: -52.829365, y: -32.296867, z: 17.584349}
 --- !u!1 &5587526611918669900
 GameObject:
   m_ObjectHideFlags: 0
