@@ -345,6 +345,13 @@ namespace Assets.Scripts.GamePlay.GameLogic
             Screen.lockCursor = true;
         }
 
+        public void SetFloating(bool isFloating, float duration,float speed)
+        {
+            var itm = PlayerController.instance.transform.DOMoveY(PlayerController.instance.transform.position.y+duration, duration / speed);
+            //itm.onlo = delegate () { PlayerController.instance.transform.DOMoveY(Bottom, Math.Abs(Bottom - PlayerController.instance.transform.position.y) / speed); };
+            itm.SetEase(Ease.InOutFlash).SetLoops(-1, LoopType.Yoyo);
+        }
+
         #endregion
 
         void GameQuit()

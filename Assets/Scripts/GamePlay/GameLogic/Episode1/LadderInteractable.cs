@@ -107,6 +107,7 @@ namespace Assets.Scripts.GamePlay.GameLogic
                                 move.onComplete = delegate ()
                                 {
                                     PlayerController.Instance.SetUnLockPos(true);
+                                    PlayerController.Instance.SetFloating(true, 30f, 15f);
                                     StopAllCoroutines();
                                 };
                             };
