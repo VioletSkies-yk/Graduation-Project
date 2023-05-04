@@ -251,8 +251,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _nodeLayer: -1
-  _beginGame: {fileID: 7650330119939142900}
-  _closeBtn: {fileID: 4211866679218103239}
+  _tipsImage: {fileID: 7650330119939142900}
 --- !u!1 &6708616583118420066
 GameObject:
   m_ObjectHideFlags: 0
