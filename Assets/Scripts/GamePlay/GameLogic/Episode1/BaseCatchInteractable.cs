@@ -79,6 +79,7 @@ namespace Assets.Scripts.GamePlay.GameLogic
                 {
                     LockRotation(new Vector3(0,0,0));
                     ReleaseCallBack?.Invoke();
+                    EventManager.Instance.TriggerEvent(CONST.ReleaseCatchItem, this.gameObject);
                     isOwnToPlayer = false;
                     _gameObject3D.transform.SetParent(null);
                     _gameObject3D.constraints = RigidbodyConstraints.None;

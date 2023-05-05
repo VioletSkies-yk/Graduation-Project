@@ -53,9 +53,20 @@ public static partial class CONST
     #region 模块之间调用相关
 
     /// <summary>
+    /// 放开物体
+    /// </summary>
+    public const string ReleaseCatchItem = "ReleaseCatchItem";
+
+    /// <summary>
     /// 梯子
     /// </summary>
     public const string LadderComplete = "LadderComplete";
+
+
+    /// <summary>
+    /// 进入电梯
+    /// </summary>
+    public const string EnterDianTi = "EnterDianTi";
 
     #endregion
 }
