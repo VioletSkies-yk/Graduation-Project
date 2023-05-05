@@ -214,6 +214,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3381553858502956916}
     m_Modifications:
+    - target: {fileID: 5302614780129116284, guid: 068083c9944c8b748ae1448f39b3ebc3, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: ec059e45c80693a49b97adb201164d68, type: 2}
     - target: {fileID: 5951032453152547241, guid: 068083c9944c8b748ae1448f39b3ebc3, type: 3}
       propertyPath: m_Name
       value: Lvl1_QRmonitor_fixed
