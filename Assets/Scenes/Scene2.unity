@@ -580,6 +580,10 @@ PrefabInstance:
       propertyPath: _focusDistance
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 1408927002970756218, guid: 702fc8d0141570a41a63c0168e6f8ac3, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 6000265575003554356, guid: b67901187628df742827145b957f0b3f, type: 3}
     - target: {fileID: 1511562826530050041, guid: 702fc8d0141570a41a63c0168e6f8ac3, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -615,7 +619,7 @@ PrefabInstance:
     - target: {fileID: 2348560623810576414, guid: 702fc8d0141570a41a63c0168e6f8ac3, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: -9077128737235443075, guid: 85f14acea15e5c942bceb50f534b8002, type: 3}
+      objectReference: {fileID: -9077128737235443075, guid: fc18a7c8f039ac74db52d5a7218bac12, type: 3}
     - target: {fileID: 2424080849668619774, guid: 702fc8d0141570a41a63c0168e6f8ac3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.2
@@ -694,6 +698,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4899892592380539854, guid: 702fc8d0141570a41a63c0168e6f8ac3, type: 3}
       propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6725c4e632a7d55419f3939007bafaf8, type: 2}
+    - target: {fileID: 4899892592380539854, guid: 702fc8d0141570a41a63c0168e6f8ac3, type: 3}
+      propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: 6725c4e632a7d55419f3939007bafaf8, type: 2}
     - target: {fileID: 5044557024495998697, guid: 702fc8d0141570a41a63c0168e6f8ac3, type: 3}
