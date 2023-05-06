@@ -118,9 +118,9 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_16c230990b0c4b608276b27d65d4945e: 0.3
+    - Vector1_16c230990b0c4b608276b27d65d4945e: 0.5
     - Vector1_a8715244e762412286cb170c515ca755: 20
-    - Vector1_d2b776b4339a46e3a15d791de9a1c8cb: 30
+    - Vector1_d2b776b4339a46e3a15d791de9a1c8cb: 3
     - _AORemapMax: 1
     - _AORemapMin: 0
     - _ATDistance: 1
