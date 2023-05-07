@@ -560,6 +560,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 45.99
       objectReference: {fileID: 0}
+    - target: {fileID: 23393843846477422, guid: 702fc8d0141570a41a63c0168e6f8ac3, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 23393843846477422, guid: 702fc8d0141570a41a63c0168e6f8ac3, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 73c176f402d2c2f4d929aa5da7585d17, type: 2}
     - target: {fileID: 182157952326995046, guid: 702fc8d0141570a41a63c0168e6f8ac3, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 65
@@ -1029,6 +1037,10 @@ PrefabInstance:
       value: 65
       objectReference: {fileID: 0}
     - target: {fileID: 7317313272613482488, guid: 702fc8d0141570a41a63c0168e6f8ac3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7317313272613482488, guid: 702fc8d0141570a41a63c0168e6f8ac3, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 65
       objectReference: {fileID: 0}
@@ -1112,6 +1124,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 65
       objectReference: {fileID: 0}
+    - target: {fileID: 8615480521041906907, guid: 702fc8d0141570a41a63c0168e6f8ac3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8648170090232329342, guid: 702fc8d0141570a41a63c0168e6f8ac3, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 65
@@ -1126,7 +1142,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8752376931953369560, guid: 702fc8d0141570a41a63c0168e6f8ac3, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8752376931953369560, guid: 702fc8d0141570a41a63c0168e6f8ac3, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -3146,7 +3162,7 @@ MonoBehaviour:
   m_PointlightHDType: 0
   m_SpotLightShape: 0
   m_AreaLightShape: 0
-  m_Intensity: 77456.37
+  m_Intensity: 130000
   m_EnableSpotReflector: 1
   m_LuxAtDistance: 1
   m_InnerSpotPercent: 0
@@ -3209,7 +3225,7 @@ MonoBehaviour:
     m_Override: 512
     m_UseOverride: 0
     m_Level: 2
-  m_ShadowDimmer: 0.219
+  m_ShadowDimmer: 0.281
   m_VolumetricShadowDimmer: 1
   m_ShadowFadeDistance: 10000
   m_UseContactShadow:
@@ -3217,10 +3233,10 @@ MonoBehaviour:
     m_UseOverride: 0
     m_Level: 2
   m_RayTracedContactShadow: 0
-  m_ShadowTint: {r: 0.4647819, g: 0.39195445, b: 0.5660378, a: 1}
+  m_ShadowTint: {r: 0.16295019, g: 0, b: 0.3773585, a: 1}
   m_PenumbraTint: 0
-  m_NormalBias: 0.75
-  m_SlopeBias: 0.5
+  m_NormalBias: 1.47
+  m_SlopeBias: 0.516
   m_ShadowUpdateMode: 0
   m_AlwaysDrawDynamicShadows: 0
   m_UpdateShadowOnLightMovement: 0
@@ -3260,7 +3276,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 0.833277, g: 0.7137238, b: 0.9528302, a: 1}
-  m_Intensity: 77456.37
+  m_Intensity: 130000
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
