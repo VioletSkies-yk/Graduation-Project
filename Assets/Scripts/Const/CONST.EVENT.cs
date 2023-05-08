@@ -68,5 +68,25 @@ public static partial class CONST
     /// </summary>
     public const string EnterDianTi = "EnterDianTi";
 
+
+    /// <summary>
+    /// 显示器变色
+    /// </summary>
+    public const string Lv2Door = "Lv2Door";
+
+    #endregion
+
+    #region 音频
+
+    /// <summary>
+    /// 播放音频
+    /// </summary>
+    public const string PlayAudio = "PlayAudio";
+
+    /// <summary>
+    /// 关闭音频
+    /// </summary>
+    public const string StopAudio = "StopAudio";
+
     #endregion
 }

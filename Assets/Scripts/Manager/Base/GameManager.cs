@@ -73,7 +73,10 @@ public class GameManager : OsSingletonMono<GameManager>
         else
         {
             KaiUtils.Log("正在加载数据（测试  玩家拥有金币数量：{0}，玩家当前所在位置：{1}", _data.coins, new Vector3(_data.playerPositionX, _data.playerPositionY, _data.playerPositionZ));
-            SceneManager.Instance.LoadSceneAsync(CONST.SCENE_NAME_LEVEL_01, null);
+            SceneManager.Instance.LoadSceneAsync(CONST.SCENE_NAME_LEVEL_01, delegate ()
+            {
+                EventManager.Instance.TriggerEvent(CONST.PlayAudio, "LV1");
+            });
         }
     }
 }

@@ -28,6 +28,15 @@ namespace Assets.Scripts.GamePlay.GameLogic.Episode1
         {
         }
 
+        private void OnEnable()
+        {
+            EventManager.Instance.TriggerEvent(CONST.PlayAudio, "LV1");
+        }
+        private void OnDisable()
+        {
+            EventManager.Instance.TriggerEvent(CONST.PlayAudio, "LV1");
+        }
+
         public override void OnEnter()
         {
             _levelTrigger01.TriggerAction = OnEnterCorridorCallBack;
