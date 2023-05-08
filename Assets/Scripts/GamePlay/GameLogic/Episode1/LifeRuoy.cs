@@ -29,7 +29,8 @@ namespace Assets.Scripts.GamePlay.GameLogic.Episode1
         private void OnEnable()
         {
             TriggerAction = delegate ()
-              {
+            {
+                PlayerController.Instance.StopFloating();
 
                   PlayerController.Instance.SetUnLockPos(false);
 

@@ -71,6 +71,18 @@ namespace Assets.Scripts.GamePlay.GameLogic
         [Header("对齐可以接受的误差")]
         [SerializeField] private float _offsetValue = 10f;
 
+
+        [Space]
+        [Range(0, 20)]
+        [Header("上下浮动高度")]
+        [SerializeField] private float _floatingHeight = 30f;
+
+
+        [Space]
+        [Range(0, 20)]
+        [Header("上下浮动速度")]
+        [SerializeField] private float _floatingSpeed = 15f;
+
         /// <summary>
         /// 是否为首次交互
         /// </summary>
@@ -107,7 +119,7 @@ namespace Assets.Scripts.GamePlay.GameLogic
                                 move.onComplete = delegate ()
                                 {
                                     PlayerController.Instance.SetUnLockPos(true);
-                                    PlayerController.Instance.SetFloating(true, 30f, 15f);
+                                    PlayerController.Instance.SetFloating( _floatingHeight, _floatingSpeed);
                                     StopAllCoroutines();
                                 };
                             };

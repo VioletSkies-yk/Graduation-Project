@@ -29,8 +29,13 @@ namespace Assets.Scripts.GamePlay.GameLogic.Episode1
         {
             if (isCompelete)
                 return;
+            PlayerController.Instance.SetUnLockPos(false);
             PlayerController.Instance.transform.DOLocalMoveY(PlayerController.Instance.transform.position.y - (transform.position.y - Y), duration);
-            this.transform.DOLocalMoveY(Y, duration).onComplete = delegate () { isCompelete = true; };
+            this.transform.DOLocalMoveY(Y, duration).onComplete = delegate ()
+            {
+                isCompelete = true;
+                PlayerController.Instance.SetUnLockPos(true);
+            };
         }
     }
 }
