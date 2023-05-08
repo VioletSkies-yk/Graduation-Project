@@ -42,8 +42,8 @@ namespace Assets.Scripts.GamePlay.GameLogic
             Vector3 temp = _elevatorLeftDoor.position - _elevatorRightDoor.position;
             if (isFirst)
             {
-                _elevatorLeftDoor.DOMove(_elevatorLeftDoor.position + temp.normalized * 3, 1f);
-                _elevatorRightDoor.DOMove(_elevatorRightDoor.position - temp.normalized * 3, 1f);
+                _elevatorLeftDoor.DOMove(_elevatorLeftDoor.position + temp.normalized * 7, 2f);
+                _elevatorRightDoor.DOMove(_elevatorRightDoor.position - temp.normalized * 7, 2f);
                 isFirst = false;
             }
         }
