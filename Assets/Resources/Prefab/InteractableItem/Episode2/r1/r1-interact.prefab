@@ -584,6 +584,8 @@ MonoBehaviour:
   - {fileID: 8008765619065227440}
   - {fileID: 8331490921686528811}
   _offsetValue: 20
+  _floatingHeight: 1
+  _floatingSpeed: 1
 --- !u!65 &462708069
 BoxCollider:
   m_ObjectHideFlags: 0
