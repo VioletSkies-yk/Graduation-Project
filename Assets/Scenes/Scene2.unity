@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 4143.453, g: 3509.8066, b: 3990.3945, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2077,7 +2077,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 593883448}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 855, y: 159, z: 564}
+  m_LocalPosition: {x: 855, y: 159, z: -20}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2516,7 +2516,7 @@ MonoBehaviour:
   m_PointlightHDType: 0
   m_SpotLightShape: 0
   m_AreaLightShape: 0
-  m_Intensity: 27422.525
+  m_Intensity: 11314.93
   m_EnableSpotReflector: 1
   m_LuxAtDistance: 1
   m_InnerSpotPercent: 0
@@ -2630,7 +2630,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 0.9216869, g: 0.8235294, b: 1, a: 1}
-  m_Intensity: 27422.525
+  m_Intensity: 11314.93
   m_Range: 194.7
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -2673,7 +2673,7 @@ Light:
   m_LightShadowCasterMode: 2
   m_AreaSize: {x: 184.85587, y: 355.43872}
   m_BounceIntensity: 1
-  m_ColorTemperature: 6570
+  m_ColorTemperature: 5809
   m_UseColorTemperature: 1
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 200.31749}
   m_UseBoundingSphereOverride: 0
@@ -2732,7 +2732,7 @@ MonoBehaviour:
   m_PointlightHDType: 0
   m_SpotLightShape: 0
   m_AreaLightShape: 0
-  m_Intensity: 11935.813
+  m_Intensity: 23008.852
   m_EnableSpotReflector: 1
   m_LuxAtDistance: 1
   m_InnerSpotPercent: 0
@@ -2846,7 +2846,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 0.83137256, g: 0.7137255, b: 0.9529412, a: 1}
-  m_Intensity: 11935.813
+  m_Intensity: 23008.852
   m_Range: 194.7
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -2889,7 +2889,7 @@ Light:
   m_LightShadowCasterMode: 2
   m_AreaSize: {x: 21.594957, y: 355.43872}
   m_BounceIntensity: 1
-  m_ColorTemperature: 6570
+  m_ColorTemperature: 5148
   m_UseColorTemperature: 1
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 194.7}
   m_UseBoundingSphereOverride: 0
@@ -4073,7 +4073,7 @@ MonoBehaviour:
   m_PointlightHDType: 0
   m_SpotLightShape: 0
   m_AreaLightShape: 0
-  m_Intensity: 91283.22
+  m_Intensity: 35966
   m_EnableSpotReflector: 1
   m_LuxAtDistance: 1
   m_InnerSpotPercent: 0
@@ -4187,7 +4187,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 0.90671074, g: 0.7137255, b: 0.9529412, a: 1}
-  m_Intensity: 91283.22
+  m_Intensity: 35966
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
