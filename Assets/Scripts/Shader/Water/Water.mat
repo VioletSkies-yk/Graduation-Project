@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Water
   m_Shader: {fileID: -6465566751694194690, guid: cf3ae0f64e91fd04ba0403397534e385, type: 3}
-  m_ShaderKeywords: _ENABLE_FOG_ON_TRANSPARENT _SURFACE_TYPE_TRANSPARENT _TRANSPARENT_WRITES_MOTION_VEC
+  m_ShaderKeywords: _ENABLE_FOG_ON_TRANSPARENT _SURFACE_TYPE_TRANSPARENT
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -124,13 +124,13 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - Vector1_3c4b6fb596664ac7afc30a7e52aab42e: 2
-    - Vector1_3cbb82371bfc4d188fd41241498332b2: 100
-    - Vector1_448f262e4f9144f09365a931f77f8fcc: 12
+    - Vector1_3cbb82371bfc4d188fd41241498332b2: 192.12
+    - Vector1_448f262e4f9144f09365a931f77f8fcc: 403.1
     - Vector1_49670f1bf750490394fb1548987cbf40: 1
     - Vector1_c5543ed5a63a41738b88b00fb82c63ec: 0
     - Vector1_d568fbb5825d4de2bfb375acc262b69d: 1
-    - Vector1_ea78ff49bcd44d34ba6f8d9916241e18: 5
-    - Vector1_f224aa23e8204549b2ba3ff12a29c329: 5
+    - Vector1_ea78ff49bcd44d34ba6f8d9916241e18: 3
+    - Vector1_f224aa23e8204549b2ba3ff12a29c329: 2
     - Vector1_ff5aac309fdd414f888dd816a73a0ecf: 1
     - _AORemapMax: 1
     - _AORemapMin: 0
@@ -232,21 +232,21 @@ Material:
     - _TransparentDepthPostpassEnable: 0
     - _TransparentDepthPrepassEnable: 0
     - _TransparentSortPriority: 0
-    - _TransparentWritingMotionVec: 1
+    - _TransparentWritingMotionVec: 0
     - _TransparentZWrite: 0
     - _UVBase: 0
     - _UVDetail: 0
     - _UVEmissive: 0
     - _UseEmissiveIntensity: 0
     - _UseShadowThreshold: 0
-    - _ZTestDepthEqualForOpaque: 2
+    - _ZTestDepthEqualForOpaque: 4
     - _ZTestGBuffer: 4
-    - _ZTestTransparent: 2
+    - _ZTestTransparent: 4
     - _ZWrite: 0
     m_Colors:
-    - Color_6bb46476340b4543a0fec9f39cd3cc09: {r: 1, g: 1, b: 1, a: 1}
-    - Color_bf583b32f4a942f19394ccb5a7453763: {r: 0.2880918, g: 0.66912436, b: 0.735849, a: 0.8509804}
-    - Color_fad09b36e43f4d7a9acc94c3476a46e0: {r: 0.12936096, g: 0.21335293, b: 0.5377358, a: 1}
+    - Color_6bb46476340b4543a0fec9f39cd3cc09: {r: 0.7169812, g: 0.7169812, b: 0.7169812, a: 0.28235295}
+    - Color_bf583b32f4a942f19394ccb5a7453763: {r: 0.10992619, g: 0, b: 0.5283019, a: 0.8509804}
+    - Color_fad09b36e43f4d7a9acc94c3476a46e0: {r: 0, g: 0.8679245, b: 0.7947692, a: 1}
     - Vector2_5779bc7d15ff44e491c1fd9929937c08: {r: 0, g: 0, b: 0, a: 0}
     - Vector2_92569f1e77b74693a923372fa97692ac: {r: 1, g: 1, b: 0, a: 0}
     - Vector3_4d236d807b2b4023a62c5b40409ac42a: {r: 0, g: 0, b: 0, a: 0}
