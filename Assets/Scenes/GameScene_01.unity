@@ -4560,6 +4560,50 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1 &748739569
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 748739571}
+  - component: {fileID: 748739570}
+  m_Layer: 0
+  m_Name: 111
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &748739570
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 748739569}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 80.04547, y: 53.233517, z: 74.087036}
+  m_Center: {x: 7.497632, y: -4.262551, z: 2.3980634}
+--- !u!4 &748739571
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 748739569}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6859130619145598481}
+  m_RootOrder: 28
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &764243965
 GameObject:
   m_ObjectHideFlags: 0
@@ -12609,6 +12653,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[5]
       value: 
       objectReference: {fileID: 2100000, guid: 4381e817c2de79c4eb2874f7aca925cb, type: 2}
+    - target: {fileID: 8775191994773544615, guid: 642f91483b607f843b5f1efffd1d49b7, type: 3}
+      propertyPath: _roomCollider
+      value: 
+      objectReference: {fileID: 748739570}
     - target: {fileID: 8775563358581010838, guid: 642f91483b607f843b5f1efffd1d49b7, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 65
@@ -12694,3 +12742,8 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3.8915162, y: 0.3492997, z: 2.000001}
   m_Center: {x: -0.67896265, y: 0.12061362, z: -0.0000000017200896}
+--- !u!4 &6859130619145598481 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6086053416413459632, guid: 642f91483b607f843b5f1efffd1d49b7, type: 3}
+  m_PrefabInstance: {fileID: 6859130619145598474}
+  m_PrefabAsset: {fileID: 0}
