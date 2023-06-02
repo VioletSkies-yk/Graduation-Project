@@ -31,13 +31,18 @@ namespace Assets.Scripts.GamePlay.GameLogic.Episode1
                 return;
             EventManager.Instance.TriggerEvent(CONST.PlayAudio, "Elevator");
             PlayerController.Instance.SetUnLockPos(false);
-            PlayerController.Instance.transform.DOLocalMoveY(PlayerController.Instance.transform.position.y - (transform.position.y - Y), duration);
             this.transform.DOLocalMoveY(Y, duration).onComplete = delegate ()
             {
                 isCompelete = true;
-                PlayerController.Instance.SetUnLockPos(true);
                 EventManager.Instance.TriggerEvent(CONST.StopAudio, "Elevator");
+                SceneManager.Instance.LoadSceneAsync(CONST.SCENE_NAME_LEVEL_02, () =>
+                {
+                    PlayerController.Instance.SetUnLockPos(true);
+                    var pos = GameObject.Find("bornTrigger").transform.position;
+                    PlayerController.Instance.SetPlayerPosAndRotation(pos);
+                });
             };
+            PlayerController.Instance.transform.DOLocalMoveY(PlayerController.Instance.transform.position.y - (transform.localPosition.y - Y), duration);
         }
     }
 }

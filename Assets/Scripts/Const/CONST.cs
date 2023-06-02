@@ -19,6 +19,12 @@ public static partial class CONST
     /// </summary>
     public const string SCENE_NAME_LEVEL_01 = "GameScene_01";
 
+
+    /// <summary>
+    /// 第二关场景
+    /// </summary>
+    public const string SCENE_NAME_LEVEL_02 = "Scene2";
+
     #endregion
 
     #region 主界面相关

@@ -9,6 +9,13 @@ using UnityEngine.SceneManagement;
 
 public class SceneManager:OsSingletonMono<SceneManager>
 {
+
+    void Awake()
+    {
+        DontDestroyOnLoad(this.gameObject);
+    }
+
+
     /// <summary>
     /// 加载场景
     /// </summary>
