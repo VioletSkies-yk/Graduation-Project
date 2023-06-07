@@ -31,6 +31,13 @@ namespace Assets.Scripts.GamePlay.GameLogic.Episode1
         [Header("一次旋转的时间")]
         public float duration = 1f;
 
+        /// <summary>
+        /// 球
+        /// </summary>
+        [Space]
+        [Header("一次旋转的时间")]
+        public Rigidbody ball;
+
         bool isRotAble = true;
 
         public override void OnFocus()
@@ -44,8 +51,11 @@ namespace Assets.Scripts.GamePlay.GameLogic.Episode1
             {
                 isRotAble = false;
                 Quaternion endv = Quaternion.Euler(_muralPainting.localEulerAngles + new Vector3(0, 0, value));
+                ball.transform.localPosition = new Vector3(ball.transform.localPosition.x, ball.transform.localPosition.y, -1.2f);
+                ball.constraints = RigidbodyConstraints.FreezeAll;
                 _muralPainting.DOLocalRotateQuaternion(endv, duration).OnComplete(() =>
                 {
+                    ball.constraints = RigidbodyConstraints.FreezePositionZ;
                     isRotAble = true;
                 });
 
