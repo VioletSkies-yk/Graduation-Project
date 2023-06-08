@@ -914,7 +914,7 @@ Light:
   serializedVersion: 10
   m_Type: 0
   m_Shape: 0
-  m_Color: {r: 0.35533985, g: 0.7058824, b: 0.25490198, a: 1}
+  m_Color: {r: 0.25490198, g: 0.7058824, b: 0.48995993, a: 1}
   m_Intensity: 933238000
   m_Range: 182.9
   m_SpotAngle: 58
@@ -3133,7 +3133,7 @@ Light:
   serializedVersion: 10
   m_Type: 0
   m_Shape: 0
-  m_Color: {r: 0.35533985, g: 0.7058824, b: 0.25490198, a: 1}
+  m_Color: {r: 0.25490198, g: 0.7058824, b: 0.48995993, a: 1}
   m_Intensity: 933238000
   m_Range: 182.9
   m_SpotAngle: 55
@@ -3466,7 +3466,7 @@ Light:
   serializedVersion: 10
   m_Type: 0
   m_Shape: 0
-  m_Color: {r: 0.35533985, g: 0.7058824, b: 0.25490198, a: 1}
+  m_Color: {r: 0.25490198, g: 0.7058824, b: 0.48995993, a: 1}
   m_Intensity: 933238000
   m_Range: 182.9
   m_SpotAngle: 34
@@ -3782,7 +3782,7 @@ Light:
   serializedVersion: 10
   m_Type: 0
   m_Shape: 0
-  m_Color: {r: 0.35533985, g: 0.7058824, b: 0.25490198, a: 1}
+  m_Color: {r: 0.25490198, g: 0.7058824, b: 0.48995993, a: 1}
   m_Intensity: 933238000
   m_Range: 182.9
   m_SpotAngle: 51
@@ -4016,7 +4016,7 @@ Light:
   serializedVersion: 10
   m_Type: 0
   m_Shape: 0
-  m_Color: {r: 0.35533985, g: 0.7058824, b: 0.25490198, a: 1}
+  m_Color: {r: 0.25490198, g: 0.7058824, b: 0.48995993, a: 1}
   m_Intensity: 933238000
   m_Range: 182.9
   m_SpotAngle: 36
@@ -4250,7 +4250,7 @@ Light:
   serializedVersion: 10
   m_Type: 0
   m_Shape: 0
-  m_Color: {r: 0.35533985, g: 0.7058824, b: 0.25490198, a: 1}
+  m_Color: {r: 0.25490198, g: 0.7058824, b: 0.48995993, a: 1}
   m_Intensity: 933238000
   m_Range: 182.9
   m_SpotAngle: 49
@@ -5633,7 +5633,7 @@ Light:
   serializedVersion: 10
   m_Type: 0
   m_Shape: 0
-  m_Color: {r: 0.35533985, g: 0.7058824, b: 0.25490198, a: 1}
+  m_Color: {r: 0.25490198, g: 0.7058824, b: 0.48995993, a: 1}
   m_Intensity: 933238000
   m_Range: 182.9
   m_SpotAngle: 50
@@ -6133,7 +6133,7 @@ Light:
   serializedVersion: 10
   m_Type: 0
   m_Shape: 0
-  m_Color: {r: 0.35533985, g: 0.7058824, b: 0.25490198, a: 1}
+  m_Color: {r: 0.25490198, g: 0.7058824, b: 0.48995993, a: 1}
   m_Intensity: 933238000
   m_Range: 182.9
   m_SpotAngle: 55
