@@ -27,4 +27,9 @@ public static partial class CONST
     /// </summary>
     public const string UI_DetailTipsPanel = "DetailTipsPanel";
 
+    /// <summary>
+    /// 暂停界面
+    /// </summary>
+    public const string UI_PausePanel = "PauseMenuPanel";
+
 }

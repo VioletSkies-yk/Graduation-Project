@@ -163,9 +163,9 @@ namespace Assets.Scripts.GamePlay.UI
             {
                 coins = 10*_index,
 
-                playerPositionX = 10 * _index,
-                playerPositionY = 10 * _index,
-                playerPositionZ = 10 * _index
+                //playerPositionX = 10 * _index,
+                //playerPositionY = 10 * _index,
+                //playerPositionZ = 10 * _index
             };
             SaveManager.Instance.Save(_data, _index);
             KaiUtils.SetActive(false, _createSavePanel);

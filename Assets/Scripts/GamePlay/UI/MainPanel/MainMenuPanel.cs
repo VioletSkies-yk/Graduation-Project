@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace Assets.Scripts.GamePlay.UI
@@ -13,17 +14,44 @@ namespace Assets.Scripts.GamePlay.UI
         /// <summary>
         /// 开始游戏按钮
         /// </summary>
-        [SerializeField] private Button _beginGame;
+        [SerializeField] private ButtonHandle _beginGame;
 
         /// <summary>
         /// 开始游戏按钮
         /// </summary>
-        [SerializeField] private Button _continueGame;
+        [SerializeField] private ButtonHandle _continueGame;
 
         /// <summary>
         /// 退出游戏按钮
         /// </summary>
-        [SerializeField] private Button _quitGame;
+        [SerializeField] private ButtonHandle _helpGame;
+
+        /// <summary>
+        /// 退出游戏按钮
+        /// </summary>
+        [SerializeField] private ButtonHandle _quitGame;
+
+
+        /// <summary>
+        /// 开始游戏按钮
+        /// </summary>
+        [SerializeField] private GameObject _beginBtnBg;
+
+        /// <summary>
+        /// 开始游戏按钮
+        /// </summary>
+        [SerializeField] private GameObject _continueBtnBg;
+
+        /// <summary>
+        /// 开始游戏按钮
+        /// </summary>
+        [SerializeField] private GameObject _helpBtnBg;
+
+
+        /// <summary>
+        /// 退出游戏按钮
+        /// </summary>
+        [SerializeField] private GameObject _quitBtnBg;
 
 
         protected override bool OnOpened()
@@ -40,14 +68,52 @@ namespace Assets.Scripts.GamePlay.UI
 
         private void AddListener()
         {
-            _beginGame.onClick.AddListener(delegate () { GameManager.Instance.GameEntry(); });
-
-            _continueGame.onClick.AddListener(delegate ()
+            _beginGame.onClick.AddListener(OnClickStart);
+            _beginGame.SetCallBack(() =>
             {
-                UIManager.Instance.OpenUI(CONST.UI_SaveMenuPanel);
-            });
+                KaiUtils.SetActive(true, _beginBtnBg);
+            },
+            () =>
+            {
+                KaiUtils.SetActive(false, _beginBtnBg);
+            }
+            );
 
-            _quitGame.onClick.AddListener(delegate () { base.Close((int)ReturnCode.UserClick, this); });
+            _continueGame.onClick.AddListener(OnClickContinue);
+
+            _continueGame.SetCallBack(() =>
+            {
+                KaiUtils.SetActive(true, _continueBtnBg);
+            },
+            () =>
+            {
+                KaiUtils.SetActive(false, _continueBtnBg);
+            }
+            );
+
+            _helpGame.onClick.AddListener(OnClickHelp);
+
+            _helpGame.SetCallBack(() =>
+            {
+                KaiUtils.SetActive(true, _helpBtnBg);
+            },
+            () =>
+            {
+                KaiUtils.SetActive(false, _helpBtnBg);
+            }
+            );
+
+            _quitGame.onClick.AddListener(OnClickQuit);
+
+            _quitGame.SetCallBack(() =>
+            {
+                KaiUtils.SetActive(true, _quitBtnBg);
+            },
+            () =>
+            {
+                KaiUtils.SetActive(false, _quitBtnBg);
+            }
+            );
 
 
             EventManager.Instance.StartListening(CONST.LoadingImageAllBlack, onButtonClickToClose);
@@ -62,5 +128,30 @@ namespace Assets.Scripts.GamePlay.UI
 
             EventManager.Instance.StopListening(CONST.LoadingImageAllBlack, onButtonClickToClose);
         }
+
+        #region Click
+
+        private void OnClickStart()
+        {
+            GameManager.Instance.GameEntry();
+        }
+
+        private void OnClickContinue()
+        {
+            UIManager.Instance.OpenUI(CONST.UI_SaveMenuPanel);
+        }
+
+        private void OnClickHelp()
+        {
+        }
+
+
+        private void OnClickQuit()
+        {
+            //base.Close((int)ReturnCode.UserClick, this);
+            GameManager.Instance.GameQuit();
+        }
+
+        #endregion
     }
 }

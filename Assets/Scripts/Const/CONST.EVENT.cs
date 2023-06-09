@@ -18,6 +18,12 @@ public static partial class CONST
 
     #region 场景加载相关
 
+
+    /// <summary>
+    /// 发起加载场景
+    /// </summary>
+    public const string SendLoadingScene = "SendLoadingScene";
+
     /// <summary>
     /// 开始加载场景
     /// </summary>
@@ -73,6 +79,13 @@ public static partial class CONST
     /// 显示器变色
     /// </summary>
     public const string Lv2Door = "Lv2Door";
+
+
+
+    /// <summary>
+    /// 显示器变色
+    /// </summary>
+    public const string OpenMuralPaintingDoor = "OpenMuralPaintingDoor";
 
     #endregion
 

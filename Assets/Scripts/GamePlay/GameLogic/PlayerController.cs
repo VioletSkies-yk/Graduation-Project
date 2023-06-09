@@ -4,6 +4,7 @@ using UnityEngine;
 using DG.Tweening;
 using DG.Tweening.Core;
 using System;
+using Assets.Scripts.GamePlay.UI;
 
 namespace Assets.Scripts.GamePlay.GameLogic
 {
@@ -151,10 +152,11 @@ namespace Assets.Scripts.GamePlay.GameLogic
         // Update is called once per frame
         void Update()
         {
-            //if (Input.GetKeyDown(KeyCode.E))
-            //{
-            //    isUnLockPosition = !isUnLockPosition;
-            //}
+            if (GameManager.instance._pauseStatus)
+            {
+                Screen.lockCursor = false;
+                return;
+            }
 
             ActionControl();
 
@@ -162,7 +164,11 @@ namespace Assets.Scripts.GamePlay.GameLogic
             HandleInteractionInput();
 
 
-            //GameQuit();
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                UIManager.Instance.OpenUI(CONST.UI_DetailTipsPanel);
+            }
+            GamePause();
         }
 
         /// <summary>
@@ -360,16 +366,11 @@ namespace Assets.Scripts.GamePlay.GameLogic
 
         #endregion
 
-        void GameQuit()
+        void GamePause()
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-
-#if UNITY_EDITOR
-                UnityEditor.EditorApplication.isPlaying = false;
-#else
-            Application.Quit();
-#endif
+                UIManager.instance.OpenUI(CONST.UI_PausePanel);
             }
         }
     }

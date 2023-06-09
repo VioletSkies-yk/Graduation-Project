@@ -15,6 +15,27 @@ public class SceneManager:OsSingletonMono<SceneManager>
         DontDestroyOnLoad(this.gameObject);
     }
 
+    public struct SceneMsg
+    {
+        public string sceneName;
+
+        public Action callBack;
+
+        public SceneMsg(string name ,Action Func)
+        {
+            sceneName = name;
+            callBack = Func;
+        }
+    }
+
+    private void OnEnable()
+    {
+        EventManager.Instance.StartListening<SceneMsg>(CONST.SendLoadingScene, LoadSceneAsync);
+    }
+    private void OnDisable()
+    {
+        EventManager.Instance.StopListening<SceneMsg>(CONST.SendLoadingScene, LoadSceneAsync);
+    }
 
     /// <summary>
     /// 加载场景
@@ -35,6 +56,12 @@ public class SceneManager:OsSingletonMono<SceneManager>
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
         Func();
+    }
+
+    //异步加载
+    public void LoadSceneAsync(SceneMsg msg)
+    {
+        StartCoroutine(LoadingSceneAsync(msg.sceneName, msg.callBack));
     }
 
     //异步加载

@@ -83,7 +83,7 @@ public class SaveManager : OsSingleton<SaveManager>
         SaveData data = new SaveData
         {
             coins = 10,
-            playerPositionX = 1
+            sceneName = SceneManager.Instance.GetCurrentScene().name
         };
         return data;
     }
@@ -103,12 +103,6 @@ public class SaveManager : OsSingleton<SaveManager>
 public class SaveData
 {
     public int coins;
-    public float playerPositionX;
-    public float playerPositionY;
-    public float playerPositionZ;
-
-    public List<float> enemyPositionX = new List<float>();
-    public List<float> enemyPositionY = new List<float>();
-    public List<bool> isDead = new List<bool>();
+    public string sceneName;
 
 }
