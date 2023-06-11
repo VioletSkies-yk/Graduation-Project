@@ -9929,7 +9929,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _focusDistance: 20
   _clickDistance: 20
-  _gameObject3D: {fileID: 21300000, guid: 77902af0184d5df4f93a29310b6894b4, type: 3}
+  _gameObject3D: {fileID: 21300000, guid: aeaf2493e1cd0ee4c8d599dbc2c4786d, type: 3}
 --- !u!1 &1909057815
 GameObject:
   m_ObjectHideFlags: 0
@@ -12824,7 +12824,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _focusDistance: 20
   _clickDistance: 20
-  _gameObject3D: {fileID: 21300000, guid: 9000732868605ec4096dd2671235b3c3, type: 3}
+  _gameObject3D: {fileID: 21300000, guid: 54165e29795b6924da3165dcceccd646, type: 3}
 --- !u!65 &6859130619145598480
 BoxCollider:
   m_ObjectHideFlags: 0
