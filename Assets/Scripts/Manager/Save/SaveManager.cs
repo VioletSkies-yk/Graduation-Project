@@ -14,6 +14,30 @@ public class SaveManager : OsSingleton<SaveManager>
     private const string DataName = "GameData.txt";
     private string FullDataPath;
 
+    public int farSceneIndex
+    {
+        get
+        {
+            int index = 0;
+            for (int i = 0; i < 3; i++)
+            {
+                FullDataPath = DefineSavePath(i);
+                string dataStr = LoadData(FullDataPath);
+                if (dataStr == string.Empty)
+                {
+                    continue;
+                }
+                else
+                {
+                    var data = JsonUtility.FromJson<SaveData>(dataStr);
+                    if (index < data.saveSceneIndex)
+                        index = data.saveSceneIndex;
+                }
+            }
+            return index;
+        }
+    }
+
     /// <summary>
     ///  游戏开始时载入存档
     /// </summary>

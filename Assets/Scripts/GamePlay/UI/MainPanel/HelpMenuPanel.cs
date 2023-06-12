@@ -25,7 +25,7 @@ namespace Assets.Scripts.GamePlay.UI
         {
             if (SceneManager.Instance.isInPlayingScene)
                 KaiUtils.SetActive(false, _bg.gameObject);
-            _bg.sprite.name = KaiUtils.GetBgName(SceneManager.Instance.saveSceneIndex);
+            _bg.sprite.name = KaiUtils.GetBgName();
             AddListener();
             return base.OnOpened();
         }

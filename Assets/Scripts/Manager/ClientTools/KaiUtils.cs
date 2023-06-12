@@ -87,8 +87,9 @@ public static class KaiUtils
         }
     }
 
-    public static string GetBgName(int index)
+    public static string GetBgName()
     {
+        int index = SaveManager.Instance.farSceneIndex;
         switch (index)
         {
             case 1:
@@ -98,10 +99,13 @@ public static class KaiUtils
                 return "LV2-r1";
                 break;
             default:
+                return "LV1-r1";
                 return null;
                 break;
         }
     }
+
+
 
     #endregion
 }

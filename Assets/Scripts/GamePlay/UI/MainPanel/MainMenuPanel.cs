@@ -74,7 +74,7 @@ namespace Assets.Scripts.GamePlay.UI
 
         private void AddListener()
         {
-            _bg.sprite.name = KaiUtils.GetBgName(SceneManager.Instance.saveSceneIndex);
+            _bg.sprite.name = KaiUtils.GetBgName();
             _beginGame.onClick.AddListener(OnClickStart);
             _beginGame.SetCallBack(() =>
             {

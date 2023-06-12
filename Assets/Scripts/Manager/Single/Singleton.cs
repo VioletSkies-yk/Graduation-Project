@@ -11,21 +11,40 @@ public class OsSingletonMono<T> : MonoBehaviour where T : MonoBehaviour
     {
         get
         {
+            //if (instance == null)
+            //{
+            //    instance = (T)FindObjectOfType(typeof(T));
+
+            //    if (instance == null)
+            //    {
+            //        Debug.LogError("An instance of " + typeof(T) + " is needed in the scene, but there is none.");
+            //    }
+            //}
             if (instance == null)
             {
-                instance = (T)FindObjectOfType(typeof(T));
-
-                if (instance == null)
-                {
-                    Debug.LogError("An instance of " + typeof(T) + " is needed in the scene, but there is none.");
-                }
+                GameObject singleton = new GameObject();
+                instance = singleton.AddComponent<T>();
+                singleton.name = typeof(T).ToString() + " (Singleton)";
+                DontDestroyOnLoad(singleton);
             }
-
             return instance;
         }
+
     }
 
     protected static T instance;
+    protected virtual void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this as T;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 }
 
 /// <summary>

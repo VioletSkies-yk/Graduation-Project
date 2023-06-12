@@ -121,9 +121,9 @@ namespace Assets.Scripts.GamePlay.UI
             {
                 onButtonClickToClose();
 
-                PlayerController.Instance.SetUnLockPos(false);
-                PlayerController.Instance.SetUnLockRot(false);
-                PlayerController.Instance.gameObject.SetActive(false);
+                //PlayerController.Instance.SetUnLockPos(false);
+                //PlayerController.Instance.SetUnLockRot(false);
+                //PlayerController.Instance.gameObject.SetActive(false);
 
                 UIManager.Instance.OpenUI(CONST.UI_MainMenuPanel);
             })

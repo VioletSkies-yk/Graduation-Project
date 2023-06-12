@@ -50,14 +50,15 @@ public class GameManager : OsSingletonMono<GameManager>
     //}
 
 
-    private void Awake()
+    protected override void Awake()
     {
-        DontDestroyOnLoad(this.gameObject);
-        /*var node = */UIManager.Instance.OpenUI(CONST.UI_BlackPanel);
-        UIManager.Instance.OpenUI(CONST.UI_MainMenuPanel);
+        base.Awake();
     }
     private void Start()
     {
+        /*var node = */
+        UIManager.Instance.OpenUI(CONST.UI_BlackPanel);
+        UIManager.Instance.OpenUI(CONST.UI_MainMenuPanel);
     }
 
     public void GameEntry(SaveData _data = null)
@@ -73,7 +74,7 @@ public class GameManager : OsSingletonMono<GameManager>
             // });
             EventManager.Instance.TriggerEvent(CONST.SendLoadingScene, new SceneMsg(CONST.SCENE_NAME_LEVEL_01, delegate ()
             {
-                PlayerController.instance.gameObject.SetActive(true);
+                //PlayerController.instance.gameObject.SetActive(true);
             })
             );
         }
@@ -83,7 +84,7 @@ public class GameManager : OsSingletonMono<GameManager>
             EventManager.Instance.TriggerEvent(CONST.SendLoadingScene, new SceneMsg(sceneName, delegate ()
             {
                 PlayerController.instance.SetPlayerPosAndRotation(_data.position);
-                PlayerController.instance.gameObject.SetActive(true);
+                //PlayerController.instance.gameObject.SetActive(true);
                 //UIManager.Instance.OpenUI(CONST.UI_BlackPanel);
                 EventManager.Instance.TriggerEvent(CONST.PlayAudio, "LV1");
             }));

@@ -110,7 +110,7 @@ namespace Assets.Scripts.GamePlay.UI
             {
                 onUIClosed(this, returncode);
             }
-
+            Destroy(gameObject);
             onUIClosed = null;
             _parent = null;
         }

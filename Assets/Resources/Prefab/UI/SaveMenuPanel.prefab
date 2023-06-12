@@ -2860,7 +2860,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _saveGameBtns: {fileID: 5712039231180789979}
-  _fillBg: {fileID: 6571365253935171424}
+  _fillBg: {fileID: 6617262866442579270}
   _emptyBg: {fileID: 7222978774310346701}
   _selectBg: {fileID: 6571365253935171424}
   _isEmpty: 0

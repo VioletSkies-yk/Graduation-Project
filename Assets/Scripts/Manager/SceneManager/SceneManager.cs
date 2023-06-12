@@ -17,26 +17,22 @@ public class SceneManager : OsSingletonMono<SceneManager>
     public int saveSceneIndex
     {
         get;
-        private set
-        {
-            if (saveSceneIndex < value)
-                saveSceneIndex = value;
-        }
+        private set;
     }
 
     public bool isInPlayingScene
     {
         get
         {
-            return curSceneIndex != -1 || curSceneIndex != 0;
+            return curSceneIndex != -1 && curSceneIndex != 0;
         }
     }
 
 
-    void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         curSceneIndex = 0;
-        DontDestroyOnLoad(this.gameObject);
     }
 
     public struct SceneMsg
@@ -129,6 +125,7 @@ public class SceneManager : OsSingletonMono<SceneManager>
                 curSceneIndex = 2;
                 break;
         }
+        if (saveSceneIndex < curSceneIndex)
             saveSceneIndex = curSceneIndex;
 
         EventManager.Instance.TriggerEvent<int>(CONST.FinishLoadingSceneProgress, curSceneIndex);

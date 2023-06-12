@@ -92,7 +92,7 @@ namespace Assets.Scripts.GamePlay.GameLogic
         {
             OnEnter();
             _levelStageDic[_curLevel].OnEnter();
-            PlayerController.Instance.SetPlayerPosAndRotation(bornPoint);
+            //PlayerController.Instance.SetPlayerPosAndRotation(bornPoint);
         }
 
         protected void ChangeLevelStage()

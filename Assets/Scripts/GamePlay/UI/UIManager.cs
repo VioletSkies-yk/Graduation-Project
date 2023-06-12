@@ -21,8 +21,9 @@ namespace Assets.Scripts.GamePlay.UI
 
         public UINode _uiParent;
 
-        void Awake()
+        protected override void Awake()
         {
+            base.Awake();
             __inst = this;
 
             _uiNodeDict.Clear();
