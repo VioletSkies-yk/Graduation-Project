@@ -67,4 +67,41 @@ public static class KaiUtils
     {
         Debug.LogError($"Error: {contents}");
     }
+
+
+    #region Function
+
+    public static string GetSceneName(int index)
+    {
+        switch (index)
+        {
+            case 1:
+                return CONST.SCENE_NAME_LEVEL_01;
+                break;
+            case 2:
+                return CONST.SCENE_NAME_LEVEL_02;
+                break;
+            default:
+                return null;
+                break;
+        }
+    }
+
+    public static string GetBgName(int index)
+    {
+        switch (index)
+        {
+            case 1:
+                return "LV1-r1";
+                break;
+            case 2:
+                return "LV2-r1";
+                break;
+            default:
+                return null;
+                break;
+        }
+    }
+
+    #endregion
 }

@@ -47,15 +47,21 @@ namespace Assets.Scripts.GamePlay.UI
         /// </summary>
         [SerializeField] private GameObject _helpBtnBg;
 
-
         /// <summary>
         /// 退出游戏按钮
         /// </summary>
         [SerializeField] private GameObject _quitBtnBg;
 
 
+        /// <summary>
+        /// 背景图
+        /// </summary>  
+        [SerializeField] private Image _bg;
+
+
         protected override bool OnOpened()
         {
+            Screen.lockCursor = false;
             AddListener();
             return base.OnOpened();
         }
@@ -68,6 +74,7 @@ namespace Assets.Scripts.GamePlay.UI
 
         private void AddListener()
         {
+            _bg.sprite.name = KaiUtils.GetBgName(SceneManager.Instance.saveSceneIndex);
             _beginGame.onClick.AddListener(OnClickStart);
             _beginGame.SetCallBack(() =>
             {
@@ -121,6 +128,8 @@ namespace Assets.Scripts.GamePlay.UI
         private void RemoveListener()
         {
             _beginGame.onClick.RemoveAllListeners();
+
+            _helpGame.onClick.RemoveAllListeners();
 
             _continueGame.onClick.RemoveAllListeners();
 

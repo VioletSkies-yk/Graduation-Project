@@ -10,37 +10,30 @@ namespace Assets.Scripts.GamePlay.UI
 {
     public class SaveMenuItem : MonoBehaviour
     {
-        /// <summary>
-        /// 存档按钮
-        /// </summary>
-        [SerializeField] private Button _saveGameBtns;
+        [SerializeField] private ButtonHandle _saveGameBtns;
 
-        /// <summary>
-        /// 存档名字
-        /// </summary>
-        [SerializeField] private Text _name;
+        [SerializeField] private GameObject _fillBg;
 
-        /// <summary>
-        /// 存档名字
-        /// </summary>
-        [SerializeField] private Text _date;
+        [SerializeField] private GameObject _emptyBg;
 
+        [SerializeField] private GameObject _selectBg;
 
         /// <summary>
         /// 该存档是否为空
         /// </summary>
-        public  bool _isEmpty;
+        public bool _isEmpty;
 
         /// <summary>
         /// 存档指针
         /// </summary>
         private int _index;
 
-        public void Init(int index,Action<int> action)
+        public void Init(int index, Action<int> action)
         {
             _index = index;
 
             _isEmpty = SaveManager.Instance.isSaveDataEmpty(_index);
+
 
             StartListening(action);
 
@@ -53,9 +46,18 @@ namespace Assets.Scripts.GamePlay.UI
             {
                 action(_index);
             });
+            _saveGameBtns.SetCallBack(() =>
+            {
+                KaiUtils.SetActive(true, _selectBg);
+            },
+            () =>
+            {
+                KaiUtils.SetActive(false, _selectBg);
+            }
+            );
         }
 
-        public  void StopListening()
+        public void StopListening()
         {
             _saveGameBtns.onClick.RemoveAllListeners();
         }
@@ -64,7 +66,8 @@ namespace Assets.Scripts.GamePlay.UI
         {
             _isEmpty = SaveManager.Instance.isSaveDataEmpty(_index);
 
-            _name.text = _isEmpty ? CONST.SAVEMENU_NONE_NAME : string.Format(CONST.SAVEMENU_NAME, _index);
+            _fillBg.SetActive(!_isEmpty);
+            _emptyBg.SetActive(_isEmpty);
 
             int hour = DateTime.Now.Hour;
             int minute = DateTime.Now.Minute;
@@ -73,7 +76,7 @@ namespace Assets.Scripts.GamePlay.UI
             int month = DateTime.Now.Month;
             int day = DateTime.Now.Day;
 
-            _date.text = string.Format("{0}/{1}/{2}/{3}/{4}/{5}", year, month, day, hour, minute, second);
+            //_date.text = string.Format("{0}/{1}/{2}/{3}/{4}/{5}", year, month, day, hour, minute, second);
 
         }
     }

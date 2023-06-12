@@ -15,6 +15,11 @@ public static partial class CONST
     public const string SCENE_NAME_START = "SampleScene";
 
     /// <summary>
+    /// 缓存场景
+    /// </summary>
+    public const string SCENE_NAME_CACHE = "CacheScene";
+
+    /// <summary>
     /// 第一关场景
     /// </summary>
     public const string SCENE_NAME_LEVEL_01 = "GameScene_01";

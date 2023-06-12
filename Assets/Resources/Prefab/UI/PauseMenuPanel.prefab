@@ -698,7 +698,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _nodeLayer: -1
-  _closeBtn: {fileID: 7920650942597860315}
+  _continueBtn: {fileID: 7920650942597860315}
+  _returnMainBtn: {fileID: 3231992855971808435}
+  _saveBtn: {fileID: 5173522512836432165}
+  _helpBtn: {fileID: 2256489723206907588}
+  _continueBtnBg: {fileID: 8426463500624741566}
+  _returnMainBtnBg: {fileID: 8980571450518522620}
+  _saveBtnBg: {fileID: 4336514274002443235}
+  _helpBtnBg: {fileID: 3909626471874205761}
 --- !u!1 &1370676694188060121
 GameObject:
   m_ObjectHideFlags: 0

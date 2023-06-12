@@ -149,12 +149,38 @@ namespace Assets.Scripts.GamePlay.GameLogic
             InitData();
         }
 
+        private void OnEnable()
+        {
+            EventManager.Instance.StartListening<int>(CONST.FinishLoadingSceneProgress, OnSceneChange);
+        }
+
+        private void OnDisable()
+        {
+            EventManager.Instance.StopListening<int>(CONST.FinishLoadingSceneProgress, OnSceneChange);
+        }
+
+        private void OnSceneChange(int index)
+        {
+            if(index==-1||index==0)
+            {
+                LockAll();
+                _playerCamera.gameObject.SetActive(false);
+            }
+            else
+            {
+                UnpackLockAll();
+                _playerCamera.gameObject.SetActive(true);
+            }
+        }
+
         // Update is called once per frame
         void Update()
         {
+            if (!_playerCamera.gameObject.activeInHierarchy)
+                return;
             if (GameManager.instance._pauseStatus)
             {
-                Screen.lockCursor = false;
+                LockAll();
                 return;
             }
 
@@ -368,7 +394,7 @@ namespace Assets.Scripts.GamePlay.GameLogic
 
         void GamePause()
         {
-            if (Input.GetKeyDown(KeyCode.Escape))
+            if (SceneManager.instance.isInPlayingScene&&Input.GetKeyDown(KeyCode.Escape))
             {
                 UIManager.instance.OpenUI(CONST.UI_PausePanel);
             }

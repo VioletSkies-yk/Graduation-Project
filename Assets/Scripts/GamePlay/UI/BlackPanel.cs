@@ -18,8 +18,14 @@ namespace Assets.Scripts.GamePlay.UI
         /// </summary>
         [SerializeField] private RawImage _blackImg;
 
+        /// <summary>
+        /// 中心点
+        /// </summary>
+        [SerializeField] private GameObject _node;
+
         protected override bool OnOpened()
         {
+            _node.SetActive(false);
             AddListener();
             return base.OnOpened();
         }
@@ -33,27 +39,41 @@ namespace Assets.Scripts.GamePlay.UI
         private void AddListener()
         {
             EventManager.Instance.StartListening(CONST.StartLoadingSceneProgress, Fade);
+            EventManager.Instance.StartListening<int>(CONST.FinishLoadingSceneProgress, FadeCallBack);
         }
         private void RemoveListener()
         {
             EventManager.Instance.StopListening(CONST.StartLoadingSceneProgress, Fade);
+            EventManager.Instance.StartListening<int>(CONST.FinishLoadingSceneProgress, FadeCallBack);
         }
         private void Fade()
         {
-            var _beginEvent = _blackImg.DOFade(1, 1f);
-            _beginEvent.onComplete = delegate ()
+            KaiUtils.SetActive(true, _blackImg.gameObject);
+            /*var _beginEvent = */
+            _blackImg.DOFade(1, 1f).onComplete = () =>
             {
-                StartCoroutine(DelayFade());
+                EventManager.Instance.TriggerEvent(CONST.LoadingImageAllBlack);
             };
+            //_beginEvent.onComplete = delegate ()
+            //{
+            //    StartCoroutine(DelayFade());
+            //};
+        }
+
+        private void FadeCallBack(int sceneName)
+        {
+            _node.SetActive(sceneName != -1 || sceneName != 0);
+            StartCoroutine(DelayFade());
         }
 
         IEnumerator DelayFade()
         {
             yield return new WaitForSeconds(1f);
-            EventManager.Instance.TriggerEvent(CONST.LoadingImageAllBlack);
             var _finishEvent = _blackImg.DOFade(0, 1f);
             _finishEvent.onComplete = delegate ()
             {
+                KaiUtils.SetActive(false, _blackImg.gameObject);
+                //onButtonClickToClose();
             };
         }
     }

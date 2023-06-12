@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Scripts.GamePlay.GameLogic;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,12 @@ namespace Assets.Scripts.GamePlay.UI
         /// </summary>
         [SerializeField] private SaveMenuItem[] _saveGameItems;
 
+        /// <summary>
+        /// 关闭按钮
+        /// </summary>  
+        [SerializeField] private ButtonHandle _closeBtn;
+
+        /*
         /// <summary>
         /// 创建存档界面
         /// </summary>
@@ -40,6 +47,7 @@ namespace Assets.Scripts.GamePlay.UI
         /// </summary>
         [SerializeField] private Button _closeBtn;
 
+        */
 
         private int _index;
 
@@ -70,24 +78,26 @@ namespace Assets.Scripts.GamePlay.UI
                 _saveGameItems[i].Init(i, OnClickSaveButton);
             }
 
-            _createSaveBtn.onClick.AddListener(delegate ()
-            {
-                OnClickSaveConfirm();
-            });
+            //_createSaveBtn.onClick.AddListener(delegate ()
+            //{
+            //    OnClickSaveConfirm();
+            //});
 
-            _cancelSaveBtn.onClick.AddListener(delegate ()
-            {
-                KaiUtils.SetActive(false, _createSavePanel.gameObject);
-            });
+            //_cancelSaveBtn.onClick.AddListener(delegate ()
+            //{
+            //    KaiUtils.SetActive(false, _createSavePanel.gameObject);
+            //});
 
-            _closeBtn.onClick.AddListener(delegate ()
-            {
-                base.Close((int)ReturnCode.UserClick, this);
-            });
+            //_closeBtn.onClick.AddListener(delegate ()
+            //{
+            //    base.Close((int)ReturnCode.UserClick, this);
+            //});
 
             EventManager.Instance.StartListening(CONST.SaveDataSuccess, RefreshUI);
 
             EventManager.Instance.StartListening(CONST.LoadingImageAllBlack, onButtonClickToClose);
+
+            _closeBtn.onClick.AddListener(onButtonClickToClose);
         }
 
         public void StopListening()
@@ -96,13 +106,15 @@ namespace Assets.Scripts.GamePlay.UI
             {
                 _saveGameItems[i].StopListening();
             }
-            _createSaveBtn.onClick.RemoveAllListeners();
+            //_createSaveBtn.onClick.RemoveAllListeners();
 
-            _cancelSaveBtn.onClick.RemoveAllListeners();
+            //_cancelSaveBtn.onClick.RemoveAllListeners();
 
             EventManager.Instance.StopListening(CONST.SaveDataSuccess, RefreshUI);
 
             EventManager.Instance.StopListening(CONST.LoadingImageAllBlack, onButtonClickToClose);
+
+            _closeBtn.onClick.RemoveListener(onButtonClickToClose);
         }
 
         /// <summary>
@@ -115,7 +127,7 @@ namespace Assets.Scripts.GamePlay.UI
 
         private void HideConfirmPanel()
         {
-            KaiUtils.SetActive(false, _createSavePanel);
+            //KaiUtils.SetActive(false, _createSavePanel);
         }
 
         /// <summary>
@@ -130,10 +142,15 @@ namespace Assets.Scripts.GamePlay.UI
 
             if (!_saveGameItems[_index]._isEmpty)
             {
-                if (isGaming)
+                if (SceneManager.Instance.isInPlayingScene)
                 {
-                    KaiUtils.SetActive(true, _createSavePanel.gameObject);
-                    _createSavePanelDescription.text = CONST.SAVEMENU_RECOVER_TIP;
+                    SaveData _data = new SaveData
+                    {
+                        saveSceneIndex = SceneManager.Instance.saveSceneIndex,
+                        currentSceneIndex = SceneManager.Instance.curSceneIndex,
+                        position = PlayerController.Instance.transform.position
+                    };
+                    SaveManager.Instance.Save(_data, _index);
                 }
                 else
                 {
@@ -143,32 +160,35 @@ namespace Assets.Scripts.GamePlay.UI
                     }
                     else
                     {
-                        KaiUtils.Error("存档{0}为空，请检查本地文件");
+                        KaiUtils.Error($"存档{_index}为空，请检查本地文件");
                     }
                 }
             }
             else
             {
-                KaiUtils.SetActive(true, _createSavePanel.gameObject);
-                _createSavePanelDescription.text = CONST.SAVEMENU_CREATE_TIP;
+                SaveData _data = new SaveData
+                {
+                    saveSceneIndex = SceneManager.Instance.saveSceneIndex,
+                    currentSceneIndex = SceneManager.Instance.curSceneIndex,
+                    position = PlayerController.Instance.transform.position
+                };
+                SaveManager.Instance.Save(_data, _index);
             }
         }
 
         /// <summary>
         /// 点击确认后的回调（包括创建新存档、覆盖旧存档）
         /// </summary>
-        private void OnClickSaveConfirm()
-        {
-            SaveData _data = new SaveData
-            {
-                coins = 10*_index,
-
-                //playerPositionX = 10 * _index,
-                //playerPositionY = 10 * _index,
-                //playerPositionZ = 10 * _index
-            };
-            SaveManager.Instance.Save(_data, _index);
-            KaiUtils.SetActive(false, _createSavePanel);
-        }
+        //private void OnClickSaveConfirm()
+        //{
+        //    SaveData _data = new SaveData
+        //    {
+        //        saveSceneIndex = SceneManager.Instance.saveSceneIndex,
+        //        currentSceneIndex = SceneManager.Instance.curSceneIndex,
+        //        position = PlayerController.Instance.transform.position
+        //    };
+        //    SaveManager.Instance.Save(_data, _index);
+        //    //KaiUtils.SetActive(false, _createSavePanel);
+        //}
     }
 }

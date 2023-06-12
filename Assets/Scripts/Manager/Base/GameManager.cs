@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.GamePlay.UI;
+﻿using Assets.Scripts.GamePlay.GameLogic;
+using Assets.Scripts.GamePlay.UI;
 using System;
 using UnityEngine;
 using static SceneManager;
@@ -52,11 +53,11 @@ public class GameManager : OsSingletonMono<GameManager>
     private void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
+        /*var node = */UIManager.Instance.OpenUI(CONST.UI_BlackPanel);
+        UIManager.Instance.OpenUI(CONST.UI_MainMenuPanel);
     }
     private void Start()
     {
-        var node = UIManager.Instance.OpenUI(CONST.UI_BlackPanel);
-        UIManager.Instance.OpenUI(CONST.UI_MainMenuPanel);
     }
 
     public void GameEntry(SaveData _data = null)
@@ -72,20 +73,18 @@ public class GameManager : OsSingletonMono<GameManager>
             // });
             EventManager.Instance.TriggerEvent(CONST.SendLoadingScene, new SceneMsg(CONST.SCENE_NAME_LEVEL_01, delegate ()
             {
-                UIManager.Instance.OpenUI(CONST.UI_BlackPanel);
+                PlayerController.instance.gameObject.SetActive(true);
             })
             );
         }
         else
         {
-            //KaiUtils.Log("正在加载数据（测试  玩家拥有金币数量：{0}，玩家当前所在位置：{1}", _data.coins, new Vector3(_data.playerPositionX, _data.playerPositionY, _data.playerPositionZ));
-            //SceneManager.Instance.LoadSceneAsync(CONST.SCENE_NAME_LEVEL_01, delegate ()
-            //{
-            //    EventManager.Instance.TriggerEvent(CONST.PlayAudio, "LV1");
-            //});
-            EventManager.Instance.TriggerEvent(CONST.SendLoadingScene, new SceneMsg(CONST.SCENE_NAME_LEVEL_01, delegate ()
+            string sceneName = KaiUtils.GetSceneName(_data.currentSceneIndex);
+            EventManager.Instance.TriggerEvent(CONST.SendLoadingScene, new SceneMsg(sceneName, delegate ()
             {
-                UIManager.Instance.OpenUI(CONST.UI_BlackPanel);
+                PlayerController.instance.SetPlayerPosAndRotation(_data.position);
+                PlayerController.instance.gameObject.SetActive(true);
+                //UIManager.Instance.OpenUI(CONST.UI_BlackPanel);
                 EventManager.Instance.TriggerEvent(CONST.PlayAudio, "LV1");
             }));
         }

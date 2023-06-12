@@ -707,6 +707,7 @@ MonoBehaviour:
   _continueBtnBg: {fileID: 4336514274002443235}
   _helpBtnBg: {fileID: 3909626471874205761}
   _quitBtnBg: {fileID: 8980571450518522620}
+  _bg: {fileID: 2787667550073539937}
 --- !u!1 &1370676694188060121
 GameObject:
   m_ObjectHideFlags: 0

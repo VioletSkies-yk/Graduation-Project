@@ -556,6 +556,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1749620455522287176}
   - component: {fileID: 7972814143447818789}
+  - component: {fileID: 4991803736756119143}
   m_Layer: 5
   m_Name: HelpMenuPanel
   m_TagString: Untagged
@@ -595,6 +596,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7437926504980711159}
   m_CullTransparentMesh: 1
+--- !u!114 &4991803736756119143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7437926504980711159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 847c5c30410e76843a21d022ec00e9fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _nodeLayer: -1
+  _bg: {fileID: 4411496945373131339}
+  _closeBtn: {fileID: 6427278104057737273}
 --- !u!1 &7760716925141373002
 GameObject:
   m_ObjectHideFlags: 0

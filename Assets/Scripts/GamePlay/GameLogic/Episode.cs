@@ -85,7 +85,7 @@ namespace Assets.Scripts.GamePlay.GameLogic
                 _levelStageDic.Add(_levelStageList[i].Type, _levelStageList[i]);
                 _levelStageList[i].Init();
             }
-            EventManager.Instance.StartListening<string>(CONST.FinishLoadingSceneProgress, OnLoadSceneCallBack);
+            EventManager.Instance.StartListening<int>(CONST.FinishLoadingSceneProgress, OnLoadSceneCallBack);
         }
 
         private void Enter()
@@ -132,12 +132,12 @@ namespace Assets.Scripts.GamePlay.GameLogic
         }
 
 
-        private void OnLoadSceneCallBack(string sceneName)
+        private void OnLoadSceneCallBack(int sceneName)
         {
             switch (Type)
             {
                 case EpisodeType.Episode1:
-                    if (string.Equals(CONST.SCENE_NAME_LEVEL_01, sceneName))
+                    if (sceneName==1)
                     {
                         Debug.Log("成功加载第一关");
                         Enter();
