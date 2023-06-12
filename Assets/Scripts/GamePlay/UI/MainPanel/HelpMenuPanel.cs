@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 namespace Assets.Scripts.GamePlay.UI
 {
-    public class PauseMenuPanel : UINode
+    public class HelpMenuPanel : UINode
     {
         /// <summary>
         /// 继续游戏按钮
@@ -17,14 +17,12 @@ namespace Assets.Scripts.GamePlay.UI
 
         protected override bool OnOpened()
         {
-            GameManager.Instance.GamePause();
             AddListener();
             return base.OnOpened();
         }
 
         protected override void OnClosing()
         {
-            GameManager.Instance.GameContinue();
             RemoveListener();
             base.OnClosing();
         }

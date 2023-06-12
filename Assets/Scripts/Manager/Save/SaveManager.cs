@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Scripts.GamePlay.GameLogic;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -50,7 +51,7 @@ public class SaveManager : OsSingleton<SaveManager>
     }
 
     // 保存
-    public void Save(SaveData GameData,int index)
+    public void Save(SaveData GameData, int index)
     {
         FullDataPath = DefineSavePath(index);
 
@@ -82,15 +83,16 @@ public class SaveManager : OsSingleton<SaveManager>
     { //创建一个Save对象存储当前游戏数据
         SaveData data = new SaveData
         {
-            coins = 10,
-            sceneName = SceneManager.Instance.GetCurrentScene().name
+            saveSceneIndex = SceneManager.Instance.saveSceneIndex,
+            currentSceneIndex = SceneManager.Instance.curSceneIndex,
+            position = PlayerController.Instance.transform.position
         };
         return data;
     }
 
     private string DefineSavePath(int index)
     {
-        return Application.persistentDataPath + "/" + DataName+index.ToString();
+        return Application.persistentDataPath + "/" + DataName + index.ToString();
     }
 
     public bool isSaveDataEmpty(int index)
@@ -102,7 +104,7 @@ public class SaveManager : OsSingleton<SaveManager>
 [Serializable]
 public class SaveData
 {
-    public int coins;
-    public string sceneName;
-
+    public int saveSceneIndex;
+    public int currentSceneIndex;
+    public Vector3 position;
 }

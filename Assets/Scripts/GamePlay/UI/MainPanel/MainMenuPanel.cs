@@ -143,6 +143,7 @@ namespace Assets.Scripts.GamePlay.UI
 
         private void OnClickHelp()
         {
+            UIManager.Instance.OpenUI(CONST.UI_HelpPanel);
         }
 
 

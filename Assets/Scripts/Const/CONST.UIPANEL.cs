@@ -32,4 +32,9 @@ public static partial class CONST
     /// </summary>
     public const string UI_PausePanel = "PauseMenuPanel";
 
+    /// <summary>
+    /// 帮助界面
+    /// </summary>
+    public const string UI_HelpPanel = "HelpMenuPanel";
+
 }

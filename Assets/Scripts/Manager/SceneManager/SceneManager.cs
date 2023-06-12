@@ -7,8 +7,18 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneManager:OsSingletonMono<SceneManager>
+public class SceneManager : OsSingletonMono<SceneManager>
 {
+    public int curSceneIndex
+    {
+        get;
+        private set;
+    }
+    public int saveSceneIndex
+    {
+        get;
+        private set;
+    }
 
     void Awake()
     {
@@ -21,7 +31,7 @@ public class SceneManager:OsSingletonMono<SceneManager>
 
         public Action callBack;
 
-        public SceneMsg(string name ,Action Func)
+        public SceneMsg(string name, Action Func)
         {
             sceneName = name;
             callBack = Func;
@@ -88,9 +98,23 @@ public class SceneManager:OsSingletonMono<SceneManager>
         }
         yield return async;
         OnSecenLoaded?.Invoke();
-        EventManager.Instance.TriggerEvent<string>(CONST.FinishLoadingSceneProgress,sceneName);
+        EventManager.Instance.TriggerEvent<string>(CONST.FinishLoadingSceneProgress, sceneName);
 
         GameManager.Instance.IsLoadingLevel = false;
+        switch (sceneName)
+        {
+            case (CONST.SCENE_NAME_START):
+                curSceneIndex = 0;
+                break;
+            case (CONST.SCENE_NAME_LEVEL_01):
+                curSceneIndex = 1;
+                break;
+            case (CONST.SCENE_NAME_LEVEL_02):
+                curSceneIndex = 2;
+                break;
+        }
+        if (saveSceneIndex < curSceneIndex)
+            saveSceneIndex = curSceneIndex;
     }
 
 
