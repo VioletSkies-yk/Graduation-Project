@@ -6241,7 +6241,7 @@ MonoBehaviour:
   _gameObject3D: {fileID: 6712876815526459833}
   _meshRender: {fileID: 0}
   _boxCollider: {fileID: 4344989752407192216}
-  _roomCollider: {fileID: 0}
+  _roomCollider: {fileID: 1101470955394188501}
 --- !u!54 &6712876815526459833
 Rigidbody:
   m_ObjectHideFlags: 0
