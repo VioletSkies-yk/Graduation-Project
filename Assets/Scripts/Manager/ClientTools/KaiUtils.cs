@@ -113,7 +113,7 @@ public static class KaiUtils
                 return "LV1";
                 break;
             case 2:
-                return "LV1";
+                return "LV2";
                 break;
             default:
                 return null;
