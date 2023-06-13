@@ -109,4 +109,10 @@ public static partial class CONST
 
 
     #endregion
+
+
+    /// <summary>
+    /// 打字
+    /// </summary>
+    public const string SendTypeMsg = "SendTypeMsg";
 }

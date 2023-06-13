@@ -38,7 +38,7 @@ namespace Assets.Scripts.GamePlay.GameLogic.Episode1
                 EventManager.Instance.TriggerEvent(CONST.StopAudio, "Elevator");
                 EventManager.Instance.TriggerEvent(CONST.SendLoadingScene,new SceneMsg(CONST.SCENE_NAME_LEVEL_02, () =>
                 {
-                    //PlayerController.Instance.SetUnLockPos(true);
+                    EventManager.Instance.TriggerEvent(CONST.SendTypeMsg, KaiUtils.GetSceneSubtitles(2));
                     var pos = GameObject.Find("bornTrigger").transform.position;
                     PlayerController.Instance.SetPlayerPosAndRotation(pos);
                 }));

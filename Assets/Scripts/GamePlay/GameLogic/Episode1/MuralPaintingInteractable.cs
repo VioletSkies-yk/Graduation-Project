@@ -40,6 +40,21 @@ namespace Assets.Scripts.GamePlay.GameLogic.Episode1
 
         bool isRotAble = true;
 
+
+
+        private bool isCompelete;
+
+        private void OnEnable()
+        {
+            isCompelete = false;
+            KaiUtils.SetActive(false, ball.gameObject);
+            EventManager.Instance.StartListening(CONST.ReleaseCatchItem, delegate (GameObject obj) { ReleaseCallBack(obj); });
+        }
+        private void OnDisable()
+        {
+            EventManager.Instance.StopListening(CONST.ReleaseCatchItem, delegate (GameObject obj) { ReleaseCallBack(obj); });
+        }
+
         public override void OnFocus()
         {
             //throw new NotImplementedException();
@@ -65,6 +80,19 @@ namespace Assets.Scripts.GamePlay.GameLogic.Episode1
         public override void OnLoseFocus()
         {
             //throw new NotImplementedException();
+        }
+
+
+        private void ReleaseCallBack(GameObject obj)
+        {
+            if (isCompelete || !ball.gameObject.activeInHierarchy || !string.Equals(obj.name, "R2ball-interact"))
+                return;
+            if (this.GetComponent<Collider>().bounds.Contains(obj.transform.position))
+            {
+                KaiUtils.SetActive(true, ball.gameObject);
+                KaiUtils.SetActive(false, obj.gameObject);
+                isCompelete = true;
+            }
         }
     }
 }

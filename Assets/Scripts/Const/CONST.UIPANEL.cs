@@ -37,4 +37,10 @@ public static partial class CONST
     /// </summary>
     public const string UI_HelpPanel = "HelpMenuPanel";
 
+    /// <summary>
+    /// 字幕界面
+    /// </summary>
+    public const string UI_SubtitlesPanel = "SubtitlesPanel";
+    
+
 }

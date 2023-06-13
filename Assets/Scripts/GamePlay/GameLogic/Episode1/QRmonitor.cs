@@ -24,7 +24,7 @@ namespace Assets.Scripts.GamePlay.GameLogic.Episode1
 
         private void ReleaseCallBack(GameObject obj)
         {
-            if (isCompelete)
+            if (isCompelete || !string.Equals(obj.name, "card"))
                 return;
             if (this.GetComponent<Collider>().bounds.Contains(obj.transform.position))
             {

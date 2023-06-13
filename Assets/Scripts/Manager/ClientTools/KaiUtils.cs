@@ -121,6 +121,35 @@ public static class KaiUtils
         }
     }
 
+    public static string[] GetSceneSubtitles(int index)
+    {
+        List<string> sbs;
+        switch (index)
+        {
+            case 1:
+                sbs = new List<string>()
+                { "好久没感觉到这么安全了",
+                    "真实还是虚假，我好像一直都在医院里把",
+                    "我怎么好像什么都不记得了，但是又很熟悉......",
+                    "儿时梦想的乐园嘛？怎么会出现在这里？" };
+                break;
+            case 2:
+                sbs = new List<string>()
+                {
+                    "回来了？梦嘛？还是在做梦）",
+                    "仔细辨别，你究竟是回来了？还是正在前进？不要问我是谁，真相需要你自己寻找",
+                    "玩家打开门走进房间一时播放字幕：a、梦幻与虚无交织，真美啊",
+                    "只有痛苦才能换来短暂的宁静吗，真想永远留在这里",
+                    "你是有使命的",
+                    "使命？什么使命？刚才好像是我自己不自觉说出的话" };
+
+                break;
+            default:
+                return null;
+                break;
+        }
+        return sbs.ToArray() ;
+    }
 
     #endregion
 }

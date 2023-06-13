@@ -57,6 +57,7 @@ public class GameManager : OsSingletonMono<GameManager>
     private void Start()
     {
         /*var node = */
+        UIManager.Instance.OpenUI(CONST.UI_SubtitlesPanel);
         UIManager.Instance.OpenUI(CONST.UI_BlackPanel);
         UIManager.Instance.OpenUI(CONST.UI_MainMenuPanel);
     }
@@ -74,7 +75,7 @@ public class GameManager : OsSingletonMono<GameManager>
             // });
             EventManager.Instance.TriggerEvent(CONST.SendLoadingScene, new SceneMsg(CONST.SCENE_NAME_LEVEL_01, delegate ()
             {
-                //PlayerController.instance.gameObject.SetActive(true);
+                EventManager.Instance.TriggerEvent(CONST.SendTypeMsg, KaiUtils.GetSceneSubtitles(1));
             })
             );
         }
