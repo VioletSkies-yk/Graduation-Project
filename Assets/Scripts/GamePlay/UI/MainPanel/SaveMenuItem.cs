@@ -66,7 +66,7 @@ namespace Assets.Scripts.GamePlay.UI
         {
             _isEmpty = SaveManager.Instance.isSaveDataEmpty(_index);
 
-            _fillBg.SetActive(!_isEmpty);
+            _selectBg.SetActive(!_isEmpty);
             _emptyBg.SetActive(_isEmpty);
 
             int hour = DateTime.Now.Hour;

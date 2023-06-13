@@ -101,5 +101,12 @@ public static partial class CONST
     /// </summary>
     public const string StopAudio = "StopAudio";
 
+
+    /// <summary>
+    /// 关闭所有音频
+    /// </summary>
+    public const string StopAllAudio = "StopAllAudio";
+
+
     #endregion
 }

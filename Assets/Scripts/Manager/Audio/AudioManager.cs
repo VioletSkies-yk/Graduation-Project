@@ -4,11 +4,14 @@ using UnityEngine;
 public class AudioManager : OsSingletonMono<AudioManager>
 {
     private Dictionary<string, AudioSource> audioSources;
+    //protected override void Awake()
+    //{
+    //    base.Awake();
 
-    private void Awake()
+    //}
+
+    private void Start()
     {
-        DontDestroyOnLoad(this.gameObject);
-
         audioSources = new Dictionary<string, AudioSource>();
         AudioSource[] allSources = GetComponentsInChildren<AudioSource>();
         foreach (AudioSource source in allSources)
@@ -18,12 +21,14 @@ public class AudioManager : OsSingletonMono<AudioManager>
 
         EventManager.Instance.StartListening<string>(CONST.PlayAudio, Play);
         EventManager.Instance.StartListening<string>(CONST.StopAudio, Stop);
+        EventManager.Instance.StartListening(CONST.StopAllAudio, StopAllAudio);
     }
 
     private void OnDisable()
     {
         EventManager.Instance.StopListening<string>(CONST.PlayAudio, Play);
         EventManager.Instance.StopListening<string>(CONST.StopAudio, Stop);
+        EventManager.Instance.StopListening(CONST.StopAllAudio, StopAllAudio);
     }
 
     public void Play(string clipName)
