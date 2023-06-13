@@ -84,6 +84,7 @@ namespace Assets.Scripts.GamePlay.GameLogic.Episode1
             {
                 KaiUtils.SetActive(false, _inputCollider.gameObject);
                 _door.DORotate(new Vector3(0, 70, 0), 2);
+                EventManager.Instance.TriggerEvent(CONST.PlayAudio, "lv1open the door");
             }
         }
     }

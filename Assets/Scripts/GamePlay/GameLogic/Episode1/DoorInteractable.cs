@@ -28,6 +28,7 @@ namespace Assets.Scripts.GamePlay.GameLogic
 
         public override void OnInteract()
         {
+            EventManager.Instance.TriggerEvent(CONST.PlayAudio, "lv2open the door");
             _door.DORotate(new Vector3(0, _angle, 0), _duration);
         }
 
