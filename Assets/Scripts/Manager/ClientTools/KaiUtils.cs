@@ -105,6 +105,21 @@ public static class KaiUtils
         }
     }
 
+    public static string GetSceneBGM(int index)
+    {
+        switch (index)
+        {
+            case 1:
+                return "LV1";
+                break;
+            case 2:
+                return "LV1";
+                break;
+            default:
+                return null;
+                break;
+        }
+    }
 
 
     #endregion
