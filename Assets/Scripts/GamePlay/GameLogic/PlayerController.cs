@@ -183,6 +183,7 @@ namespace Assets.Scripts.GamePlay.GameLogic
                 LockAll();
                 return;
             }
+            UnpackLockAll();
 
             ActionControl();
 

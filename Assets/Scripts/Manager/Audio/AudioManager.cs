@@ -74,6 +74,9 @@ public class AudioManager : OsSingletonMono<AudioManager>
     {
         StopAllAudio();
         string clipName = KaiUtils.GetSceneBGM(index);
+        if (clipName == null)
+            return;
+
         if (audioSources.ContainsKey(clipName))
         {
             audioSources[clipName].Play();
