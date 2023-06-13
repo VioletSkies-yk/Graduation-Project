@@ -46,15 +46,15 @@ namespace Assets.Scripts.GamePlay.UI
             {
                 action(_index);
             });
-            _saveGameBtns.SetCallBack(() =>
-            {
-                KaiUtils.SetActive(true, _selectBg);
-            },
-            () =>
-            {
-                KaiUtils.SetActive(false, _selectBg);
-            }
-            );
+            //_saveGameBtns.SetCallBack(() =>
+            //{
+            //    KaiUtils.SetActive(true, _selectBg);
+            //},
+            //() =>
+            //{
+            //    KaiUtils.SetActive(false, _selectBg);
+            //}
+            //);
         }
 
         public void StopListening()
