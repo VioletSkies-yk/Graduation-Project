@@ -15,13 +15,14 @@ Material:
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: 3000
   stringTagMap:
+    MotionVector: User
     RenderType: Transparent
   disabledShaderPasses:
-  - TransparentDepthPrepass
+  - MOTIONVECTORS
   - TransparentDepthPostpass
   - TransparentBackface
   - RayTracingPrepass
-  - MOTIONVECTORS
+  - TransparentDepthPrepass
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -134,9 +135,9 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_4773fdb32031428ba77f79b5289c9594: 0.3
+    - Vector1_4773fdb32031428ba77f79b5289c9594: 97.78
     - Vector1_ba2c5ba0f0f44d69a50eba831ed317ec: 5
-    - Vector1_d367f419af8e4a41aea52a9fa368f017: 1
+    - Vector1_d367f419af8e4a41aea52a9fa368f017: 77.37
     - Vector1_f52e181410c74331ac20ff13a538dfbb: 0.6
     - _AORemapMax: 1
     - _AORemapMin: 0
@@ -251,8 +252,8 @@ Material:
     - _ZTestTransparent: 4
     - _ZWrite: 0
     m_Colors:
-    - Color_9963dda22d9a442ea8a867930e3da86c: {r: 0, g: 0.5697675, b: 1, a: 0.40392157}
-    - Color_ca8621f3b07f4f3f82449e390387dd8c: {r: 0.9764151, g: 1, b: 0.9995731, a: 0.22745098}
+    - Color_9963dda22d9a442ea8a867930e3da86c: {r: 0, g: 0.6037736, b: 0.5129186, a: 0.40392157}
+    - Color_ca8621f3b07f4f3f82449e390387dd8c: {r: 0, g: 1, b: 0.8320384, a: 0.22745098}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
