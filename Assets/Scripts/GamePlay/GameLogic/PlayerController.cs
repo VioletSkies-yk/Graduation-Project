@@ -151,12 +151,20 @@ namespace Assets.Scripts.GamePlay.GameLogic
 
         private void OnEnable()
         {
+            EventManager.Instance.StartListening(CONST.StartLoadingSceneProgress, OnSceneChangeStart);
             EventManager.Instance.StartListening<int>(CONST.FinishLoadingSceneProgress, OnSceneChange);
         }
 
         private void OnDisable()
         {
+            EventManager.Instance.StopListening(CONST.StartLoadingSceneProgress, OnSceneChangeStart);
             EventManager.Instance.StopListening<int>(CONST.FinishLoadingSceneProgress, OnSceneChange);
+        }
+
+        private void OnSceneChangeStart()
+        {
+            LockAll();
+            _playerCamera.gameObject.SetActive(false);
         }
 
         private void OnSceneChange(int index)

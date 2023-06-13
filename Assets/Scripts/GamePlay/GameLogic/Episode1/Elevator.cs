@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using static SceneManager;
 
 namespace Assets.Scripts.GamePlay.GameLogic.Episode1
 {
@@ -35,12 +36,12 @@ namespace Assets.Scripts.GamePlay.GameLogic.Episode1
             {
                 isCompelete = true;
                 EventManager.Instance.TriggerEvent(CONST.StopAudio, "Elevator");
-                SceneManager.Instance.LoadSceneAsync(CONST.SCENE_NAME_LEVEL_02, () =>
+                EventManager.Instance.TriggerEvent(CONST.SendLoadingScene,new SceneMsg(CONST.SCENE_NAME_LEVEL_02, () =>
                 {
-                    PlayerController.Instance.SetUnLockPos(true);
+                    //PlayerController.Instance.SetUnLockPos(true);
                     var pos = GameObject.Find("bornTrigger").transform.position;
                     PlayerController.Instance.SetPlayerPosAndRotation(pos);
-                });
+                }));
             };
             PlayerController.Instance.transform.DOLocalMoveY(PlayerController.Instance.transform.position.y - (transform.localPosition.y - Y), duration);
         }
