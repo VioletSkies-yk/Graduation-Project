@@ -15,6 +15,18 @@ namespace Assets.Scripts.GamePlay.UI
 
         private Action OnMouseExit;
 
+        protected override void OnEnable()
+        {
+            base.OnEnable();
+            onClick.AddListener(() => { EventManager.Instance.TriggerEvent(CONST.PlayAudio, "click buttons"); });
+        }
+
+        protected override void OnDisable()
+        {
+            base.OnDisable();
+            onClick.RemoveListener(() => { EventManager.Instance.TriggerEvent(CONST.PlayAudio, "click buttons"); });
+        }
+
         public void SetCallBack(Action enterCallBack = null, Action exitCallBack = null)
         {
             OnMouseEnter = enterCallBack;
