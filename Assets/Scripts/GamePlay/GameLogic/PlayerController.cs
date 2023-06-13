@@ -169,7 +169,7 @@ namespace Assets.Scripts.GamePlay.GameLogic
 
         private void OnSceneChange(int index)
         {
-            if(index==-1||index==0)
+            if (index == -1 || index == 0)
             {
                 LockAll();
                 _playerCamera.gameObject.SetActive(false);
@@ -240,6 +240,30 @@ namespace Assets.Scripts.GamePlay.GameLogic
                 direction.y -= _gravity * Time.deltaTime;
                 Vector3 transfromDir = new Vector3((direction * Time.deltaTime * (Input.GetKey(KeyCode.LeftShift) ? _runSpeed : _walkSpeed)).x, (direction * Time.deltaTime * _walkSpeed).y, (direction * Time.deltaTime * (Input.GetKey(KeyCode.LeftShift) ? _runSpeed : _walkSpeed)).z);
                 _playerController.Move(_playerController.transform.TransformDirection(transfromDir));
+
+                #region Audio
+                if (direction.x != 0 || direction.z != 0)
+                {
+                    EventManager.Instance.TriggerEvent(CONST.PlayAudio, "lv1walk");
+
+                    if(Input.GetKeyDown(KeyCode.LeftShift))
+                    {
+                        EventManager.Instance.TriggerEvent(CONST.StopAudio, "lv1walk");
+                        EventManager.Instance.TriggerEvent(CONST.PlayAudio, "lv1run");
+                    }
+                    else
+                    {
+                        EventManager.Instance.TriggerEvent(CONST.StopAudio, "lv1run");
+                        EventManager.Instance.TriggerEvent(CONST.PlayAudio, "lv1walk");
+                    }
+                }
+                else
+                {
+                    EventManager.Instance.TriggerEvent(CONST.StopAudio, "lv1walk");
+                    EventManager.Instance.TriggerEvent(CONST.StopAudio, "lv1run");
+                }
+
+                #endregion
 
                 if (_playerController.isGrounded)
                 {
@@ -403,7 +427,7 @@ namespace Assets.Scripts.GamePlay.GameLogic
 
         void GamePause()
         {
-            if (SceneManager.instance.isInPlayingScene&&Input.GetKeyDown(KeyCode.Escape))
+            if (SceneManager.instance.isInPlayingScene && Input.GetKeyDown(KeyCode.Escape))
             {
                 UIManager.instance.OpenUI(CONST.UI_PausePanel);
             }

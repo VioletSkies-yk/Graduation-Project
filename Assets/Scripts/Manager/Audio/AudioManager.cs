@@ -41,7 +41,10 @@ public class AudioManager : OsSingletonMono<AudioManager>
     {
         if (audioSources.ContainsKey(clipName))
         {
-            audioSources[clipName].Play();
+            if (audioSources[clipName].isPlaying)
+                return;
+            else
+                audioSources[clipName].Play();
         }
         else
         {
