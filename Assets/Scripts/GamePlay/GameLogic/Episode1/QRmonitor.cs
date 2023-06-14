@@ -33,7 +33,8 @@ namespace Assets.Scripts.GamePlay.GameLogic.Episode1
                 //Debug.LogError(GetComponent<MeshRenderer>().materials[1]);
                 isCompelete = true;
                 obj.SetActive(false);
-                EventManager.Instance.TriggerEvent(CONST.Lv2Door);
+                EventManager.Instance.TriggerEvent(CONST.Lv2Door1);
+                EventManager.Instance.TriggerEvent(CONST.Lv2Door2);
             }
         }
     }

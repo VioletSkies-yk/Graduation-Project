@@ -56,7 +56,17 @@ namespace Assets.Scripts.GamePlay.GameLogic.Episode1
         {
 
         }
-        
+        private void OnEnable()
+        {
+            EventManager.Instance.StartListening(CONST.Lv2Door1, OpenTheDoor);
+        }
+        private void OnDisable()
+        {
+            EventManager.Instance.StopListening(CONST.Lv2Door1, OpenTheDoor);
+        }
+
+
+
         private void Update()
         {
             _cube.UpdateFunc(OnPuttingDownTheKey);
@@ -89,6 +99,12 @@ namespace Assets.Scripts.GamePlay.GameLogic.Episode1
                 _door.DORotate(new Vector3(0, 70, 0), 2);
                 EventManager.Instance.TriggerEvent(CONST.PlayAudio, "lv1open the door");
             }
+        }
+
+        private void OpenTheDoor()
+        {
+            _door.DORotate(new Vector3(0, -70, 0), 2);
+            EventManager.Instance.TriggerEvent(CONST.PlayAudio, "lv1open the door");
         }
     }
 }

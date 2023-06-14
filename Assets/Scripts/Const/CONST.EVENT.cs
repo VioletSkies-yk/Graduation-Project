@@ -78,7 +78,12 @@ public static partial class CONST
     /// <summary>
     /// 显示器变色
     /// </summary>
-    public const string Lv2Door = "Lv2Door";
+    public const string Lv2Door1 = "Lv2Door1";
+
+    /// <summary>
+    /// 显示器变色
+    /// </summary>
+    public const string Lv2Door2 = "Lv2Door2";
 
 
 

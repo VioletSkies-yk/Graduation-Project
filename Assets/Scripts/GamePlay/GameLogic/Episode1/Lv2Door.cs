@@ -29,12 +29,12 @@ namespace Assets.Scripts.GamePlay.GameLogic
 
         private void OnEnable()
         {
-            EventManager.Instance.StartListening(CONST.Lv2Door, CallBack);
+            EventManager.Instance.StartListening(CONST.Lv2Door2, CallBack);
         }
         private void OnDisable()
         {
 
-            EventManager.Instance.StopListening(CONST.Lv2Door, CallBack);
+            EventManager.Instance.StopListening(CONST.Lv2Door2, CallBack);
 
         }
         public void CallBack()

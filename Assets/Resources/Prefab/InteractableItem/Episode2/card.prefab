@@ -98,8 +98,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _focusDistance: 20
   _clickDistance: 20
-  _gameObject3D: {fileID: 0}
-  _boxCollider: {fileID: 0}
+  _gameObject3D: {fileID: 1661296223860418977}
+  _boxCollider: {fileID: 7363296473138312061}
   _roomCollider: {fileID: 0}
 --- !u!65 &7363296473138312061
 BoxCollider:
@@ -112,8 +112,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.3143921, y: 0.29181254, z: 1.9736347}
-  m_Center: {x: 0.000030517578, y: 0.09590614, z: -0.0000009536743}
+  m_Size: {x: 1.3143921, y: 0.5609083, z: 1.9736347}
+  m_Center: {x: 0.000030517578, y: 0.23045403, z: -0.0000009536743}
 --- !u!54 &1661296223860418977
 Rigidbody:
   m_ObjectHideFlags: 0
