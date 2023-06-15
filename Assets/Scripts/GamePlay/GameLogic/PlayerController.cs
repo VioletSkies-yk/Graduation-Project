@@ -176,9 +176,13 @@ namespace Assets.Scripts.GamePlay.GameLogic
             }
             else
             {
-                if(index==2||index==3)
+                if(index==2)
                 {
                     gameObject.transform.localScale = new Vector3(6f, 6f, 6f);
+                }
+                else if(index == 3)
+                {
+                    gameObject.transform.localScale = new Vector3(10f, 10f, 10f);
                 }
                 else
                 {

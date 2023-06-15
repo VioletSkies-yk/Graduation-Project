@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.Scripts.GamePlay.GameLogic;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,7 +18,7 @@ public class ScreenLineRenderer : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        cam = Camera.main;
+        cam = PlayerController.Instance._playerCamera;
         dragging = false;
     }
 
