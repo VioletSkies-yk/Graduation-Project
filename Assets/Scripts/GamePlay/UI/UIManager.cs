@@ -100,7 +100,11 @@ namespace Assets.Scripts.GamePlay.UI
                 }
                 //first load use less uiif(assetPath != null)
                 // in Editor try to load from actual place
-                GameObject prefab = (GameObject)UnityEditor.AssetDatabase.LoadAssetAtPath(string.Format(CONST.UIPrefabAssetPath, uiname), typeof(GameObject));
+//#if UNITY_EDITOR
+//                GameObject prefab = (GameObject)UnityEditor.AssetDatabase.LoadAssetAtPath(string.Format("Assets/Resources/" + CONST.UIPrefabAssetPath, uiname), typeof(GameObject));
+//#else
+                GameObject prefab = Resources.Load<GameObject>(string.Format(CONST.UIPrefabAssetPath, uiname));
+//#endif
                 if (null != prefab)
                 {
                     GameObject go = Instantiate(prefab, _uiParent.transform);

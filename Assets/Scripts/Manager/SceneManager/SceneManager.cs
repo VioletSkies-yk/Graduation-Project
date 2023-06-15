@@ -124,6 +124,9 @@ public class SceneManager : OsSingletonMono<SceneManager>
             case (CONST.SCENE_NAME_LEVEL_02):
                 curSceneIndex = 2;
                 break;
+            case (CONST.SCENE_NAME_LEVEL_03):
+                curSceneIndex = 3;
+                break;
         }
         if (saveSceneIndex < curSceneIndex)
             saveSceneIndex = curSceneIndex;

@@ -36,12 +36,13 @@ namespace Assets.Scripts.GamePlay.GameLogic.Episode1
             {
                 isCompelete = true;
                 EventManager.Instance.TriggerEvent(CONST.StopAudio, "Elevator");
-                EventManager.Instance.TriggerEvent(CONST.SendLoadingScene,new SceneMsg(CONST.SCENE_NAME_LEVEL_02, () =>
-                {
-                    EventManager.Instance.TriggerEvent(CONST.SendTypeMsg, KaiUtils.GetSceneSubtitles(2));
-                    var pos = GameObject.Find("bornTrigger").transform.position;
-                    PlayerController.Instance.SetPlayerPosAndRotation(pos);
-                }));
+
+                EventManager.Instance.TriggerEvent(CONST.SendLoadingScene, new SceneMsg(KaiUtils.GetSceneName(SceneManager.Instance.curSceneIndex + 1), () =>
+                  {
+                      EventManager.Instance.TriggerEvent(CONST.SendTypeMsg, KaiUtils.GetSceneSubtitles(SceneManager.Instance.curSceneIndex+1));
+                      var pos = GameObject.Find("bornTrigger").transform.position;
+                      PlayerController.Instance.SetPlayerPosAndRotation(pos);
+                  }));
             };
             PlayerController.Instance.transform.DOLocalMoveY(PlayerController.Instance.transform.position.y - (transform.localPosition.y - Y), duration);
         }

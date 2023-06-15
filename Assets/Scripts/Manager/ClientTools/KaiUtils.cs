@@ -81,6 +81,9 @@ public static class KaiUtils
             case 2:
                 return CONST.SCENE_NAME_LEVEL_02;
                 break;
+            case 3:
+                return CONST.SCENE_NAME_LEVEL_03;
+                break;
             default:
                 return null;
                 break;
@@ -98,6 +101,9 @@ public static class KaiUtils
             case 2:
                 return "LV2-r1";
                 break;
+            case 3:
+                return "LV3-r1";
+                break;
             default:
                 return "LV1-r1";
                 return null;
@@ -114,6 +120,9 @@ public static class KaiUtils
                 break;
             case 2:
                 return "LV2";
+                break;
+            case 3:
+                return "LV3";
                 break;
             default:
                 return null;
@@ -142,6 +151,17 @@ public static class KaiUtils
                     "只有痛苦才能换来短暂的宁静吗，真想永远留在这里",
                     "你是有使命的",
                     "使命？什么使命？刚才好像是我自己不自觉说出的话" };
+
+                break;
+            case 3:
+                sbs = new List<string>()
+                {
+                    "切割",
+                    "切割",
+                    "尽情切割吧",
+                    "尽情切割吧",
+                    "尽情切割吧"
+                };
 
                 break;
             default:

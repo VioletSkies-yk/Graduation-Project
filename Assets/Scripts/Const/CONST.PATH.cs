@@ -10,5 +10,5 @@ public static partial class CONST
     /// <summary>
     /// UI预制体路径
     /// </summary>
-    public const string UIPrefabAssetPath = "Assets/Resources/Prefab/UI/{0}.prefab";
+    public const string UIPrefabAssetPath = "Prefab/UI/{0}";
 }
