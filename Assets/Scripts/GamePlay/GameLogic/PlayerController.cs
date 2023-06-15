@@ -176,6 +176,14 @@ namespace Assets.Scripts.GamePlay.GameLogic
             }
             else
             {
+                if(index==2)
+                {
+                    gameObject.transform.localScale = new Vector3(6f, 6f, 6f);
+                }
+                else
+                {
+                    gameObject.transform.localScale = new Vector3(5f, 5f, 5f);
+                }
                 UnpackLockAll();
                 _playerCamera.gameObject.SetActive(true);
             }
