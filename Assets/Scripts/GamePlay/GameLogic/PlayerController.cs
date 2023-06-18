@@ -139,6 +139,21 @@ namespace Assets.Scripts.GamePlay.GameLogic
 
         #endregion
 
+        private bool isEnterElevator;
+
+        private Vector3 _savePos;
+
+        public Vector3 savePos
+        {
+            get
+            {
+                if (isEnterElevator)
+                    return _savePos;
+                else
+                    return transform.position;
+            }
+        }
+
         //private void Awake()
         //{
         //    DontDestroyOnLoad(this.gameObject);
@@ -153,16 +168,19 @@ namespace Assets.Scripts.GamePlay.GameLogic
         {
             EventManager.Instance.StartListening(CONST.LoadingImageAllBlack, OnSceneChangeStart);
             EventManager.Instance.StartListening<int>(CONST.FinishLoadingSceneProgress, OnSceneChange);
+            EventManager.Instance.StartListening(CONST.TriggerDianTi, OnEnterDianti);
         }
 
         private void OnDisable()
         {
             EventManager.Instance.StopListening(CONST.LoadingImageAllBlack, OnSceneChangeStart);
             EventManager.Instance.StopListening<int>(CONST.FinishLoadingSceneProgress, OnSceneChange);
+            EventManager.Instance.StopListening(CONST.TriggerDianTi, OnEnterDianti);
         }
 
         private void OnSceneChangeStart()
         {
+            isEnterElevator = false;
             LockAll();
             //_playerCamera.gameObject.SetActive(false);
         }
@@ -176,11 +194,11 @@ namespace Assets.Scripts.GamePlay.GameLogic
             }
             else
             {
-                if(index==2)
+                if (index == 2)
                 {
                     gameObject.transform.localScale = new Vector3(6f, 6f, 6f);
                 }
-                else if(index == 3)
+                else if (index == 3)
                 {
                     gameObject.transform.localScale = new Vector3(10f, 10f, 10f);
                 }
@@ -258,7 +276,7 @@ namespace Assets.Scripts.GamePlay.GameLogic
                 {
                     EventManager.Instance.TriggerEvent(CONST.PlayAudio, "lv1walk");
 
-                    if(Input.GetKeyDown(KeyCode.LeftShift))
+                    if (Input.GetKeyDown(KeyCode.LeftShift))
                     {
                         EventManager.Instance.TriggerEvent(CONST.StopAudio, "lv1walk");
                         EventManager.Instance.TriggerEvent(CONST.PlayAudio, "lv1run");
@@ -443,6 +461,12 @@ namespace Assets.Scripts.GamePlay.GameLogic
             {
                 UIManager.instance.OpenUI(CONST.UI_PausePanel);
             }
+        }
+
+        private void OnEnterDianti()
+        {
+            isEnterElevator = true;
+            _savePos = PlayerController.Instance.transform.position;
         }
     }
 }

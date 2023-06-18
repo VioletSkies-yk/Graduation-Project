@@ -39,6 +39,7 @@ namespace Assets.Scripts.GamePlay.GameLogic
                     _elevatorLeftDoor.DOMove(_elevatorLeftDoor.position + temp.normalized * 3, 1f);
                     _elevatorRightDoor.DOMove(_elevatorRightDoor.position - temp.normalized * 3, 1f);
                     isFirst = false;
+                    EventManager.Instance.TriggerEvent(CONST.TriggerDianTi);
                 }
             }
             else

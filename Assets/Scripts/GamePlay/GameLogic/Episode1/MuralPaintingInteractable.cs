@@ -35,8 +35,15 @@ namespace Assets.Scripts.GamePlay.GameLogic.Episode1
         /// 球
         /// </summary>
         [Space]
-        [Header("一次旋转的时间")]
+        [Header("球")]
         public Rigidbody ball;
+
+        /// <summary>
+        /// 触发物体
+        /// </summary>
+        [Space]
+        [Header("触发物体")]
+        public BoxCollider trigger;
 
         bool isRotAble = true;
 
@@ -85,9 +92,9 @@ namespace Assets.Scripts.GamePlay.GameLogic.Episode1
 
         private void ReleaseCallBack(GameObject obj)
         {
-            if (isCompelete || !ball.gameObject.activeInHierarchy || !string.Equals(obj.name, "R2ball-interact"))
+            if (isCompelete || ball.gameObject.activeInHierarchy || !string.Equals(obj.name, "R2ball-interact"))
                 return;
-            if (this.GetComponent<Collider>().bounds.Contains(obj.transform.position))
+            if (trigger.bounds.Contains(obj.transform.position))
             {
                 KaiUtils.SetActive(true, ball.gameObject);
                 KaiUtils.SetActive(false, obj.gameObject);

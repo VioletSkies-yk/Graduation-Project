@@ -74,7 +74,11 @@ public static partial class CONST
     /// </summary>
     public const string EnterDianTi = "EnterDianTi";
 
-
+    /// <summary>
+    /// 遇到电梯
+    /// </summary>
+    public const string TriggerDianTi = "TriggerDianTi";
+    
     /// <summary>
     /// 显示器变色
     /// </summary>

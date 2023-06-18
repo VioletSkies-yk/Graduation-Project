@@ -1,4 +1,5 @@
 ﻿using DG.Tweening;
+using DG.Tweening.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,15 +25,16 @@ namespace Assets.Scripts.GamePlay.GameLogic.Episode1
         private void OnDisable()
         {
             EventManager.Instance.StopListening(CONST.EnterDianTi, CallBack);
+            DOTween.KillAll();
         }
-
+        TweenCallback domove;
         private void CallBack()
         {
             if (isCompelete)
                 return;
             EventManager.Instance.TriggerEvent(CONST.PlayAudio, "Elevator");
             PlayerController.Instance.SetUnLockPos(false);
-            this.transform.DOLocalMoveY(Y, duration).onComplete = delegate ()
+            domove=this.transform.DOLocalMoveY(Y, duration).onComplete = delegate ()
             {
                 isCompelete = true;
                 EventManager.Instance.TriggerEvent(CONST.StopAudio, "Elevator");

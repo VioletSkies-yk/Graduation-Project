@@ -148,7 +148,7 @@ namespace Assets.Scripts.GamePlay.UI
                     {
                         saveSceneIndex = SceneManager.Instance.saveSceneIndex,
                         currentSceneIndex = SceneManager.Instance.curSceneIndex,
-                        position = PlayerController.Instance.transform.position
+                        position = PlayerController.Instance.savePos
                     };
                     SaveManager.Instance.Save(_data, _index);
                 }
