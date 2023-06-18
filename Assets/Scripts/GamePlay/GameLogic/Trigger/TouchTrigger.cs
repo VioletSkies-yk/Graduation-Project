@@ -12,6 +12,7 @@ public class TouchTrigger : MonoBehaviour
     protected bool isTriggerON;
 
     public Action TriggerAction;
+    public Action TriggeExitAction;
     //public bool isTouchTrigger;
 
     public TouchTrigger()
@@ -27,6 +28,18 @@ public class TouchTrigger : MonoBehaviour
             if (other.gameObject == PlayerController.Instance.gameObject)
             {
                 TriggerAction?.Invoke();
+            }
+        }
+    }
+
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (isTriggerON)
+        {
+            if (other.gameObject == PlayerController.Instance.gameObject)
+            {
+                TriggeExitAction?.Invoke();
             }
         }
     }

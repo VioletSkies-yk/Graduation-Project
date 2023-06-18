@@ -43,19 +43,20 @@ namespace Assets.Scripts.GamePlay.GameLogic.Episode1
             _passTrigger.SetTriggerOnOfOff(false);
             _trueCorridorPainting.SetTriggerOnOfOff(false);
 
-            _fakeCorridorPainting.SetTriggerCallBack(Transition);
+            //_fakeCorridorPainting.SetTriggerCallBack(Transition);
             _passTrigger.TriggerAction = LoopCallBack;
-            _trueCorridorPainting.SetTriggerCallBack(() =>
+            _fakeCorridorPainting.SetTriggerCallBack(() =>
             {
-                PlayerController.Instance.SetPlayerPosAndRotation(PlayerController.Instance.transform.position, 0f, PlayerController.Instance.transform.DOMoveZ(-1f, 0.5f));
-                EventManager.Instance.TriggerEvent(CONST.PassLevelOnTheSameEpisode, EpisodeType.Episode1);
+                //PlayerController.Instance.SetPlayerPosAndRotation(PlayerController.Instance.transform.position, 0f, PlayerController.Instance.transform.DOMoveZ(-1f, 0.5f));
+                //EventManager.Instance.TriggerEvent(CONST.PassLevelOnTheSameEpisode, EpisodeType.Episode1);
+                _fakeCorridorPainting._trigger.TriggeExitAction = () => { _fakeCorridorPainting._paintingCol.isTrigger = false; };
             });
 
         }
 
         public override void OnEnter()
         {
-            KaiUtils.SetActive(true, _trueCorridorPainting.gameObject);
+            //KaiUtils.SetActive(true, _trueCorridorPainting.gameObject);
             _trueCorridorPainting.SetTransparent();
             _passTrigger.SetTriggerOnOfOff(true);
         }
@@ -63,6 +64,7 @@ namespace Assets.Scripts.GamePlay.GameLogic.Episode1
         public override void OnLeave()
         {
             _trueCorridorPainting.SetBlack();
+            _fakeCorridorPainting._paintingCol.isTrigger = false;
         }
 
         public override void ResetStage()

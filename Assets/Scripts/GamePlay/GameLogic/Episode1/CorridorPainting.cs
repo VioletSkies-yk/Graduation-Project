@@ -21,7 +21,7 @@ namespace Assets.Scripts.GamePlay.GameLogic.Episode1
         /// </summary>
         [Space]
         [Header("画布")]
-        [SerializeField] private MeshCollider _paintingCol;
+        [SerializeField] public MeshCollider _paintingCol;
 
         /// <summary>
         /// 不透明材质
@@ -42,7 +42,7 @@ namespace Assets.Scripts.GamePlay.GameLogic.Episode1
         /// </summary>
         [Space]
         [Header("碰撞体")]
-        [SerializeField] private TouchTrigger _trigger;
+        [SerializeField] public TouchTrigger _trigger;
 
         public void SetTransparent()
         {
@@ -60,7 +60,7 @@ namespace Assets.Scripts.GamePlay.GameLogic.Episode1
 
         public void SetTriggerCallBack(Action callback)
         {
-            //_trigger.TriggerAction = callback;
+            _trigger.TriggerAction = callback;
         }
     }
 }
