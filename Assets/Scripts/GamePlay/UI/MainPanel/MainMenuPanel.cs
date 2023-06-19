@@ -56,7 +56,7 @@ namespace Assets.Scripts.GamePlay.UI
         /// <summary>
         /// 背景图
         /// </summary>  
-        [SerializeField] private Image _bg;
+        [SerializeField] private CommonBg _bg;
 
 
         protected override bool OnOpened()
@@ -74,7 +74,7 @@ namespace Assets.Scripts.GamePlay.UI
 
         private void AddListener()
         {
-            _bg.sprite.name = KaiUtils.GetBgName();
+            _bg.SetBg();
             _beginGame.onClick.AddListener(OnClickStart);
             _beginGame.SetCallBack(() =>
             {

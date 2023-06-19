@@ -14,7 +14,7 @@ namespace Assets.Scripts.GamePlay.UI
         /// <summary>
         /// 背景图
         /// </summary>  
-        [SerializeField] private Image _bg;
+        [SerializeField] private CommonBg _bg;
 
         /// <summary>
         /// 关闭按钮
@@ -23,9 +23,7 @@ namespace Assets.Scripts.GamePlay.UI
 
         protected override bool OnOpened()
         {
-            if (SceneManager.Instance.isInPlayingScene)
-                KaiUtils.SetActive(false, _bg.gameObject);
-            _bg.sprite.name = KaiUtils.GetBgName();
+            _bg.SetBg();
             AddListener();
             return base.OnOpened();
         }

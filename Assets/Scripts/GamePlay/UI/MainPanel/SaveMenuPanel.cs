@@ -20,7 +20,8 @@ namespace Assets.Scripts.GamePlay.UI
         /// 关闭按钮
         /// </summary>  
         [SerializeField] private ButtonHandle _closeBtn;
-
+        [SerializeField] private CommonBg _bg;
+        
         /*
         /// <summary>
         /// 创建存档界面
@@ -57,6 +58,7 @@ namespace Assets.Scripts.GamePlay.UI
         {
             StartListening();
             HideConfirmPanel();
+            _bg.SetBg();
             return base.OnOpened();
         }
         protected override void OnClosing()
