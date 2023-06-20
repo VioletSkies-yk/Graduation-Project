@@ -24,7 +24,7 @@ namespace Assets.Scripts.GamePlay.GameLogic.Episode1
 
         private void ReleaseCallBack(GameObject obj)
         {
-            if (isCompelete || !string.Equals(obj.name, "card"))
+            if (isCompelete || (!string.Equals(obj.name, "card-1") && !string.Equals(obj.name, "card-2")))
                 return;
             if (this.GetComponent<Collider>().bounds.Contains(obj.transform.position))
             {
@@ -33,8 +33,10 @@ namespace Assets.Scripts.GamePlay.GameLogic.Episode1
                 //Debug.LogError(GetComponent<MeshRenderer>().materials[1]);
                 isCompelete = true;
                 obj.SetActive(false);
-                EventManager.Instance.TriggerEvent(CONST.Lv2Door1);
-                EventManager.Instance.TriggerEvent(CONST.Lv2Door2);
+                if (string.Equals(obj.name, "card-1"))
+                    EventManager.Instance.TriggerEvent(CONST.Lv2Door1);
+                else if (string.Equals(obj.name, "card-2"))
+                    EventManager.Instance.TriggerEvent(CONST.Lv2Door2);
             }
         }
     }
