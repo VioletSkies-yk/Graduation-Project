@@ -39,7 +39,7 @@ namespace Assets.Scripts.GamePlay.GameLogic
         {
             if (isFirst)
             {
-                KaiUtils.SetActive(false, _saveRoom);
+                //KaiUtils.SetActive(false, _saveRoom);
                 KaiUtils.SetActive(true, _corridorWall);
                 isFirst = false;
             }

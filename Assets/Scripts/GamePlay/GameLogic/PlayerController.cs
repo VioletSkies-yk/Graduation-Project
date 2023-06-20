@@ -229,10 +229,10 @@ namespace Assets.Scripts.GamePlay.GameLogic
             HandleInteractionInput();
 
 
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                UIManager.Instance.OpenUI(CONST.UI_DetailTipsPanel);
-            }
+            //if (Input.GetKeyDown(KeyCode.E))
+            //{
+            //    UIManager.Instance.OpenUI(CONST.UI_DetailTipsPanel);
+            //}
             GamePause();
         }
 

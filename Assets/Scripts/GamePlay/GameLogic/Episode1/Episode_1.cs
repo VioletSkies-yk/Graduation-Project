@@ -65,7 +65,7 @@ namespace Assets.Scripts.GamePlay.GameLogic.Episode1
             {
                 base.ChangeLevelStage();
                 KaiUtils.SetActive(true, _levelStageDic[LevelStageType.Level_03].gameObject);
-                KaiUtils.SetActive(false, _saveRoomLight);
+                //KaiUtils.SetActive(false, _saveRoomLight);
                 _levelTrigger01.SetTriggerOnOfOff(false);
             }
         }

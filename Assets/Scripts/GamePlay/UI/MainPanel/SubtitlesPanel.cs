@@ -35,13 +35,13 @@ namespace Assets.Scripts.GamePlay.UI
             base.OnClosing();
         }
 
-        private void Update()
-        {
-            if (IsOpened && Input.GetKeyDown(KeyCode.E))
-            {
-                onButtonClickToClose();
-            }
-        }
+        //private void Update()
+        //{
+        //    if (IsOpened && Input.GetKeyDown(KeyCode.E))
+        //    {
+        //        onButtonClickToClose();
+        //    }
+        //}
 
         private void DoType(string[] content)
         {

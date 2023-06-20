@@ -24,6 +24,7 @@ namespace Assets.Scripts.GamePlay.UI
 
         protected override bool OnOpened()
         {
+            GameManager.Instance.GamePause();
             //_closeBtn.onClick.AddListener(onButtonClickToClose);
             PlayerController.Instance.LockAll();
             return base.OnOpened();
@@ -31,6 +32,7 @@ namespace Assets.Scripts.GamePlay.UI
 
         protected override void OnClosing()
         {
+            GameManager.Instance.GameContinue();
             //_closeBtn.onClick.RemoveAllListeners();
             SetImage(null);
             PlayerController.Instance.UnpackLockAll();

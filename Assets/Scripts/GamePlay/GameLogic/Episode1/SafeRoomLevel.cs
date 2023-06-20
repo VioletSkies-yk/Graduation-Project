@@ -83,7 +83,7 @@ namespace Assets.Scripts.GamePlay.GameLogic.Episode1
 
         public override void OnLeave()
         {
-            KaiUtils.SetActive(false, gameObject);
+            //KaiUtils.SetActive(false, gameObject);
         }
 
         public override void ResetStage()
