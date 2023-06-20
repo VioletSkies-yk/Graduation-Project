@@ -16,6 +16,12 @@ namespace Assets.Scripts.GamePlay.GameLogic.Episode1
         [Space]
         [Header("目标Bound")]
         [SerializeField] private BoxCollider targetBound;
+        /// <summary>
+        /// 迷宫
+        /// </summary>
+        [Space]
+        [Header("迷宫")]
+        [SerializeField] private GameObject muralPaint;
 
         private void Start()
         {
@@ -26,7 +32,7 @@ namespace Assets.Scripts.GamePlay.GameLogic.Episode1
         {
             if (targetBound.bounds.Contains(this.transform.position))
             {
-                KaiUtils.SetActive(false, this.gameObject);
+                KaiUtils.SetActive(false, this.gameObject, muralPaint);
 
                 EventManager.Instance.TriggerEvent(CONST.OpenMuralPaintingDoor);
             }

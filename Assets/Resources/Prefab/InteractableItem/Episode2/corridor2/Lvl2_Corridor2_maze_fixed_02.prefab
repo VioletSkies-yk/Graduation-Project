@@ -659,6 +659,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetBound: {fileID: 5386812426145580406}
+  muralPaint: {fileID: 9109995780746361404}
 --- !u!1 &5891903865507867010
 GameObject:
   m_ObjectHideFlags: 0
