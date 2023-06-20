@@ -461,6 +461,15 @@ namespace Assets.Scripts.GamePlay.GameLogic
             {
                 UIManager.instance.OpenUI(CONST.UI_PausePanel);
             }
+            if (Input.GetKeyDown(KeyCode.F3))
+            {
+                EventManager.Instance.TriggerEvent(CONST.SendLoadingScene, new SceneManager.SceneMsg(KaiUtils.GetSceneName(3), () =>
+                {
+                    EventManager.Instance.TriggerEvent(CONST.SendTypeMsg, KaiUtils.GetSceneSubtitles(3));
+                    var pos = GameObject.Find("bornTrigger").transform.position;
+                    PlayerController.Instance.SetPlayerPosAndRotation(pos);
+                }));
+            }
         }
 
         private void OnEnterDianti()

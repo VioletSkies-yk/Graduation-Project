@@ -96,6 +96,15 @@ public static partial class CONST
     /// </summary>
     public const string OpenMuralPaintingDoor = "OpenMuralPaintingDoor";
 
+    /// <summary>
+    /// 盘子交互
+    /// </summary>
+    public const string PlateCanClick = "PlateCanClick";
+
+    /// <summary>
+    /// 盘子交互
+    /// </summary>
+    public const string ResetPlate = "ResetPlate";
     #endregion
 
     #region 音频

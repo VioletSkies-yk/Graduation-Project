@@ -1,9 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using Assets.Scripts.GamePlay.GameLogic;
+
 public class MouseSlice : MonoBehaviour
 {
-
     public GameObject plane;
     public Transform ObjectContainer;
 
@@ -147,6 +148,18 @@ public class MouseSlice : MonoBehaviour
 
         (posBigger ? positiveObjects : negativeObjects).Add(obj.transform);
         (posBigger ? negativeObjects : positiveObjects).Add(newObject.transform);
+
+        if (ObjectContainer.childCount >= 4)
+        {
+            enabled = false;
+            var list = ObjectContainer.GetComponentsInChildren<MeshCollider>();
+            foreach (var item in list)
+            {
+                item.gameObject.AddComponent<Rigidbody>();
+                //item.gameObject.AddComponent<BaseCatchInteractable>();
+            }
+            EventManager.Instance.TriggerEvent(CONST.PlateCanClick);
+        }
 
         return true;
     }
