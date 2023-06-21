@@ -105,6 +105,11 @@ public static partial class CONST
     /// 盘子交互
     /// </summary>
     public const string ResetPlate = "ResetPlate";
+
+    /// <summary>
+    /// 盘子交互
+    /// </summary>
+    public const string Lv3r2 = "Lv3r2";
     #endregion
 
     #region 音频

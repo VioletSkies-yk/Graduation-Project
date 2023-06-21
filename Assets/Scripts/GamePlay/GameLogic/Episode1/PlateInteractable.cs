@@ -55,12 +55,13 @@ namespace Assets.Scripts.GamePlay.GameLogic
                     //temp.GetComponent<BaseCatchInteractable>().enabled = false;
                     if (_parent.childCount == 0)
                     {
-                        if (_pos.childCount == 4 && isMain)
+                        if (_pos.childCount >= 4 && isMain)
                         {
                             if (_sliceObject != null)
                                 _sliceObject.SetParent(_parent);
                             PlayerController.Instance.SetPlayerPosAndRotation(_nextPos.position);
                             Debug.Log("lv3r1通关");
+                            EventManager.Instance.TriggerEvent(CONST.Lv3r2);
                         }
                         else
                         {

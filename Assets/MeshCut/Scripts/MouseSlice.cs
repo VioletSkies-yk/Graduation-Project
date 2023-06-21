@@ -39,8 +39,10 @@ public class MouseSlice : MonoBehaviour
     {
         // Initialize a somewhat big array so that it doesn't resize
         meshCutter = new MeshCutter(256);
+        isLv3r2 = true;
+        EventManager.Instance.StartListening(CONST.Lv3r2, CallBack);
     }
-
+    private bool isLv3r2;
     private void OnEnable()
     {
         lineRenderer.OnLineDrawn += OnLineDrawn;
@@ -49,6 +51,11 @@ public class MouseSlice : MonoBehaviour
     private void OnDisable()
     {
         lineRenderer.OnLineDrawn -= OnLineDrawn;
+    }
+
+    private void OnDestroy()
+    {
+        EventManager.Instance.StopListening(CONST.Lv3r2, CallBack);
     }
 
     private void OnLineDrawn(Vector3 start, Vector3 end, Vector3 depth)
@@ -149,16 +156,19 @@ public class MouseSlice : MonoBehaviour
         (posBigger ? positiveObjects : negativeObjects).Add(obj.transform);
         (posBigger ? negativeObjects : positiveObjects).Add(newObject.transform);
 
-        if (ObjectContainer.childCount >= 4)
+        if (isLv3r2)
         {
-            enabled = false;
-            var list = ObjectContainer.GetComponentsInChildren<MeshCollider>();
-            foreach (var item in list)
+            if (ObjectContainer.childCount >= 4)
             {
-                item.gameObject.AddComponent<Rigidbody>();
-                //item.gameObject.AddComponent<BaseCatchInteractable>();
+                enabled = false;
+                var list = ObjectContainer.GetComponentsInChildren<MeshCollider>();
+                foreach (var item in list)
+                {
+                    item.gameObject.AddComponent<Rigidbody>();
+                    //item.gameObject.AddComponent<BaseCatchInteractable>();
+                }
+                EventManager.Instance.TriggerEvent(CONST.PlateCanClick);
             }
-            EventManager.Instance.TriggerEvent(CONST.PlateCanClick);
         }
 
         return true;
@@ -207,5 +217,11 @@ public class MouseSlice : MonoBehaviour
 
         for (i = 0; i < negatives.Count; ++i)
             negatives[i].transform.DOMove(negatives[i].transform.position - separationVector, 0.1f);
+    }
+
+    private void CallBack()
+    {
+        isLv3r2 = false;
+        enabled = true;
     }
 }
